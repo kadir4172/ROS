@@ -67,6 +67,29 @@ namespace enc = sensor_msgs::image_encodings;
           ROS_ERROR("cv_bridge exception: %s", e.what());
           return;
         }
+        
+        int size_y = cvPtr_->image.rows; //!get y size from number of rows
+        int size_x = cvPtr_->image.cols; //!get x size from number of columns
+
+	int counter = 0;
+      	for (int y = 0; y < size_y; y++){
+	  for (int x = 0; x < size_x; x++){
+
+          switch ((int)cvPtr_->image.at<uchar>(x, y))
+          {
+          case 255:
+	  case 0:
+            counter++;
+            break;
+
+	  case 127: 
+          default:
+            break;
+          }
+        }
+      }
+
+std::cout << "counter" << counter << std::endl;
 
         imageBuffer.buffer_mutex_.lock();
         imageBuffer.imageDeq.push_back(cvPtr_->image);
@@ -76,7 +99,6 @@ namespace enc = sensor_msgs::image_encodings;
             imageBuffer.timeStampDeq.pop_front();
         }
         imageBuffer.buffer_mutex_.unlock();
-
 
     }
 

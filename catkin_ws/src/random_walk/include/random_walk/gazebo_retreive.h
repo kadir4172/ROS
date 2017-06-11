@@ -30,6 +30,12 @@ private:
         std::deque<ros::Time> timeStampDeq;         //! Reque to store time of message
         std::mutex buffer_mutex_;                   //! Mutex used to secure buffer
     };
+    struct ImageDataBuffer
+    {
+        std::deque<cv::Mat> imageDeq;		    //! Deque to store image
+        std::deque<ros::Time> timeStampDeq;         //! Deque to store time of image
+        std::mutex buffer_mutex_;		    //! Mutex used to secure buffer
+    };
 
 
 public:
@@ -38,6 +44,8 @@ public:
     ~GazeboRetrieve();
 
     void seperateThread();                          //! Thread of execution
+
+    void imageCallback(const sensor_msgs::ImageConstPtr&);		//!Image Callback
 
 private:
     void odomCallback(const nav_msgs::OdometryConstPtr& msg);   //! Odometry Callback
@@ -51,12 +59,15 @@ private:
     ros::Publisher velocity_pub;
     ros::Subscriber sub1;                   //! Subscriber 1
     ros::Subscriber sub2;                   //! Subscriber 2
+    image_transport::Subscriber sub3_;      //! Subscriber 3
+    cv_bridge::CvImagePtr cvPtr_;	    //! Image pointer to get OGMAP
 
     cv::Mat image_;                         //! Storage for OgMap in Mat
     int count_;                             //! A counter to allow executing items on N iterations
     int pixels_;                            //! size of OgMap in pixels
 
     DataBuffer buffer;                      //! And now we have our container
+    ImageDataBuffer imageBuffer;            //! And now we have our container
 
 	double minfrontdistance;
 double speed;

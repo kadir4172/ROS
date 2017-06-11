@@ -1,11 +1,17 @@
 #include "random_walk/gazebo_retreive.h"
+#include "random_walk/RequestGoal.h"
+namespace enc = sensor_msgs::image_encodings;
 
     GazeboRetrieve::GazeboRetrieve(ros::NodeHandle nh)
     : nh_(nh), it_(nh)
     {
         sub1 = nh_.subscribe("odom", 1000, &GazeboRetrieve::odomCallback,this);
         sub2 = nh_.subscribe("base_scan_0", 10, &GazeboRetrieve::laserCallback,this);
-        //image_pub_ = it_.advertise("ogmap/image", 1);
+
+//subscribe map_image/full to get OGMAP, this will be used to calculate percentage of known configuration space
+        image_transport::ImageTransport it(nh);
+        sub3_ = it.subscribe("map_image/full", 1, &GazeboRetrieve::imageCallback,this);
+
         velocity_pub = nh_.advertise<geometry_msgs::Twist>("/cmd_vel",1); //TBK_Node publishes RosAria/cmd_vel topic and RosAria node subscribes to it
 
         ros::NodeHandle pn("~");
@@ -26,7 +32,7 @@
 	minfrontdistance = 0.750;
 	speed = 0.200;
 	avoidspeed = 0; // -150;
-    turnrate = 40*M_PI/180;
+    	turnrate = 40*M_PI/180;
 
       	randint;
 	randcount = 0;
@@ -43,6 +49,38 @@
     {
 
     }
+
+
+    void GazeboRetrieve::imageCallback(const sensor_msgs::ImageConstPtr& msg)
+    {
+
+        //! Below code pushes the image and time to a deque, to share across threads
+        try
+        {
+          if (enc::isColor(msg->encoding))
+            cvPtr_ = cv_bridge::toCvCopy(msg, enc::BGR8);
+          else
+            cvPtr_ = cv_bridge::toCvCopy(msg, enc::MONO8);
+        }
+        catch (cv_bridge::Exception& e)
+        {
+          ROS_ERROR("cv_bridge exception: %s", e.what());
+          return;
+        }
+
+        imageBuffer.buffer_mutex_.lock();
+        imageBuffer.imageDeq.push_back(cvPtr_->image);
+        imageBuffer.timeStampDeq.push_back(msg->header.stamp);
+        if(imageBuffer.imageDeq.size()>2){
+            imageBuffer.imageDeq.pop_front();
+            imageBuffer.timeStampDeq.pop_front();
+        }
+        imageBuffer.buffer_mutex_.unlock();
+
+
+    }
+
+
 
 
     void GazeboRetrieve::odomCallback(const nav_msgs::OdometryConstPtr& msg)

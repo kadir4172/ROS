@@ -1,0 +1,8 @@
+prefix=/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install
+
+Name: a3_help
+Description: Description of a3_help
+Version: 0.0.0
+Cflags: -I/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install/include
+Libs: -L/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install/lib 
+Requires: 

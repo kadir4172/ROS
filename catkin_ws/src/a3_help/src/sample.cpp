@@ -81,7 +81,7 @@ public:
         ros::NodeHandle pn("~");
         double mapSize;
         double resolution;
-        pn.param<double>("map_size", mapSize, 200.0);
+        pn.param<double>("map_size", mapSize, 300.0);
         pn.param<double>("resolution", resolution_, 0.1);
 
         count_ =0;
@@ -214,25 +214,9 @@ public:
             //on every 100 iterations
             if (count_>100){
                count_=0;
-               if(!image.empty()){
-                   cv::Mat rgbImage;
-                   cv::cvtColor(image,rgbImage,CV_GRAY2RGB);
-                   if (image.rows > 60 && image.cols > 60)
-                    //cv::circle(rgbImage, cv::Point((x/resolution_)+(image.rows/2), (y/resolution_)+(image.cols/2)), 7, CV_RGB(255,0,0),-1);
-                    cv::circle(rgbImage, cv::Point((image.rows/2), (image.cols/2)), 7, CV_RGB(0,0,255),-1);
-                    std::cout << timeOdom  << " O: [x,y,yaw]=[" <<
-                                x << "," << y << "," << yaw << "]" << std::endl;
-                    std::cout << " pos [x,y]=[" << (x/resolution_) << ","  << (y/resolution_) << "] " <<
-                                              " pos [x,y]=[" << (x/resolution_)+(image.rows/2) << "," << (y/resolution_)+(image.cols/2) << "]"<< std::endl;
-
-                    // Update GUI Window
-                    cv::imshow("view", image);
-                    cv::waitKey(5);
-
-                    sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", rgbImage).toImageMsg();
-                    image_pub_.publish(msg);
-
-                }
+               std::cout << "rows"  << image.rows << std::endl;
+               std::cout << "cols"  << image.cols << std::endl;
+   
             }
             else{
                 count_++;

@@ -4,7 +4,7 @@
     : nh_(nh), it_(nh)
     {
         sub1 = nh_.subscribe("odom", 1000, &GazeboRetrieve::odomCallback,this);
-        sub2 = nh_.subscribe("scan", 10, &GazeboRetrieve::laserCallback,this);
+        sub2 = nh_.subscribe("base_scan_0", 10, &GazeboRetrieve::laserCallback,this);
         //image_pub_ = it_.advertise("ogmap/image", 1);
         velocity_pub = nh_.advertise<geometry_msgs::Twist>("/cmd_vel",1); //TBK_Node publishes RosAria/cmd_vel topic and RosAria node subscribes to it
 

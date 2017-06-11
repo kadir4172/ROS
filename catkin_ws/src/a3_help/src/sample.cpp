@@ -67,7 +67,7 @@ public:
     : nh_(nh), it_(nh)
     {
         sub1_ = nh_.subscribe("odom", 1000, &GazeboRetrieve::odomCallback,this);
-        sub2_ = nh_.subscribe("scan", 10, &GazeboRetrieve::laserCallback,this);
+        sub2_ = nh_.subscribe("base_scan_0", 10, &GazeboRetrieve::laserCallback,this);
         image_transport::ImageTransport it(nh);
         sub3_ = it.subscribe("map_image/full", 1, &GazeboRetrieve::imageCallback,this);
 

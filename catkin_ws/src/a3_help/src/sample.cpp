@@ -81,7 +81,7 @@ public:
         ros::NodeHandle pn("~");
         double mapSize;
         double resolution;
-        pn.param<double>("map_size", mapSize, 20.0);
+        pn.param<double>("map_size", mapSize, 200.0);
         pn.param<double>("resolution", resolution_, 0.1);
 
         count_ =0;

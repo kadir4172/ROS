@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 # Utility rule file for _run_tests_a3_help_gtest_a3_help-test.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
 include a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/progress.make
 
 a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/run_tests.py /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/test_results/a3_help/gtest-a3_help-test.xml /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/a3_help/a3_help-test\ --gtest_output=xml:/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/test_results/a3_help/gtest-a3_help-test.xml
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/run_tests.py /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/test_results/a3_help/gtest-a3_help-test.xml /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/a3_help/a3_help-test\ --gtest_output=xml:/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/test_results/a3_help/gtest-a3_help-test.xml
 
 _run_tests_a3_help_gtest_a3_help-test: a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test
 _run_tests_a3_help_gtest_a3_help-test: a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/build.make
@@ -67,10 +67,10 @@ a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/build: _run_tests_a
 .PHONY : a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/build
 
 a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help && $(CMAKE_COMMAND) -P CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/cmake_clean.cmake
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help && $(CMAKE_COMMAND) -P CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/cmake_clean.cmake
 .PHONY : a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/clean
 
 a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : a3_help/CMakeFiles/_run_tests_a3_help_gtest_a3_help-test.dir/depend
 

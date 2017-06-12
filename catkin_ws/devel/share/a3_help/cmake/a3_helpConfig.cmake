@@ -67,14 +67,14 @@ set(a3_help_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(a3_help_SOURCE_PREFIX /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help)
-  set(a3_help_DEVEL_PREFIX /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel)
+  set(a3_help_SOURCE_PREFIX /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help)
+  set(a3_help_DEVEL_PREFIX /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel)
   set(a3_help_INSTALL_PREFIX "")
   set(a3_help_PREFIX ${a3_help_DEVEL_PREFIX})
 else()
   set(a3_help_SOURCE_PREFIX "")
   set(a3_help_DEVEL_PREFIX "")
-  set(a3_help_INSTALL_PREFIX /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install)
+  set(a3_help_INSTALL_PREFIX /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install)
   set(a3_help_PREFIX ${a3_help_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(a3_help_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/include " STREQUAL " ")
+if(NOT "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/include " STREQUAL " ")
   set(a3_help_INCLUDE_DIRS "")
-  set(_include_dirs "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/include")
+  set(_include_dirs "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/include")
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
       set(include ${idir})
@@ -103,7 +103,7 @@ if(NOT "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/include " STREQUA
         message(FATAL_ERROR "Project 'a3_help' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  Ask the maintainer 'student <student@todo.todo>' to fix it.")
       endif()
     else()
-      message(FATAL_ERROR "Project 'a3_help' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help/${idir}'.  Ask the maintainer 'student <student@todo.todo>' to fix it.")
+      message(FATAL_ERROR "Project 'a3_help' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help/${idir}'.  Ask the maintainer 'student <student@todo.todo>' to fix it.")
     endif()
     _list_append_unique(a3_help_INCLUDE_DIRS ${include})
   endforeach()
@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib;/home/kadir/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib;/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib;/home/kadir/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

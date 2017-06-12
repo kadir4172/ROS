@@ -1,8 +1,8 @@
-prefix=/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel
+prefix=/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel
 
 Name: random_walk
 Description: Description of random_walk
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib 
+Libs: -L/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib 
 Requires: 

@@ -1,8 +1,8 @@
-# Install script for directory: /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/opencv_example
+# Install script for directory: /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/opencv_example
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/opencv_example/catkin_generated/installspace/opencv_example.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/opencv_example/catkin_generated/installspace/opencv_example.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opencv_example/cmake" TYPE FILE FILES
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/opencv_example/catkin_generated/installspace/opencv_exampleConfig.cmake"
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/opencv_example/catkin_generated/installspace/opencv_exampleConfig-version.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/opencv_example/catkin_generated/installspace/opencv_exampleConfig.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/opencv_example/catkin_generated/installspace/opencv_exampleConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opencv_example" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/opencv_example/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opencv_example" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/opencv_example/package.xml")
 endif()
 

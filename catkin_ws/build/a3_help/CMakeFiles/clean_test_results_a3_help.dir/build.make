@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 # Utility rule file for clean_test_results_a3_help.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
 include a3_help/CMakeFiles/clean_test_results_a3_help.dir/progress.make
 
 a3_help/CMakeFiles/clean_test_results_a3_help:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help && /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/remove_test_results.py /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/test_results/a3_help
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help && /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/remove_test_results.py /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/test_results/a3_help
 
 clean_test_results_a3_help: a3_help/CMakeFiles/clean_test_results_a3_help
 clean_test_results_a3_help: a3_help/CMakeFiles/clean_test_results_a3_help.dir/build.make
@@ -67,10 +67,10 @@ a3_help/CMakeFiles/clean_test_results_a3_help.dir/build: clean_test_results_a3_h
 .PHONY : a3_help/CMakeFiles/clean_test_results_a3_help.dir/build
 
 a3_help/CMakeFiles/clean_test_results_a3_help.dir/clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help && $(CMAKE_COMMAND) -P CMakeFiles/clean_test_results_a3_help.dir/cmake_clean.cmake
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help && $(CMAKE_COMMAND) -P CMakeFiles/clean_test_results_a3_help.dir/cmake_clean.cmake
 .PHONY : a3_help/CMakeFiles/clean_test_results_a3_help.dir/clean
 
 a3_help/CMakeFiles/clean_test_results_a3_help.dir/depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help/CMakeFiles/clean_test_results_a3_help.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help/CMakeFiles/clean_test_results_a3_help.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : a3_help/CMakeFiles/clean_test_results_a3_help.dir/depend
 

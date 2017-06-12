@@ -1,8 +1,8 @@
-# Install script for directory: /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/random_walk
+# Install script for directory: /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/random_walk
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/random_walk/catkin_generated/installspace/random_walk.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/random_walk/catkin_generated/installspace/random_walk.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/random_walk/cmake" TYPE FILE FILES
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/random_walk/catkin_generated/installspace/random_walkConfig.cmake"
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/random_walk/catkin_generated/installspace/random_walkConfig-version.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/random_walk/catkin_generated/installspace/random_walkConfig.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/random_walk/catkin_generated/installspace/random_walkConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/random_walk" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/random_walk/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/random_walk" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/random_walk/package.xml")
 endif()
 

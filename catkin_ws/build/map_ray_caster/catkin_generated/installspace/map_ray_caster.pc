@@ -1,8 +1,8 @@
-prefix=/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install
+prefix=/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install
 
 Name: map_ray_caster
 Description: Description of map_ray_caster
 Version: 0.1.8
-Cflags: -I/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install/include
-Libs: -L/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install/lib -lmap_ray_caster
+Cflags: -I/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install/include
+Libs: -L/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install/lib -lmap_ray_caster
 Requires: lama_msgs nav_msgs roscpp

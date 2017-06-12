@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 # Utility rule file for _lama_msgs_generate_messages_check_deps_LamaObject.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
 include lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/progress.make
 
 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/lama_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py lama_msgs /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/lama_msgs/msg/LamaObject.msg 
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/lama_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py lama_msgs /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/lama_msgs/msg/LamaObject.msg 
 
 _lama_msgs_generate_messages_check_deps_LamaObject: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject
 _lama_msgs_generate_messages_check_deps_LamaObject: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/build.make
@@ -67,10 +67,10 @@ lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/buil
 .PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/build
 
 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/lama_msgs && $(CMAKE_COMMAND) -P CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/cmake_clean.cmake
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/lama_msgs && $(CMAKE_COMMAND) -P CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/cmake_clean.cmake
 .PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/clean
 
 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/lama_msgs /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/lama_msgs /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/lama_msgs /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/lama_msgs /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/depend
 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,14 +135,14 @@ install/local/fast: install/local
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/CMakeFiles /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/opencv_example/CMakeFiles/progress.marks
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/CMakeFiles 0
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/CMakeFiles /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/opencv_example/CMakeFiles/progress.marks
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/clean
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +152,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/preinstall
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/preinstall
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 opencv_example/CMakeFiles/image_publisher.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/CMakeFiles/image_publisher.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_example/CMakeFiles/image_publisher.dir/rule
 .PHONY : opencv_example/CMakeFiles/image_publisher.dir/rule
 
 # Convenience name for target.
@@ -177,7 +177,7 @@ image_publisher: opencv_example/CMakeFiles/image_publisher.dir/rule
 
 # fast build rule for target.
 image_publisher/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f opencv_example/CMakeFiles/image_publisher.dir/build.make opencv_example/CMakeFiles/image_publisher.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f opencv_example/CMakeFiles/image_publisher.dir/build.make opencv_example/CMakeFiles/image_publisher.dir/build
 .PHONY : image_publisher/fast
 
 src/image_publisher.o: src/image_publisher.cpp.o
@@ -186,7 +186,7 @@ src/image_publisher.o: src/image_publisher.cpp.o
 
 # target to build an object file
 src/image_publisher.cpp.o:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f opencv_example/CMakeFiles/image_publisher.dir/build.make opencv_example/CMakeFiles/image_publisher.dir/src/image_publisher.cpp.o
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f opencv_example/CMakeFiles/image_publisher.dir/build.make opencv_example/CMakeFiles/image_publisher.dir/src/image_publisher.cpp.o
 .PHONY : src/image_publisher.cpp.o
 
 src/image_publisher.i: src/image_publisher.cpp.i
@@ -195,7 +195,7 @@ src/image_publisher.i: src/image_publisher.cpp.i
 
 # target to preprocess a source file
 src/image_publisher.cpp.i:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f opencv_example/CMakeFiles/image_publisher.dir/build.make opencv_example/CMakeFiles/image_publisher.dir/src/image_publisher.cpp.i
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f opencv_example/CMakeFiles/image_publisher.dir/build.make opencv_example/CMakeFiles/image_publisher.dir/src/image_publisher.cpp.i
 .PHONY : src/image_publisher.cpp.i
 
 src/image_publisher.s: src/image_publisher.cpp.s
@@ -204,7 +204,7 @@ src/image_publisher.s: src/image_publisher.cpp.s
 
 # target to generate assembly for a file
 src/image_publisher.cpp.s:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f opencv_example/CMakeFiles/image_publisher.dir/build.make opencv_example/CMakeFiles/image_publisher.dir/src/image_publisher.cpp.s
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f opencv_example/CMakeFiles/image_publisher.dir/build.make opencv_example/CMakeFiles/image_publisher.dir/src/image_publisher.cpp.s
 .PHONY : src/image_publisher.cpp.s
 
 # Help Target
@@ -235,6 +235,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

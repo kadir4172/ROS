@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,14 +135,14 @@ install/strip/fast: install/strip
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/CMakeFiles /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/random_walk/CMakeFiles/progress.marks
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/CMakeFiles 0
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/CMakeFiles /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/random_walk/CMakeFiles/progress.marks
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/clean
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +152,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/preinstall
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/preinstall
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 random_walk/CMakeFiles/_run_tests_random_walk.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/_run_tests_random_walk.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/_run_tests_random_walk.dir/rule
 .PHONY : random_walk/CMakeFiles/_run_tests_random_walk.dir/rule
 
 # Convenience name for target.
@@ -177,12 +177,12 @@ _run_tests_random_walk: random_walk/CMakeFiles/_run_tests_random_walk.dir/rule
 
 # fast build rule for target.
 _run_tests_random_walk/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/_run_tests_random_walk.dir/build.make random_walk/CMakeFiles/_run_tests_random_walk.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/_run_tests_random_walk.dir/build.make random_walk/CMakeFiles/_run_tests_random_walk.dir/build
 .PHONY : _run_tests_random_walk/fast
 
 # Convenience name for target.
 random_walk/CMakeFiles/random_walk.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/random_walk.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/random_walk.dir/rule
 .PHONY : random_walk/CMakeFiles/random_walk.dir/rule
 
 # Convenience name for target.
@@ -192,12 +192,12 @@ random_walk: random_walk/CMakeFiles/random_walk.dir/rule
 
 # fast build rule for target.
 random_walk/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/build
 .PHONY : random_walk/fast
 
 # Convenience name for target.
 random_walk/CMakeFiles/clean_test_results_random_walk.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/clean_test_results_random_walk.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/clean_test_results_random_walk.dir/rule
 .PHONY : random_walk/CMakeFiles/clean_test_results_random_walk.dir/rule
 
 # Convenience name for target.
@@ -207,12 +207,12 @@ clean_test_results_random_walk: random_walk/CMakeFiles/clean_test_results_random
 
 # fast build rule for target.
 clean_test_results_random_walk/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/clean_test_results_random_walk.dir/build.make random_walk/CMakeFiles/clean_test_results_random_walk.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/clean_test_results_random_walk.dir/build.make random_walk/CMakeFiles/clean_test_results_random_walk.dir/build
 .PHONY : clean_test_results_random_walk/fast
 
 # Convenience name for target.
 random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/rule
 .PHONY : random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/rule
 
 # Convenience name for target.
@@ -222,12 +222,12 @@ run_tests_random_walk_gtest: random_walk/CMakeFiles/run_tests_random_walk_gtest.
 
 # fast build rule for target.
 run_tests_random_walk_gtest/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/build.make random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/build.make random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/build
 .PHONY : run_tests_random_walk_gtest/fast
 
 # Convenience name for target.
 random_walk/CMakeFiles/_run_tests_random_walk_gtest.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/_run_tests_random_walk_gtest.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/_run_tests_random_walk_gtest.dir/rule
 .PHONY : random_walk/CMakeFiles/_run_tests_random_walk_gtest.dir/rule
 
 # Convenience name for target.
@@ -237,12 +237,12 @@ _run_tests_random_walk_gtest: random_walk/CMakeFiles/_run_tests_random_walk_gtes
 
 # fast build rule for target.
 _run_tests_random_walk_gtest/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/_run_tests_random_walk_gtest.dir/build.make random_walk/CMakeFiles/_run_tests_random_walk_gtest.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/_run_tests_random_walk_gtest.dir/build.make random_walk/CMakeFiles/_run_tests_random_walk_gtest.dir/build
 .PHONY : _run_tests_random_walk_gtest/fast
 
 # Convenience name for target.
 random_walk/CMakeFiles/random_walk-test.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/random_walk-test.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/random_walk-test.dir/rule
 .PHONY : random_walk/CMakeFiles/random_walk-test.dir/rule
 
 # Convenience name for target.
@@ -252,12 +252,12 @@ random_walk-test: random_walk/CMakeFiles/random_walk-test.dir/rule
 
 # fast build rule for target.
 random_walk-test/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk-test.dir/build.make random_walk/CMakeFiles/random_walk-test.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk-test.dir/build.make random_walk/CMakeFiles/random_walk-test.dir/build
 .PHONY : random_walk-test/fast
 
 # Convenience name for target.
 random_walk/CMakeFiles/run_tests_random_walk_gtest_random_walk-test.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/run_tests_random_walk_gtest_random_walk-test.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/run_tests_random_walk_gtest_random_walk-test.dir/rule
 .PHONY : random_walk/CMakeFiles/run_tests_random_walk_gtest_random_walk-test.dir/rule
 
 # Convenience name for target.
@@ -267,12 +267,12 @@ run_tests_random_walk_gtest_random_walk-test: random_walk/CMakeFiles/run_tests_r
 
 # fast build rule for target.
 run_tests_random_walk_gtest_random_walk-test/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/run_tests_random_walk_gtest_random_walk-test.dir/build.make random_walk/CMakeFiles/run_tests_random_walk_gtest_random_walk-test.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/run_tests_random_walk_gtest_random_walk-test.dir/build.make random_walk/CMakeFiles/run_tests_random_walk_gtest_random_walk-test.dir/build
 .PHONY : run_tests_random_walk_gtest_random_walk-test/fast
 
 # Convenience name for target.
 random_walk/CMakeFiles/run_tests_random_walk.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/run_tests_random_walk.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/run_tests_random_walk.dir/rule
 .PHONY : random_walk/CMakeFiles/run_tests_random_walk.dir/rule
 
 # Convenience name for target.
@@ -282,12 +282,12 @@ run_tests_random_walk: random_walk/CMakeFiles/run_tests_random_walk.dir/rule
 
 # fast build rule for target.
 run_tests_random_walk/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/run_tests_random_walk.dir/build.make random_walk/CMakeFiles/run_tests_random_walk.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/run_tests_random_walk.dir/build.make random_walk/CMakeFiles/run_tests_random_walk.dir/build
 .PHONY : run_tests_random_walk/fast
 
 # Convenience name for target.
 random_walk/CMakeFiles/_run_tests_random_walk_gtest_random_walk-test.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/_run_tests_random_walk_gtest_random_walk-test.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 random_walk/CMakeFiles/_run_tests_random_walk_gtest_random_walk-test.dir/rule
 .PHONY : random_walk/CMakeFiles/_run_tests_random_walk_gtest_random_walk-test.dir/rule
 
 # Convenience name for target.
@@ -297,7 +297,7 @@ _run_tests_random_walk_gtest_random_walk-test: random_walk/CMakeFiles/_run_tests
 
 # fast build rule for target.
 _run_tests_random_walk_gtest_random_walk-test/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/_run_tests_random_walk_gtest_random_walk-test.dir/build.make random_walk/CMakeFiles/_run_tests_random_walk_gtest_random_walk-test.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/_run_tests_random_walk_gtest_random_walk-test.dir/build.make random_walk/CMakeFiles/_run_tests_random_walk_gtest_random_walk-test.dir/build
 .PHONY : _run_tests_random_walk_gtest_random_walk-test/fast
 
 src/gazebo_retrieve.o: src/gazebo_retrieve.cpp.o
@@ -306,7 +306,7 @@ src/gazebo_retrieve.o: src/gazebo_retrieve.cpp.o
 
 # target to build an object file
 src/gazebo_retrieve.cpp.o:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o
 .PHONY : src/gazebo_retrieve.cpp.o
 
 src/gazebo_retrieve.i: src/gazebo_retrieve.cpp.i
@@ -315,7 +315,7 @@ src/gazebo_retrieve.i: src/gazebo_retrieve.cpp.i
 
 # target to preprocess a source file
 src/gazebo_retrieve.cpp.i:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.i
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.i
 .PHONY : src/gazebo_retrieve.cpp.i
 
 src/gazebo_retrieve.s: src/gazebo_retrieve.cpp.s
@@ -324,7 +324,7 @@ src/gazebo_retrieve.s: src/gazebo_retrieve.cpp.s
 
 # target to generate assembly for a file
 src/gazebo_retrieve.cpp.s:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.s
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.s
 .PHONY : src/gazebo_retrieve.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -333,7 +333,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -342,7 +342,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/main.cpp.i
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -351,7 +351,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/main.cpp.s
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk.dir/build.make random_walk/CMakeFiles/random_walk.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 test/utest.o: test/utest.cpp.o
@@ -360,7 +360,7 @@ test/utest.o: test/utest.cpp.o
 
 # target to build an object file
 test/utest.cpp.o:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk-test.dir/build.make random_walk/CMakeFiles/random_walk-test.dir/test/utest.cpp.o
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk-test.dir/build.make random_walk/CMakeFiles/random_walk-test.dir/test/utest.cpp.o
 .PHONY : test/utest.cpp.o
 
 test/utest.i: test/utest.cpp.i
@@ -369,7 +369,7 @@ test/utest.i: test/utest.cpp.i
 
 # target to preprocess a source file
 test/utest.cpp.i:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk-test.dir/build.make random_walk/CMakeFiles/random_walk-test.dir/test/utest.cpp.i
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk-test.dir/build.make random_walk/CMakeFiles/random_walk-test.dir/test/utest.cpp.i
 .PHONY : test/utest.cpp.i
 
 test/utest.s: test/utest.cpp.s
@@ -378,7 +378,7 @@ test/utest.s: test/utest.cpp.s
 
 # target to generate assembly for a file
 test/utest.cpp.s:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk-test.dir/build.make random_walk/CMakeFiles/random_walk-test.dir/test/utest.cpp.s
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f random_walk/CMakeFiles/random_walk-test.dir/build.make random_walk/CMakeFiles/random_walk-test.dir/test/utest.cpp.s
 .PHONY : test/utest.cpp.s
 
 # Help Target
@@ -423,6 +423,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

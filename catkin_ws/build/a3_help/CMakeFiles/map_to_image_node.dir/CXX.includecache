@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help/include/a3_help/HectorMapTools.h
+/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help/include/a3_help/HectorMapTools.h
 nav_msgs/OccupancyGrid.h
 -
 nav_msgs/MapMetaData.h
@@ -14,9 +14,9 @@ nav_msgs/MapMetaData.h
 Eigen/Core
 -
 
-/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help/src/map_to_image_node.cpp
+/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help/src/map_to_image_node.cpp
 ros/ros.h
-/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help/src/ros/ros.h
+/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help/src/ros/ros.h
 nav_msgs/GetMap.h
 -
 nav_msgs/Odometry.h

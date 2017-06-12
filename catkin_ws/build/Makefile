@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,9 +135,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/CMakeFiles /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/CMakeFiles /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1024,134 +1024,30 @@ lama_msgs_genpy/fast:
 .PHONY : lama_msgs_genpy/fast
 
 #=============================================================================
-# Target rules for targets named _lama_msgs_generate_messages_check_deps_Crossing
+# Target rules for targets named _lama_msgs_generate_messages_check_deps_SetPlaceProfile
 
 # Build rule for target.
-_lama_msgs_generate_messages_check_deps_Crossing: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_Crossing
-.PHONY : _lama_msgs_generate_messages_check_deps_Crossing
+_lama_msgs_generate_messages_check_deps_SetPlaceProfile: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_SetPlaceProfile
+.PHONY : _lama_msgs_generate_messages_check_deps_SetPlaceProfile
 
 # fast build rule for target.
-_lama_msgs_generate_messages_check_deps_Crossing/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_Crossing/fast
+_lama_msgs_generate_messages_check_deps_SetPlaceProfile/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_SetPlaceProfile/fast
 
 #=============================================================================
-# Target rules for targets named lama_msgs_generate_messages_py
+# Target rules for targets named lama_msgs_generate_messages_lisp
 
 # Build rule for target.
-lama_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_generate_messages_py
-.PHONY : lama_msgs_generate_messages_py
+lama_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_generate_messages_lisp
+.PHONY : lama_msgs_generate_messages_lisp
 
 # fast build rule for target.
-lama_msgs_generate_messages_py/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/build
-.PHONY : lama_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named lama_msgs_gencpp
-
-# Build rule for target.
-lama_msgs_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_gencpp
-.PHONY : lama_msgs_gencpp
-
-# fast build rule for target.
-lama_msgs_gencpp/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build
-.PHONY : lama_msgs_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named _lama_msgs_generate_messages_check_deps_SetCrossing
-
-# Build rule for target.
-_lama_msgs_generate_messages_check_deps_SetCrossing: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_SetCrossing
-.PHONY : _lama_msgs_generate_messages_check_deps_SetCrossing
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_SetCrossing/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_SetCrossing/fast
-
-#=============================================================================
-# Target rules for targets named lama_msgs_genlisp
-
-# Build rule for target.
-lama_msgs_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_genlisp
-.PHONY : lama_msgs_genlisp
-
-# fast build rule for target.
-lama_msgs_genlisp/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/build
-.PHONY : lama_msgs_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named _lama_msgs_generate_messages_check_deps_GetLamaObject
-
-# Build rule for target.
-_lama_msgs_generate_messages_check_deps_GetLamaObject: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_GetLamaObject
-.PHONY : _lama_msgs_generate_messages_check_deps_GetLamaObject
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_GetLamaObject/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_GetLamaObject/fast
-
-#=============================================================================
-# Target rules for targets named _lama_msgs_generate_messages_check_deps_GetCrossing
-
-# Build rule for target.
-_lama_msgs_generate_messages_check_deps_GetCrossing: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_GetCrossing
-.PHONY : _lama_msgs_generate_messages_check_deps_GetCrossing
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_GetCrossing/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_GetCrossing/fast
-
-#=============================================================================
-# Target rules for targets named lama_msgs_generate_messages
-
-# Build rule for target.
-lama_msgs_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_generate_messages
-.PHONY : lama_msgs_generate_messages
-
-# fast build rule for target.
-lama_msgs_generate_messages/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/build
-.PHONY : lama_msgs_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named _lama_msgs_generate_messages_check_deps_GetPlaceProfile
-
-# Build rule for target.
-_lama_msgs_generate_messages_check_deps_GetPlaceProfile: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_GetPlaceProfile
-.PHONY : _lama_msgs_generate_messages_check_deps_GetPlaceProfile
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_GetPlaceProfile/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_GetPlaceProfile/fast
-
-#=============================================================================
-# Target rules for targets named lama_msgs_generate_messages_eus
-
-# Build rule for target.
-lama_msgs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_generate_messages_eus
-.PHONY : lama_msgs_generate_messages_eus
-
-# fast build rule for target.
-lama_msgs_generate_messages_eus/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/build
-.PHONY : lama_msgs_generate_messages_eus/fast
+lama_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/build
+.PHONY : lama_msgs_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named _lama_msgs_generate_messages_check_deps_DescriptorLink
@@ -1180,6 +1076,71 @@ _lama_msgs_generate_messages_check_deps_GetInterfaceInfo/fast:
 .PHONY : _lama_msgs_generate_messages_check_deps_GetInterfaceInfo/fast
 
 #=============================================================================
+# Target rules for targets named _lama_msgs_generate_messages_check_deps_GetCrossing
+
+# Build rule for target.
+_lama_msgs_generate_messages_check_deps_GetCrossing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_GetCrossing
+.PHONY : _lama_msgs_generate_messages_check_deps_GetCrossing
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_GetCrossing/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_GetCrossing/fast
+
+#=============================================================================
+# Target rules for targets named _lama_msgs_generate_messages_check_deps_GetLamaObject
+
+# Build rule for target.
+_lama_msgs_generate_messages_check_deps_GetLamaObject: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_GetLamaObject
+.PHONY : _lama_msgs_generate_messages_check_deps_GetLamaObject
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_GetLamaObject/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_GetLamaObject/fast
+
+#=============================================================================
+# Target rules for targets named _lama_msgs_generate_messages_check_deps_SetLamaObject
+
+# Build rule for target.
+_lama_msgs_generate_messages_check_deps_SetLamaObject: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_SetLamaObject
+.PHONY : _lama_msgs_generate_messages_check_deps_SetLamaObject
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_SetLamaObject/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_SetLamaObject/fast
+
+#=============================================================================
+# Target rules for targets named _lama_msgs_generate_messages_check_deps_SetCrossing
+
+# Build rule for target.
+_lama_msgs_generate_messages_check_deps_SetCrossing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_SetCrossing
+.PHONY : _lama_msgs_generate_messages_check_deps_SetCrossing
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_SetCrossing/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_SetCrossing/fast
+
+#=============================================================================
+# Target rules for targets named lama_msgs_genlisp
+
+# Build rule for target.
+lama_msgs_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_genlisp
+.PHONY : lama_msgs_genlisp
+
+# fast build rule for target.
+lama_msgs_genlisp/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/build
+.PHONY : lama_msgs_genlisp/fast
+
+#=============================================================================
 # Target rules for targets named _lama_msgs_generate_messages_check_deps_Frontier
 
 # Build rule for target.
@@ -1204,6 +1165,19 @@ _lama_msgs_generate_messages_check_deps_LamaObject: cmake_check_build_system
 _lama_msgs_generate_messages_check_deps_LamaObject/fast:
 	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/build
 .PHONY : _lama_msgs_generate_messages_check_deps_LamaObject/fast
+
+#=============================================================================
+# Target rules for targets named lama_msgs_generate_messages
+
+# Build rule for target.
+lama_msgs_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_generate_messages
+.PHONY : lama_msgs_generate_messages
+
+# fast build rule for target.
+lama_msgs_generate_messages/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/build
+.PHONY : lama_msgs_generate_messages/fast
 
 #=============================================================================
 # Target rules for targets named _lama_msgs_generate_messages_check_deps_PlaceProfile
@@ -1245,43 +1219,69 @@ lama_msgs_gennodejs/fast:
 .PHONY : lama_msgs_gennodejs/fast
 
 #=============================================================================
-# Target rules for targets named _lama_msgs_generate_messages_check_deps_SetPlaceProfile
+# Target rules for targets named lama_msgs_generate_messages_eus
 
 # Build rule for target.
-_lama_msgs_generate_messages_check_deps_SetPlaceProfile: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_SetPlaceProfile
-.PHONY : _lama_msgs_generate_messages_check_deps_SetPlaceProfile
+lama_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_generate_messages_eus
+.PHONY : lama_msgs_generate_messages_eus
 
 # fast build rule for target.
-_lama_msgs_generate_messages_check_deps_SetPlaceProfile/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_SetPlaceProfile/fast
+lama_msgs_generate_messages_eus/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/build
+.PHONY : lama_msgs_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named lama_msgs_generate_messages_lisp
+# Target rules for targets named _lama_msgs_generate_messages_check_deps_GetPlaceProfile
 
 # Build rule for target.
-lama_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_generate_messages_lisp
-.PHONY : lama_msgs_generate_messages_lisp
+_lama_msgs_generate_messages_check_deps_GetPlaceProfile: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_GetPlaceProfile
+.PHONY : _lama_msgs_generate_messages_check_deps_GetPlaceProfile
 
 # fast build rule for target.
-lama_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/build
-.PHONY : lama_msgs_generate_messages_lisp/fast
+_lama_msgs_generate_messages_check_deps_GetPlaceProfile/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_GetPlaceProfile/fast
 
 #=============================================================================
-# Target rules for targets named _lama_msgs_generate_messages_check_deps_SetLamaObject
+# Target rules for targets named _lama_msgs_generate_messages_check_deps_Crossing
 
 # Build rule for target.
-_lama_msgs_generate_messages_check_deps_SetLamaObject: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_SetLamaObject
-.PHONY : _lama_msgs_generate_messages_check_deps_SetLamaObject
+_lama_msgs_generate_messages_check_deps_Crossing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _lama_msgs_generate_messages_check_deps_Crossing
+.PHONY : _lama_msgs_generate_messages_check_deps_Crossing
 
 # fast build rule for target.
-_lama_msgs_generate_messages_check_deps_SetLamaObject/fast:
-	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_SetLamaObject/fast
+_lama_msgs_generate_messages_check_deps_Crossing/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_Crossing/fast
+
+#=============================================================================
+# Target rules for targets named lama_msgs_generate_messages_py
+
+# Build rule for target.
+lama_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_generate_messages_py
+.PHONY : lama_msgs_generate_messages_py
+
+# fast build rule for target.
+lama_msgs_generate_messages_py/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/build
+.PHONY : lama_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named lama_msgs_gencpp
+
+# Build rule for target.
+lama_msgs_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lama_msgs_gencpp
+.PHONY : lama_msgs_gencpp
+
+# fast build rule for target.
+lama_msgs_gencpp/fast:
+	$(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build
+.PHONY : lama_msgs_gencpp/fast
 
 #=============================================================================
 # Target rules for targets named lama_msgs_generate_messages_cpp
@@ -2012,26 +2012,26 @@ help:
 	@echo "... run_tests_random_walk"
 	@echo "... _run_tests_random_walk_gtest_random_walk-test"
 	@echo "... lama_msgs_genpy"
-	@echo "... _lama_msgs_generate_messages_check_deps_Crossing"
-	@echo "... lama_msgs_generate_messages_py"
-	@echo "... lama_msgs_gencpp"
-	@echo "... _lama_msgs_generate_messages_check_deps_SetCrossing"
-	@echo "... lama_msgs_genlisp"
-	@echo "... _lama_msgs_generate_messages_check_deps_GetLamaObject"
-	@echo "... _lama_msgs_generate_messages_check_deps_GetCrossing"
-	@echo "... lama_msgs_generate_messages"
-	@echo "... _lama_msgs_generate_messages_check_deps_GetPlaceProfile"
-	@echo "... lama_msgs_generate_messages_eus"
+	@echo "... _lama_msgs_generate_messages_check_deps_SetPlaceProfile"
+	@echo "... lama_msgs_generate_messages_lisp"
 	@echo "... _lama_msgs_generate_messages_check_deps_DescriptorLink"
 	@echo "... _lama_msgs_generate_messages_check_deps_GetInterfaceInfo"
+	@echo "... _lama_msgs_generate_messages_check_deps_GetCrossing"
+	@echo "... _lama_msgs_generate_messages_check_deps_GetLamaObject"
+	@echo "... _lama_msgs_generate_messages_check_deps_SetLamaObject"
+	@echo "... _lama_msgs_generate_messages_check_deps_SetCrossing"
+	@echo "... lama_msgs_genlisp"
 	@echo "... _lama_msgs_generate_messages_check_deps_Frontier"
 	@echo "... _lama_msgs_generate_messages_check_deps_LamaObject"
+	@echo "... lama_msgs_generate_messages"
 	@echo "... _lama_msgs_generate_messages_check_deps_PlaceProfile"
 	@echo "... _lama_msgs_generate_messages_check_deps_InterfaceInfo"
 	@echo "... lama_msgs_gennodejs"
-	@echo "... _lama_msgs_generate_messages_check_deps_SetPlaceProfile"
-	@echo "... lama_msgs_generate_messages_lisp"
-	@echo "... _lama_msgs_generate_messages_check_deps_SetLamaObject"
+	@echo "... lama_msgs_generate_messages_eus"
+	@echo "... _lama_msgs_generate_messages_check_deps_GetPlaceProfile"
+	@echo "... _lama_msgs_generate_messages_check_deps_Crossing"
+	@echo "... lama_msgs_generate_messages_py"
+	@echo "... lama_msgs_gencpp"
 	@echo "... lama_msgs_generate_messages_cpp"
 	@echo "... lama_msgs_geneus"
 	@echo "... lama_msgs_generate_messages_nodejs"

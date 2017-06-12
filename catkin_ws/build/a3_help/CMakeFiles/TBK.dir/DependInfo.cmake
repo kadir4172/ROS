@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help/src/TBK.cpp" "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help/CMakeFiles/TBK.dir/src/TBK.cpp.o"
+  "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help/src/TBK.cpp" "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help/CMakeFiles/TBK.dir/src/TBK.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,8 +18,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/include"
-  "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help/include"
+  "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/include"
+  "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/include/opencv-3.2.0-dev"
   "/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv"

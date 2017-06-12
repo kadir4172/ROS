@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/map_to_image_node.dir/src/map_to_image_node.cpp.o"
-  "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/a3_help/map_to_image_node.pdb"
-  "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/a3_help/map_to_image_node"
+  "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/a3_help/map_to_image_node.pdb"
+  "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/a3_help/map_to_image_node"
 )
 
 # Per-language clean rules from dependency scanning.

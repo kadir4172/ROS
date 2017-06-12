@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 # Utility rule file for run_tests_local_map_gtest.
 
@@ -63,10 +63,10 @@ local_map/CMakeFiles/run_tests_local_map_gtest.dir/build: run_tests_local_map_gt
 .PHONY : local_map/CMakeFiles/run_tests_local_map_gtest.dir/build
 
 local_map/CMakeFiles/run_tests_local_map_gtest.dir/clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/local_map && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_local_map_gtest.dir/cmake_clean.cmake
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/local_map && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_local_map_gtest.dir/cmake_clean.cmake
 .PHONY : local_map/CMakeFiles/run_tests_local_map_gtest.dir/clean
 
 local_map/CMakeFiles/run_tests_local_map_gtest.dir/depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/local_map /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/local_map /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/local_map/CMakeFiles/run_tests_local_map_gtest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/local_map /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/local_map /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/local_map/CMakeFiles/run_tests_local_map_gtest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : local_map/CMakeFiles/run_tests_local_map_gtest.dir/depend
 

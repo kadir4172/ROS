@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 # Utility rule file for geometry_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ a3_help/CMakeFiles/geometry_msgs_generate_messages_py.dir/build: geometry_msgs_g
 .PHONY : a3_help/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 
 a3_help/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help && $(CMAKE_COMMAND) -P CMakeFiles/geometry_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help && $(CMAKE_COMMAND) -P CMakeFiles/geometry_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : a3_help/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 
 a3_help/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help/CMakeFiles/geometry_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help/CMakeFiles/geometry_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : a3_help/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend
 

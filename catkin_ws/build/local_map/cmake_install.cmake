@@ -1,8 +1,8 @@
-# Install script for directory: /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/local_map
+# Install script for directory: /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/local_map
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,54 +33,54 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/local_map/srv" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/local_map/srv/SaveMap.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/local_map/srv" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/local_map/srv/SaveMap.srv")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/local_map/cmake" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_map-msg-paths.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/local_map/cmake" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_map-msg-paths.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/include/local_map")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/include/local_map")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/share/roseus/ros/local_map")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/share/roseus/ros/local_map")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/share/common-lisp/ros/local_map")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/share/common-lisp/ros/local_map")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/share/gennodejs/ros/local_map")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/share/gennodejs/ros/local_map")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/python2.7/dist-packages/local_map")
+  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/python2.7/dist-packages/local_map")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/python2.7/dist-packages/local_map")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/python2.7/dist-packages/local_map")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_map.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_map.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/local_map/cmake" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_map-msg-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/local_map/cmake" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_map-msg-extras.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/local_map/cmake" TYPE FILE FILES
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_mapConfig.cmake"
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_mapConfig-version.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_mapConfig.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/local_map/catkin_generated/installspace/local_mapConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/local_map" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/local_map/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/local_map" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/local_map/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
@@ -90,12 +90,12 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/local_map/local_map"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/local_map" TYPE EXECUTABLE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/local_map/local_map")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/local_map" TYPE EXECUTABLE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/local_map/local_map")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/local_map/local_map" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/local_map/local_map")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/local_map/local_map"
-         OLD_RPATH "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib:/opt/ros/kinetic/lib:"
+         OLD_RPATH "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib:/opt/ros/kinetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/local_map/local_map")

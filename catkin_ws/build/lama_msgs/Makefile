@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -101,6 +101,16 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -123,26 +133,16 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/CMakeFiles /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/lama_msgs/CMakeFiles/progress.marks
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/CMakeFiles 0
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/CMakeFiles /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/lama_msgs/CMakeFiles/progress.marks
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/clean
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +152,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/preinstall
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/preinstall
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 lama_msgs/CMakeFiles/lama_msgs_genpy.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_genpy.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_genpy.dir/rule
 .PHONY : lama_msgs/CMakeFiles/lama_msgs_genpy.dir/rule
 
 # Convenience name for target.
@@ -177,267 +177,12 @@ lama_msgs_genpy: lama_msgs/CMakeFiles/lama_msgs_genpy.dir/rule
 
 # fast build rule for target.
 lama_msgs_genpy/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_genpy.dir/build.make lama_msgs/CMakeFiles/lama_msgs_genpy.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_genpy.dir/build.make lama_msgs/CMakeFiles/lama_msgs_genpy.dir/build
 .PHONY : lama_msgs_genpy/fast
 
 # Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_Crossing: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_Crossing
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_Crossing/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_Crossing/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/rule
-.PHONY : lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-lama_msgs_generate_messages_py: lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/rule
-
-.PHONY : lama_msgs_generate_messages_py
-
-# fast build rule for target.
-lama_msgs_generate_messages_py/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/build
-.PHONY : lama_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/rule
-.PHONY : lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/rule
-
-# Convenience name for target.
-lama_msgs_gencpp: lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/rule
-
-.PHONY : lama_msgs_gencpp
-
-# fast build rule for target.
-lama_msgs_gencpp/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build
-.PHONY : lama_msgs_gencpp/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_SetCrossing: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_SetCrossing
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_SetCrossing/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_SetCrossing/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/rule
-.PHONY : lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/rule
-
-# Convenience name for target.
-lama_msgs_genlisp: lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/rule
-
-.PHONY : lama_msgs_genlisp
-
-# fast build rule for target.
-lama_msgs_genlisp/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/build
-.PHONY : lama_msgs_genlisp/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_GetLamaObject: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_GetLamaObject
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_GetLamaObject/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_GetLamaObject/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_GetCrossing: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_GetCrossing
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_GetCrossing/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_GetCrossing/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/rule
-.PHONY : lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/rule
-
-# Convenience name for target.
-lama_msgs_generate_messages: lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/rule
-
-.PHONY : lama_msgs_generate_messages
-
-# fast build rule for target.
-lama_msgs_generate_messages/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/build
-.PHONY : lama_msgs_generate_messages/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_GetPlaceProfile: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_GetPlaceProfile
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_GetPlaceProfile/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_GetPlaceProfile/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/rule
-.PHONY : lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-lama_msgs_generate_messages_eus: lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/rule
-
-.PHONY : lama_msgs_generate_messages_eus
-
-# fast build rule for target.
-lama_msgs_generate_messages_eus/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/build
-.PHONY : lama_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_DescriptorLink: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_DescriptorLink
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_DescriptorLink/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_DescriptorLink/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_GetInterfaceInfo: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_GetInterfaceInfo
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_GetInterfaceInfo/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_GetInterfaceInfo/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_Frontier: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_Frontier
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_Frontier/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_Frontier/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_LamaObject: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_LamaObject
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_LamaObject/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_LamaObject/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_PlaceProfile: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_PlaceProfile
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_PlaceProfile/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_PlaceProfile/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/rule
-.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/rule
-
-# Convenience name for target.
-_lama_msgs_generate_messages_check_deps_InterfaceInfo: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/rule
-
-.PHONY : _lama_msgs_generate_messages_check_deps_InterfaceInfo
-
-# fast build rule for target.
-_lama_msgs_generate_messages_check_deps_InterfaceInfo/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/build
-.PHONY : _lama_msgs_generate_messages_check_deps_InterfaceInfo/fast
-
-# Convenience name for target.
-lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/rule
-.PHONY : lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/rule
-
-# Convenience name for target.
-lama_msgs_gennodejs: lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/rule
-
-.PHONY : lama_msgs_gennodejs
-
-# fast build rule for target.
-lama_msgs_gennodejs/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/build.make lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/build
-.PHONY : lama_msgs_gennodejs/fast
-
-# Convenience name for target.
 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/rule
 .PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/rule
 
 # Convenience name for target.
@@ -447,12 +192,12 @@ _lama_msgs_generate_messages_check_deps_SetPlaceProfile: lama_msgs/CMakeFiles/_l
 
 # fast build rule for target.
 _lama_msgs_generate_messages_check_deps_SetPlaceProfile/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetPlaceProfile.dir/build
 .PHONY : _lama_msgs_generate_messages_check_deps_SetPlaceProfile/fast
 
 # Convenience name for target.
 lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/rule
 .PHONY : lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -462,12 +207,72 @@ lama_msgs_generate_messages_lisp: lama_msgs/CMakeFiles/lama_msgs_generate_messag
 
 # fast build rule for target.
 lama_msgs_generate_messages_lisp/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_lisp.dir/build
 .PHONY : lama_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_DescriptorLink: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_DescriptorLink
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_DescriptorLink/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_DescriptorLink.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_DescriptorLink/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_GetInterfaceInfo: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_GetInterfaceInfo
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_GetInterfaceInfo/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetInterfaceInfo.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_GetInterfaceInfo/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_GetCrossing: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_GetCrossing
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_GetCrossing/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetCrossing.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_GetCrossing/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_GetLamaObject: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_GetLamaObject
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_GetLamaObject/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetLamaObject.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_GetLamaObject/fast
+
+# Convenience name for target.
 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/rule
 .PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/rule
 
 # Convenience name for target.
@@ -477,12 +282,207 @@ _lama_msgs_generate_messages_check_deps_SetLamaObject: lama_msgs/CMakeFiles/_lam
 
 # fast build rule for target.
 _lama_msgs_generate_messages_check_deps_SetLamaObject/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetLamaObject.dir/build
 .PHONY : _lama_msgs_generate_messages_check_deps_SetLamaObject/fast
 
 # Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_SetCrossing: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_SetCrossing
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_SetCrossing/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_SetCrossing.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_SetCrossing/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/rule
+.PHONY : lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/rule
+
+# Convenience name for target.
+lama_msgs_genlisp: lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/rule
+
+.PHONY : lama_msgs_genlisp
+
+# fast build rule for target.
+lama_msgs_genlisp/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_genlisp.dir/build
+.PHONY : lama_msgs_genlisp/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_Frontier: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_Frontier
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_Frontier/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Frontier.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_Frontier/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_LamaObject: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_LamaObject
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_LamaObject/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_LamaObject.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_LamaObject/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/rule
+.PHONY : lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/rule
+
+# Convenience name for target.
+lama_msgs_generate_messages: lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/rule
+
+.PHONY : lama_msgs_generate_messages
+
+# fast build rule for target.
+lama_msgs_generate_messages/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages.dir/build
+.PHONY : lama_msgs_generate_messages/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_PlaceProfile: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_PlaceProfile
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_PlaceProfile/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_PlaceProfile.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_PlaceProfile/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_InterfaceInfo: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_InterfaceInfo
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_InterfaceInfo/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_InterfaceInfo.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_InterfaceInfo/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/rule
+.PHONY : lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/rule
+
+# Convenience name for target.
+lama_msgs_gennodejs: lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/rule
+
+.PHONY : lama_msgs_gennodejs
+
+# fast build rule for target.
+lama_msgs_gennodejs/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/build.make lama_msgs/CMakeFiles/lama_msgs_gennodejs.dir/build
+.PHONY : lama_msgs_gennodejs/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/rule
+.PHONY : lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+lama_msgs_generate_messages_eus: lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/rule
+
+.PHONY : lama_msgs_generate_messages_eus
+
+# fast build rule for target.
+lama_msgs_generate_messages_eus/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_eus.dir/build
+.PHONY : lama_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_GetPlaceProfile: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_GetPlaceProfile
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_GetPlaceProfile/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_GetPlaceProfile.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_GetPlaceProfile/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/rule
+.PHONY : lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/rule
+
+# Convenience name for target.
+_lama_msgs_generate_messages_check_deps_Crossing: lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/rule
+
+.PHONY : _lama_msgs_generate_messages_check_deps_Crossing
+
+# fast build rule for target.
+_lama_msgs_generate_messages_check_deps_Crossing/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/build.make lama_msgs/CMakeFiles/_lama_msgs_generate_messages_check_deps_Crossing.dir/build
+.PHONY : _lama_msgs_generate_messages_check_deps_Crossing/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/rule
+.PHONY : lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+lama_msgs_generate_messages_py: lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/rule
+
+.PHONY : lama_msgs_generate_messages_py
+
+# fast build rule for target.
+lama_msgs_generate_messages_py/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_py.dir/build
+.PHONY : lama_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/rule:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/rule
+.PHONY : lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/rule
+
+# Convenience name for target.
+lama_msgs_gencpp: lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/rule
+
+.PHONY : lama_msgs_gencpp
+
+# fast build rule for target.
+lama_msgs_gencpp/fast:
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build
+.PHONY : lama_msgs_gencpp/fast
+
+# Convenience name for target.
 lama_msgs/CMakeFiles/lama_msgs_generate_messages_cpp.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_cpp.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_cpp.dir/rule
 .PHONY : lama_msgs/CMakeFiles/lama_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -492,12 +492,12 @@ lama_msgs_generate_messages_cpp: lama_msgs/CMakeFiles/lama_msgs_generate_message
 
 # fast build rule for target.
 lama_msgs_generate_messages_cpp/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_cpp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_cpp.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_cpp.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_cpp.dir/build
 .PHONY : lama_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 lama_msgs/CMakeFiles/lama_msgs_geneus.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_geneus.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_geneus.dir/rule
 .PHONY : lama_msgs/CMakeFiles/lama_msgs_geneus.dir/rule
 
 # Convenience name for target.
@@ -507,12 +507,12 @@ lama_msgs_geneus: lama_msgs/CMakeFiles/lama_msgs_geneus.dir/rule
 
 # fast build rule for target.
 lama_msgs_geneus/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_geneus.dir/build.make lama_msgs/CMakeFiles/lama_msgs_geneus.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_geneus.dir/build.make lama_msgs/CMakeFiles/lama_msgs_geneus.dir/build
 .PHONY : lama_msgs_geneus/fast
 
 # Convenience name for target.
 lama_msgs/CMakeFiles/lama_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_nodejs.dir/rule
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lama_msgs/CMakeFiles/lama_msgs_generate_messages_nodejs.dir/rule
 .PHONY : lama_msgs/CMakeFiles/lama_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
@@ -522,7 +522,7 @@ lama_msgs_generate_messages_nodejs: lama_msgs/CMakeFiles/lama_msgs_generate_mess
 
 # fast build rule for target.
 lama_msgs_generate_messages_nodejs/fast:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_nodejs.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_nodejs.dir/build
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(MAKE) -f lama_msgs/CMakeFiles/lama_msgs_generate_messages_nodejs.dir/build.make lama_msgs/CMakeFiles/lama_msgs_generate_messages_nodejs.dir/build
 .PHONY : lama_msgs_generate_messages_nodejs/fast
 
 # Help Target
@@ -536,29 +536,29 @@ help:
 	@echo "... test"
 	@echo "... install/strip"
 	@echo "... lama_msgs_genpy"
-	@echo "... _lama_msgs_generate_messages_check_deps_Crossing"
-	@echo "... lama_msgs_generate_messages_py"
-	@echo "... lama_msgs_gencpp"
-	@echo "... _lama_msgs_generate_messages_check_deps_SetCrossing"
-	@echo "... rebuild_cache"
-	@echo "... lama_msgs_genlisp"
-	@echo "... _lama_msgs_generate_messages_check_deps_GetLamaObject"
-	@echo "... _lama_msgs_generate_messages_check_deps_GetCrossing"
-	@echo "... install/local"
-	@echo "... lama_msgs_generate_messages"
-	@echo "... _lama_msgs_generate_messages_check_deps_GetPlaceProfile"
-	@echo "... lama_msgs_generate_messages_eus"
+	@echo "... _lama_msgs_generate_messages_check_deps_SetPlaceProfile"
+	@echo "... lama_msgs_generate_messages_lisp"
 	@echo "... list_install_components"
 	@echo "... _lama_msgs_generate_messages_check_deps_DescriptorLink"
 	@echo "... _lama_msgs_generate_messages_check_deps_GetInterfaceInfo"
+	@echo "... _lama_msgs_generate_messages_check_deps_GetCrossing"
+	@echo "... _lama_msgs_generate_messages_check_deps_GetLamaObject"
+	@echo "... _lama_msgs_generate_messages_check_deps_SetLamaObject"
+	@echo "... _lama_msgs_generate_messages_check_deps_SetCrossing"
+	@echo "... rebuild_cache"
+	@echo "... lama_msgs_genlisp"
 	@echo "... _lama_msgs_generate_messages_check_deps_Frontier"
 	@echo "... _lama_msgs_generate_messages_check_deps_LamaObject"
+	@echo "... install/local"
+	@echo "... lama_msgs_generate_messages"
 	@echo "... _lama_msgs_generate_messages_check_deps_PlaceProfile"
 	@echo "... _lama_msgs_generate_messages_check_deps_InterfaceInfo"
 	@echo "... lama_msgs_gennodejs"
-	@echo "... _lama_msgs_generate_messages_check_deps_SetPlaceProfile"
-	@echo "... lama_msgs_generate_messages_lisp"
-	@echo "... _lama_msgs_generate_messages_check_deps_SetLamaObject"
+	@echo "... lama_msgs_generate_messages_eus"
+	@echo "... _lama_msgs_generate_messages_check_deps_GetPlaceProfile"
+	@echo "... _lama_msgs_generate_messages_check_deps_Crossing"
+	@echo "... lama_msgs_generate_messages_py"
+	@echo "... lama_msgs_gencpp"
 	@echo "... lama_msgs_generate_messages_cpp"
 	@echo "... lama_msgs_geneus"
 	@echo "... lama_msgs_generate_messages_nodejs"
@@ -573,6 +573,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

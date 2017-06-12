@@ -1,8 +1,8 @@
-prefix=/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel
+prefix=/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel
 
 Name: opencv_example
 Description: Description of opencv_example
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib 
+Libs: -L/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib 
 Requires: 

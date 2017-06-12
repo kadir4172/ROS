@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = ""
-services_str = "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/local_map/srv/SaveMap.srv"
+services_str = "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/local_map/srv/SaveMap.srv"
 pkg_name = "local_map"
 dependencies_str = ""
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

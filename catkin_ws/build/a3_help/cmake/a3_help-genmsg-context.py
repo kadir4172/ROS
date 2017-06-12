@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = ""
-services_str = "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help/srv/RequestGoal.srv"
+services_str = "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help/srv/RequestGoal.srv"
 pkg_name = "a3_help"
 dependencies_str = "sensor_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

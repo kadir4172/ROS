@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 # Utility rule file for run_tests_random_walk_gtest.
 
@@ -63,10 +63,10 @@ random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/build: run_tests_random_w
 .PHONY : random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/build
 
 random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/random_walk && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_random_walk_gtest.dir/cmake_clean.cmake
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/random_walk && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_random_walk_gtest.dir/cmake_clean.cmake
 .PHONY : random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/clean
 
 random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/random_walk /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/random_walk /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/random_walk /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/random_walk /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : random_walk/CMakeFiles/run_tests_random_walk_gtest.dir/depend
 

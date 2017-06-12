@@ -1,2 +1,2 @@
 a3_help:lama_msgs:local_map:map_ray_caster:opencv_example:random_walk
--DCATKIN_DEVEL_PREFIX=/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install -G Unix Makefiles

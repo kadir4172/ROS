@@ -1,8 +1,8 @@
-# Install script for directory: /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster
+# Install script for directory: /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,18 +33,18 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/map_ray_caster/catkin_generated/installspace/map_ray_caster.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/map_ray_caster/catkin_generated/installspace/map_ray_caster.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/map_ray_caster/cmake" TYPE FILE FILES
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/map_ray_caster/catkin_generated/installspace/map_ray_casterConfig.cmake"
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/map_ray_caster/catkin_generated/installspace/map_ray_casterConfig-version.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/map_ray_caster/catkin_generated/installspace/map_ray_casterConfig.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/map_ray_caster/catkin_generated/installspace/map_ray_casterConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/map_ray_caster" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/map_ray_caster" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
@@ -54,7 +54,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmap_ray_caster.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/libmap_ray_caster.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/libmap_ray_caster.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmap_ray_caster.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmap_ray_caster.so")
     file(RPATH_CHANGE
@@ -68,6 +68,6 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/map_ray_caster" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster/include/map_ray_caster/" FILES_MATCHING REGEX "/[^/]*\\.h$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/map_ray_caster" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster/include/map_ray_caster/" FILES_MATCHING REGEX "/[^/]*\\.h$")
 endif()
 

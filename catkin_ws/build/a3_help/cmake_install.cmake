@@ -1,8 +1,8 @@
-# Install script for directory: /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help
+# Install script for directory: /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,53 +33,53 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/a3_help/srv" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help/srv/RequestGoal.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/a3_help/srv" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help/srv/RequestGoal.srv")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/a3_help/cmake" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_help-msg-paths.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/a3_help/cmake" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_help-msg-paths.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/include/a3_help")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/include/a3_help")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/share/roseus/ros/a3_help")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/share/roseus/ros/a3_help")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/share/common-lisp/ros/a3_help")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/share/common-lisp/ros/a3_help")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/share/gennodejs/ros/a3_help")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/share/gennodejs/ros/a3_help")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/python2.7/dist-packages/a3_help")
+  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/python2.7/dist-packages/a3_help")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/python2.7/dist-packages/a3_help")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/python2.7/dist-packages/a3_help")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_help.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_help.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/a3_help/cmake" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_help-msg-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/a3_help/cmake" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_help-msg-extras.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/a3_help/cmake" TYPE FILE FILES
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_helpConfig.cmake"
-    "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_helpConfig-version.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_helpConfig.cmake"
+    "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/a3_help/catkin_generated/installspace/a3_helpConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/a3_help" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/a3_help/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/a3_help" TYPE FILE FILES "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/a3_help/package.xml")
 endif()
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/include/lama_msgs/PlaceProfile.h
+/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/include/lama_msgs/PlaceProfile.h
 string
 -
 vector
@@ -26,7 +26,7 @@ std_msgs/Header.h
 geometry_msgs/Polygon.h
 -
 
-/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster/include/map_ray_caster/map_ray_caster.h
+/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster/include/map_ray_caster/map_ray_caster.h
 math.h
 -
 cmath
@@ -46,13 +46,13 @@ lama_msgs/PlaceProfile.h
 map_ray_caster/ray_caster_utils.h
 -
 
-/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster/include/map_ray_caster/ray_caster_utils.h
+/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster/include/map_ray_caster/ray_caster_utils.h
 cstddef
 -
 nav_msgs/OccupancyGrid.h
 -
 
-/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster/src/map_ray_caster.cpp
+/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster/src/map_ray_caster.cpp
 map_ray_caster/map_ray_caster.h
 -
 

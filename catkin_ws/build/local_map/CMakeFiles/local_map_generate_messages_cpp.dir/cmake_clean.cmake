@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/local_map_generate_messages_cpp"
-  "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/include/local_map/SaveMap.h"
+  "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/include/local_map/SaveMap.h"
 )
 
 # Per-language clean rules from dependency scanning.

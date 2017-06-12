@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/TBK.dir/src/TBK.cpp.o"
-  "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/a3_help/TBK.pdb"
-  "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib/a3_help/TBK"
+  "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/a3_help/TBK.pdb"
+  "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib/a3_help/TBK"
 )
 
 # Per-language clean rules from dependency scanning.

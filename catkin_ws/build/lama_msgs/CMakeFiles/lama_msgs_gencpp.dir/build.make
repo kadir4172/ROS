@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build
+CMAKE_BINARY_DIR = /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build
 
 # Utility rule file for lama_msgs_gencpp.
 
@@ -63,10 +63,10 @@ lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build: lama_msgs_gencpp
 .PHONY : lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/build
 
 lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/clean:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/lama_msgs && $(CMAKE_COMMAND) -P CMakeFiles/lama_msgs_gencpp.dir/cmake_clean.cmake
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/lama_msgs && $(CMAKE_COMMAND) -P CMakeFiles/lama_msgs_gencpp.dir/cmake_clean.cmake
 .PHONY : lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/clean
 
 lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/depend:
-	cd /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/lama_msgs /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/lama_msgs /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/lama_msgs /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/lama_msgs /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : lama_msgs/CMakeFiles/lama_msgs_gencpp.dir/depend
 

@@ -67,14 +67,14 @@ set(map_ray_caster_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(map_ray_caster_SOURCE_PREFIX /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster)
-  set(map_ray_caster_DEVEL_PREFIX /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel)
+  set(map_ray_caster_SOURCE_PREFIX /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster)
+  set(map_ray_caster_DEVEL_PREFIX /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel)
   set(map_ray_caster_INSTALL_PREFIX "")
   set(map_ray_caster_PREFIX ${map_ray_caster_DEVEL_PREFIX})
 else()
   set(map_ray_caster_SOURCE_PREFIX "")
   set(map_ray_caster_DEVEL_PREFIX "")
-  set(map_ray_caster_INSTALL_PREFIX /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/install)
+  set(map_ray_caster_INSTALL_PREFIX /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/install)
   set(map_ray_caster_PREFIX ${map_ray_caster_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(map_ray_caster_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster/include " STREQUAL " ")
+if(NOT "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster/include " STREQUAL " ")
   set(map_ray_caster_INCLUDE_DIRS "")
-  set(_include_dirs "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster/include")
+  set(_include_dirs "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster/include")
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
       set(include ${idir})
@@ -103,7 +103,7 @@ if(NOT "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster/incl
         message(FATAL_ERROR "Project 'map_ray_caster' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  Ask the maintainer 'Gaël Ecorchard <gael.ecorchard@ciirc.cvut.cz>' to fix it.")
       endif()
     else()
-      message(FATAL_ERROR "Project 'map_ray_caster' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/map_ray_caster/${idir}'.  Ask the maintainer 'Gaël Ecorchard <gael.ecorchard@ciirc.cvut.cz>' to fix it.")
+      message(FATAL_ERROR "Project 'map_ray_caster' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/map_ray_caster/${idir}'.  Ask the maintainer 'Gaël Ecorchard <gael.ecorchard@ciirc.cvut.cz>' to fix it.")
     endif()
     _list_append_unique(map_ray_caster_INCLUDE_DIRS ${include})
   endforeach()
@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/devel/lib;/home/kadir/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib;/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/devel/lib;/home/kadir/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

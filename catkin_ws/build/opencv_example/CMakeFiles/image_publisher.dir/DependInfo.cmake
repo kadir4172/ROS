@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/src/opencv_example/src/image_publisher.cpp" "/home/kadir/Desktop/Freelancer/ROS/ROS/catkin_ws/build/opencv_example/CMakeFiles/image_publisher.dir/src/image_publisher.cpp.o"
+  "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/opencv_example/src/image_publisher.cpp" "/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/build/opencv_example/CMakeFiles/image_publisher.dir/src/image_publisher.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

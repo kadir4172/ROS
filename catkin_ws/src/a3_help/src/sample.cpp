@@ -63,7 +63,6 @@ class GazeboRetrieve{
 
 
 public:
-    friend void seperateThread(void);
     GazeboRetrieve(ros::NodeHandle nh)
     : nh_(nh), it_(nh)
     {
@@ -105,6 +104,11 @@ public:
       if(imageBuffer.imageDeq.size()>0){
         image = imageBuffer.imageDeq.front();
         imageBuffer.buffer_mutex_.unlock();
+        
+        if((local_y<=0) || (local_y>=image.rows-1) || (local_x<=0) || (local_x>=image.cols-1)){
+          ROS_INFO("Point is out of boundaries");
+          return false; 
+        }
         //! Check up, down, left, right cells to calculate local configuration space with Minkowski sums
         if(((int)image.at<uchar>(local_y  , local_x  ) == 255) && 
 	   ((int)image.at<uchar>(local_y+1, local_x  ) == 255) &&
@@ -254,8 +258,8 @@ public:
 
                int local_x = rand() % image.cols;
                int local_y = rand() % image.rows;
-               bool result = GazeboRetrieve::isConfigurationFree(local_y, local_x);
-               std::cout << "y:" << local_y << " x:" << local_x << "is: " << result << std::endl;   
+               bool result = isConfigurationFree(local_y, local_x);
+               std::cout << "y:" << local_y << " x:" << local_x << " is:" << result << std::endl;   
 
  	       cv::cvtColor(image,tmp,CV_GRAY2RGB);
                cv::circle(tmp, cv::Point(local_x, local_y), 1, CV_RGB(0,0,255),-1);

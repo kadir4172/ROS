@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 {
     ros::init(argc, argv, "image_publisher");
 
-    ROS_WARN(" RUN AS: rosrun opencv_example image_publisher _image:=~/lena.jpg");
+    ROS_WARN(" RUN AS: rosrun opencv_example image_publisher _image:=~/minion.jpg");
 
     ros::NodeHandle nh;
     image_transport::ImageTransport it(nh);
@@ -19,9 +19,9 @@ int main(int argc, char** argv)
 
     ros::NodeHandle pn("~");
     std::string imageName;
-    pn.param<std::string>("image", imageName, "lena.jpg");
+    pn.param<std::string>("image", imageName, "minion.jpg");
 
-    cv::Mat image = cv::imread(imageName.c_str(), CV_LOAD_IMAGE_COLOR);
+    cv::Mat image = cv::imread("/home/kadir/Desktop/minion.jpeg", CV_LOAD_IMAGE_COLOR);
     cv::waitKey(30);
 
     /* initialize random seed: */

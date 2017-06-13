@@ -88,8 +88,8 @@ namespace enc = sensor_msgs::image_encodings;
           }
         }
       }
-
-std::cout << "counter" << counter << std::endl;
+        double discovered_percentage = (counter*100)/9844; //!get discovered percentage of actual map with size of 6.27x15,7[m] and 0.1[m] resolution
+	std::cout << "Discovered Percentage: %" << (counter*100)/9844 << std::endl;
 
         imageBuffer.buffer_mutex_.lock();
         imageBuffer.imageDeq.push_back(cvPtr_->image);

@@ -182,7 +182,7 @@ public:
         ros::Time timeOdom = ros::Time::now();;
         ros::Time timeImage = ros::Time::now();;
         cv::Mat image;
-
+	cv::Mat tmp ;		
 
         while (ros::ok()) {
             int deqSz =-1;
@@ -216,6 +216,10 @@ public:
                count_=0;
                std::cout << "rows"  << image.rows << std::endl;
                std::cout << "cols"  << image.cols << std::endl;
+	       
+ 	       cv::cvtColor(image,tmp,CV_GRAY2RGB);
+               sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+               image_pub_.publish(msg);
    
             }
             else{

@@ -63,6 +63,7 @@ class GazeboRetrieve{
 
 
 public:
+    friend void seperateThread(void);
     GazeboRetrieve(ros::NodeHandle nh)
     : nh_(nh), it_(nh)
     {
@@ -85,16 +86,44 @@ public:
         pn.param<double>("resolution", resolution_, 0.1);
 
         count_ =0;
-        cv::namedWindow("view",CV_WINDOW_NORMAL);
-        cv::startWindowThread();
-        cv::waitKey(5);
+        //cv::namedWindow("view",CV_WINDOW_NORMAL);
+        //cv::startWindowThread();
+        //cv::waitKey(5);
 
     }
 
     ~GazeboRetrieve()
     {
-        cv::destroyWindow("view");
+        //cv::destroyWindow("view");
     }
+
+    //This function will be used to check whether a pixel in OGMAP is in free configuration space by augmenting it Minkowski sums
+    bool isConfigurationFree(int local_y, int local_x){
+      cv::Mat image;
+      //! Lock image buffer, take one message from deque and unlock it
+      imageBuffer.buffer_mutex_.lock();
+      if(imageBuffer.imageDeq.size()>0){
+        image = imageBuffer.imageDeq.front();
+        imageBuffer.buffer_mutex_.unlock();
+        //! Check up, down, left, right cells to calculate local configuration space with Minkowski sums
+        if(((int)image.at<uchar>(local_y  , local_x  ) == 255) && 
+	   ((int)image.at<uchar>(local_y+1, local_x  ) == 255) &&
+	   ((int)image.at<uchar>(local_y-1, local_x  ) == 255) &&
+	   ((int)image.at<uchar>(local_y  , local_x+1) == 255) &&
+	   ((int)image.at<uchar>(local_y  , local_x-1) == 255)){
+
+           return true;
+	}
+        else{
+           return false;
+        }
+      }
+      else{
+        ROS_INFO("No Available OGMAP to check");
+        imageBuffer.buffer_mutex_.unlock();
+      }
+    }
+
 
 
     bool requestGoal(a3_help::RequestGoal::Request  &req,
@@ -136,7 +165,7 @@ public:
         ros::Time timeLaser = msg->header.stamp;
         x = closest_point * cos(angle);
         y = closest_point * sin(angle);
-        std::cout << timeLaser << " L: [d,theta,x,y]=[" << closest_point << "," << angle << "," << x << "," << y << "]" << std::endl;
+        //std::cout << timeLaser << " L: [d,theta,x,y]=[" << closest_point << "," << angle << "," << x << "," << y << "]" << std::endl;
     }
 
     void imageCallback(const sensor_msgs::ImageConstPtr& msg)
@@ -184,6 +213,8 @@ public:
         cv::Mat image;
 	cv::Mat tmp ;		
 
+
+
         while (ros::ok()) {
             int deqSz =-1;
 
@@ -205,8 +236,8 @@ public:
             if(imageBuffer.imageDeq.size()>0){
                 image = imageBuffer.imageDeq.front();
                 timeImage = imageBuffer.timeStampDeq.front();
-                imageBuffer.imageDeq.pop_front();
-                imageBuffer.timeStampDeq.pop_front();
+                //imageBuffer.imageDeq.pop_front();
+                //imageBuffer.timeStampDeq.pop_front();
             }
             imageBuffer.buffer_mutex_.unlock();
 
@@ -214,13 +245,23 @@ public:
             //on every 100 iterations
             if (count_>100){
                count_=0;
+
+
                std::cout << "rows"  << image.rows << std::endl;
                std::cout << "cols"  << image.cols << std::endl;
 	       
+
+
+               int local_x = rand() % image.cols;
+               int local_y = rand() % image.rows;
+               bool result = GazeboRetrieve::isConfigurationFree(local_y, local_x);
+               std::cout << "y:" << local_y << " x:" << local_x << "is: " << result << std::endl;   
+
  	       cv::cvtColor(image,tmp,CV_GRAY2RGB);
+               cv::circle(tmp, cv::Point(local_x, local_y), 1, CV_RGB(0,0,255),-1);
                sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
                image_pub_.publish(msg);
-   
+
             }
             else{
                 count_++;

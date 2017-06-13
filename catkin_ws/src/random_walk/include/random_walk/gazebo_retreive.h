@@ -57,10 +57,13 @@ private:
     image_transport::ImageTransport it_;    //! Image transport
     image_transport::Publisher image_pub_;  //! Publisher
     ros::Publisher velocity_pub;
+    ros::Publisher chatter_pub;             //! Goal State Publisher
     ros::Subscriber sub1;                   //! Subscriber 1
     ros::Subscriber sub2;                   //! Subscriber 2
     image_transport::Subscriber sub3_;      //! Subscriber 3
+    ros::ServiceClient request_goal_client; //! Request Goal Service Client
     cv_bridge::CvImagePtr cvPtr_;	    //! Image pointer to get OGMAP
+
 
     cv::Mat image_;                         //! Storage for OgMap in Mat
     int count_;                             //! A counter to allow executing items on N iterations
@@ -69,10 +72,12 @@ private:
     DataBuffer buffer;                      //! And now we have our container
     ImageDataBuffer imageBuffer;            //! And now we have our container
 
-	double minfrontdistance;
-double speed;
-double avoidspeed;
-double turnrate;
+    double minfrontdistance;
+    double speed;
+    double avoidspeed;
+    double turnrate;
+
+    bool active_discovery;
 
       int randint;
       int randcount;

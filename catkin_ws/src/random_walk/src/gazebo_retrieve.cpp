@@ -11,6 +11,9 @@ namespace enc = sensor_msgs::image_encodings;
 //subscribe map_image/full to get OGMAP, this will be used to calculate percentage of known configuration space
         image_transport::ImageTransport it(nh);
         sub3_ = it.subscribe("map_image/full", 1, &GazeboRetrieve::imageCallback,this);
+        request_goal_client = nh_.serviceClient<a3_help::RequestGoal>("request_goal");
+
+	chatter_pub = nh_.advertise<std_msgs::String>("chatter", 100); //!This publisher will publish goal state after %90 coverage of configuration space
 
         velocity_pub = nh_.advertise<geometry_msgs::Twist>("/cmd_vel",1); //TBK_Node publishes RosAria/cmd_vel topic and RosAria node subscribes to it
 
@@ -41,6 +44,8 @@ namespace enc = sensor_msgs::image_encodings;
         // go into read-think-act loop
         newturnrate=0.0f;
 	newspeed=0.0f;
+
+        active_discovery = true; //! Start discovery of map at each initializer
 
 
     }
@@ -89,7 +94,38 @@ namespace enc = sensor_msgs::image_encodings;
         }
       }
         double discovered_percentage = (counter*100)/9844; //!get discovered percentage of actual map with size of 6.27x15,7[m] and 0.1[m] resolution
-	std::cout << "Discovered Percentage: %" << (counter*100)/9844 << std::endl;
+	std::cout << "Discovered Percentage: %" << discovered_percentage << std::endl;
+        if(discovered_percentage > 70.0){ //! When robot discover the working space more than %90, stop random walk process and publish goal state
+          active_discovery = false;
+          std_msgs::String msg;  
+          std::stringstream ss;
+          ss << "hello world ";
+          msg.data = ss.str();         
+          chatter_pub.publish(msg);   
+
+
+	a3_help::RequestGoal srv;
+	srv.request.x = 174;
+	srv.request.y = 168;
+
+       if (request_goal_client.call(srv))
+       {
+         if(srv.response.ack){
+           ROS_INFO("Goal Request Confirmed");
+         }
+         else{
+           ROS_INFO("Invalid Goal State");
+         }
+
+       }
+       else
+       {
+         ROS_INFO("Failed to call service request_goal");         
+       }
+
+
+
+        }
 
         imageBuffer.buffer_mutex_.lock();
         imageBuffer.imageDeq.push_back(cvPtr_->image);
@@ -212,7 +248,11 @@ namespace enc = sensor_msgs::image_encodings;
             cmdvel.linear.x = newspeed;
             cmdvel.angular.z = newturnrate;
 			// printf("sending...[%f, %f]\n", cmdvel.linear.x, cmdvel.angular.z);
-            velocity_pub.publish(cmdvel);
+
+            if(active_discovery){
+	      velocity_pub.publish(cmdvel);
+	    }
+            
 
             std::this_thread::sleep_for (std::chrono::milliseconds(10));
         }

@@ -38,9 +38,11 @@ class GazeboRetrieve{
     image_transport::Publisher image_pub_;
     ros::Subscriber sub1_;
     ros::Subscriber sub2_;
+    ros::Subscriber sub4_;                       //! This subscriber will get goal state when map discovery is finished
     image_transport::Subscriber sub3_;
     cv_bridge::CvImagePtr cvPtr_;
     ros::ServiceServer service_;
+
 
     int count_;//! A counter to allow executing items on N iterations
     double resolution_;//! size of OgMap in pixels
@@ -68,6 +70,7 @@ public:
     {
         sub1_ = nh_.subscribe("odom", 1000, &GazeboRetrieve::odomCallback,this);
         sub2_ = nh_.subscribe("base_scan_0", 10, &GazeboRetrieve::laserCallback,this);
+        sub4_ = nh_.subscribe("chatter", 100, &GazeboRetrieve::chatterCallback, this);
         image_transport::ImageTransport it(nh);
         sub3_ = it.subscribe("map_image/full", 1, &GazeboRetrieve::imageCallback,this);
 
@@ -95,6 +98,12 @@ public:
     {
         //cv::destroyWindow("view");
     }
+
+    void chatterCallback(const std_msgs::String::ConstPtr& msg)
+    {
+     ROS_INFO("I heard: [%s]", msg->data.c_str());
+    }
+
 
     //This function will be used to check whether a pixel in OGMAP is in free configuration space by augmenting it Minkowski sums
     bool isConfigurationFree(int local_y, int local_x){
@@ -134,9 +143,16 @@ public:
              a3_help::RequestGoal::Response &res)
     {
       ROS_INFO("request: x=%ld, y=%ld", (long int)req.x, (long int)req.y);
-      res.ack = true;
-      ROS_INFO("sending back response: [%d]", res.ack);
-      return true;
+      if(isConfigurationFree((int)req.y, (int)req.x)){
+        res.ack = true;
+        ROS_INFO("sending back response: [%d]", res.ack);
+        return true;
+      }
+      else{
+        res.ack = false;
+        ROS_INFO("sending back response: [%d]", res.ack);
+        return true;
+      }
     }
 
     void odomCallback(const nav_msgs::OdometryConstPtr& msg)

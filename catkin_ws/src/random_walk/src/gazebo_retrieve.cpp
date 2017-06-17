@@ -95,36 +95,37 @@ namespace enc = sensor_msgs::image_encodings;
       }
         double discovered_percentage = (counter*100)/9844; //!get discovered percentage of actual map with size of 6.27x15,7[m] and 0.1[m] resolution
 	std::cout << "Discovered Percentage: %" << discovered_percentage << std::endl;
+        
+      if(active_discovery){
         if(discovered_percentage > 70.0){ //! When robot discover the working space more than %90, stop random walk process and publish goal state
-          active_discovery = false;
           std_msgs::String msg;  
           std::stringstream ss;
-          ss << "hello world ";
-          msg.data = ss.str();         
-          chatter_pub.publish(msg);   
 
+	  a3_help::RequestGoal srv;
 
-	a3_help::RequestGoal srv;
-	srv.request.x = 174;
-	srv.request.y = 168;
-
-       if (request_goal_client.call(srv))
-       {
-         if(srv.response.ack){
-           ROS_INFO("Goal Request Confirmed");
+          while(true){
+            srv.request.x = rand() % size_x ;
+	    srv.request.y = rand() % size_y;
+            if (request_goal_client.call(srv))
+            {
+              if(srv.response.ack){
+                ROS_INFO("Goal Request Confirmed");
+		ss << "hello world ";
+	        msg.data = ss.str();         
+                chatter_pub.publish(msg); 
+                active_discovery = false;  
+                break;
+              }
+              else{
+                ROS_INFO("Invalid Goal State");
+              }
+            }
+            else
+            {
+              ROS_INFO("Failed to call service request_goal");         
+            }
          }
-         else{
-           ROS_INFO("Invalid Goal State");
-         }
-
-       }
-       else
-       {
-         ROS_INFO("Failed to call service request_goal");         
-       }
-
-
-
+     } 
         }
 
         imageBuffer.buffer_mutex_.lock();
@@ -228,6 +229,7 @@ namespace enc = sensor_msgs::image_encodings;
         /// The below gets the current Ros Time
         ros::Time timeOdom = ros::Time::now();;
         while (ros::ok()) {
+          if(active_discovery){
             int deqSz =-1;
 
             buffer.buffer_mutex_.lock();
@@ -249,12 +251,19 @@ namespace enc = sensor_msgs::image_encodings;
             cmdvel.angular.z = newturnrate;
 			// printf("sending...[%f, %f]\n", cmdvel.linear.x, cmdvel.angular.z);
 
-            if(active_discovery){
-	      velocity_pub.publish(cmdvel);
-	    }
+
+	    velocity_pub.publish(cmdvel);
+            std::this_thread::sleep_for (std::chrono::milliseconds(10));
+          }
+          else{
+            cmdvel.linear.x = 0;
+            cmdvel.angular.z = 0;
+            velocity_pub.publish(cmdvel);
+            break;
+          }
             
 
-            std::this_thread::sleep_for (std::chrono::milliseconds(10));
+
         }
     }
 

@@ -164,11 +164,77 @@ public:
         buffer.buffer_mutex_.lock();
         buffer.poseDeq.push_back(pose);
         buffer.timeStampDeq.push_back(msg->header.stamp);
+        if(buffer.poseDeq.size()>2){
+            buffer.poseDeq.pop_front();
+            buffer.timeStampDeq.pop_front();
+        }
         buffer.buffer_mutex_.unlock();
+
+        std::cout << "Pose x: " << pose.position.x << "  Pose y: "<< pose.position.y << std::endl;
 
     }
 
+    bool global2image(double global_x, double global_y, int* local_x, int* local_y){
+            cv::Mat image;
+            imageBuffer.buffer_mutex_.lock();
+            if(imageBuffer.imageDeq.size()>0){
+                image = imageBuffer.imageDeq.front();
+                imageBuffer.buffer_mutex_.unlock();
+            }
+            else{
+                ROS_INFO("global2image: Unable to convert, no image found on buffer");
+                imageBuffer.buffer_mutex_.unlock();
+                return false;
+            }
 
+ 
+
+            buffer.buffer_mutex_.lock();
+            if (buffer.poseDeq.size() > 0) {
+                geometry_msgs::Pose pose=buffer.poseDeq.front();
+		*local_y = (int)((double)image.rows/2 + (double)(pose.position.y - global_y) / resolution_);
+		*local_x = (int)((double)image.cols/2 - (double)(pose.position.x - global_x) / resolution_);
+		buffer.buffer_mutex_.unlock();
+                return true;                  
+                
+            }
+            else{
+                ROS_INFO("global2image: Unable to convert, no position info found on buffer");
+                buffer.buffer_mutex_.unlock();
+                return false;
+            }
+    }
+
+    bool image2global(double* global_x, double* global_y, int local_x, int local_y){
+            cv::Mat image;
+            imageBuffer.buffer_mutex_.lock();
+            if(imageBuffer.imageDeq.size()>0){
+                image = imageBuffer.imageDeq.front();
+                imageBuffer.buffer_mutex_.unlock();
+            }
+            else{
+                ROS_INFO("image2global: Unable to convert, no image found on buffer");
+                imageBuffer.buffer_mutex_.unlock();
+                return false;
+            }
+
+ 
+
+            buffer.buffer_mutex_.lock();
+            if (buffer.poseDeq.size() > 0) {
+                geometry_msgs::Pose pose=buffer.poseDeq.front();
+		*global_y = ( (image.rows/2) - (double)local_y +  ((double)(pose.position.y) / resolution_)) * resolution_;
+		*global_x = (-(image.cols/2) + (double)local_x +  ((double)(pose.position.x) / resolution_)) * resolution_;
+		buffer.buffer_mutex_.unlock();
+                return true;                  
+                
+            }
+            else{
+                ROS_INFO("image2global: Unable to convert, no position info found on buffer");
+                buffer.buffer_mutex_.unlock();
+                return false;
+            }
+    }
 
     void laserCallback(const sensor_msgs::LaserScanConstPtr& msg)
     {
@@ -246,8 +312,8 @@ public:
                 x = pose.position.x;
                 y = pose.position.y;
                 timeOdom = buffer.timeStampDeq.front();
-                buffer.poseDeq.pop_front();
-                buffer.timeStampDeq.pop_front();
+                //buffer.poseDeq.pop_front();
+                //buffer.timeStampDeq.pop_front();
             }
             buffer.buffer_mutex_.unlock();
 
@@ -269,13 +335,17 @@ public:
 
                std::cout << "rows"  << image.rows << std::endl;
                std::cout << "cols"  << image.cols << std::endl;
-	       
+               int local_x ;
+               int local_y ;
+               double global_x;
+               double global_y;
+    
+               global2image(pose.position.x, pose.position.y, &local_x, &local_y);
+               image2global(&global_x, &global_y, local_x, local_y);
 
-
-               int local_x = rand() % image.cols;
-               int local_y = rand() % image.rows;
                bool result = isConfigurationFree(local_y, local_x);
-               std::cout << "y:" << local_y << " x:" << local_x << " is:" << result << std::endl;   
+               std::cout << "local_y:"  << local_y  << " local_x:"  << local_x  << " is:" << result << std::endl;   
+               std::cout << "global_y:" << global_y << " global_x:" << global_x << " is:" << result << std::endl;   
 
  	       cv::cvtColor(image,tmp,CV_GRAY2RGB);
                cv::circle(tmp, cv::Point(local_x, local_y), 1, CV_RGB(0,0,255),-1);

@@ -110,7 +110,7 @@ namespace enc = sensor_msgs::image_encodings;
             {
               if(srv.response.ack){
                 ROS_INFO("Goal Request Confirmed");
-		ss << "hello world ";
+		ss << srv.request.x << "," << srv.request.y;
 	        msg.data = ss.str();         
                 chatter_pub.publish(msg); 
                 active_discovery = false;  

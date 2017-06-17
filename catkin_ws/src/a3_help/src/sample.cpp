@@ -101,7 +101,24 @@ public:
 
     void chatterCallback(const std_msgs::String::ConstPtr& msg)
     {
-     ROS_INFO("I heard: [%s]", msg->data.c_str());
+     int counter = 0;
+     int goal_col;
+     int goal_row;
+     std::stringstream s;
+     std::string token;
+     s << msg->data.c_str();
+     ROS_INFO("I heard: [%s]", msg->data.c_str()); 
+     while(std::getline(s, token, ',')) {
+       std::cout << token << '\n';
+       if(counter == 0){
+         goal_col = std::stoi(token);   
+       }
+       else{
+         goal_row = std::stoi(token);
+       }
+       counter++;
+     }
+//TODO call shortest path function here
     }
 
 
@@ -299,7 +316,7 @@ public:
         cv::Mat image;
 	cv::Mat tmp ;		
 
-
+	geometry_msgs::Pose pose;
 
         while (ros::ok()) {
             int deqSz =-1;
@@ -307,7 +324,7 @@ public:
             buffer.buffer_mutex_.lock();
             deqSz = buffer.poseDeq.size();
             if (deqSz > 0) {
-                geometry_msgs::Pose pose=buffer.poseDeq.front();
+                pose=buffer.poseDeq.front();
                 yaw = tf::getYaw(pose.orientation);
                 x = pose.position.x;
                 y = pose.position.y;

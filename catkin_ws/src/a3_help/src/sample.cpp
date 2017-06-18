@@ -243,10 +243,10 @@ detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_c
     }
 
     bool global2image(double global_x, double global_y, int* local_x, int* local_y){
-            cv::Mat image;
+            cv::Mat image_tmp;
             imageBuffer.buffer_mutex_.lock();
             if(imageBuffer.imageDeq.size()>0){
-                image = imageBuffer.imageDeq.front();
+                image_tmp = imageBuffer.imageDeq.front();
                 imageBuffer.buffer_mutex_.unlock();
             }
             else{
@@ -260,8 +260,8 @@ detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_c
             buffer.buffer_mutex_.lock();
             if (buffer.poseDeq.size() > 0) {
                 geometry_msgs::Pose pose=buffer.poseDeq.front();
-		*local_y = (int)((double)image.rows/2 + (double)(pose.position.y - global_y) / resolution_);
-		*local_x = (int)((double)image.cols/2 - (double)(pose.position.x - global_x) / resolution_);
+		*local_y = (int)((double)image_tmp.rows/2 + (double)(pose.position.y - global_y) / resolution_);
+		*local_x = (int)((double)image_tmp.cols/2 - (double)(pose.position.x - global_x) / resolution_);
 		buffer.buffer_mutex_.unlock();
                 std::cout << "incoming request global_x" << global_x << std::endl;
                 std::cout << "incoming request global_y" << global_y << std::endl;
@@ -278,10 +278,10 @@ detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_c
     }
 
     bool image2global(double* global_x, double* global_y, int local_x, int local_y){
-            cv::Mat image;
+            cv::Mat image_tmp;
             imageBuffer.buffer_mutex_.lock();
             if(imageBuffer.imageDeq.size()>0){
-                image = imageBuffer.imageDeq.front();
+                image_tmp = imageBuffer.imageDeq.front();
                 imageBuffer.buffer_mutex_.unlock();
             }
             else{
@@ -295,8 +295,8 @@ detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_c
             buffer.buffer_mutex_.lock();
             if (buffer.poseDeq.size() > 0) {
                 geometry_msgs::Pose pose=buffer.poseDeq.front();
-		*global_y = ( (image.rows/2) - (double)local_y +  ((double)(pose.position.y) / resolution_)) * resolution_;
-		*global_x = (-(image.cols/2) + (double)local_x +  ((double)(pose.position.x) / resolution_)) * resolution_;
+		*global_y = ( (image_tmp.rows/2) - (double)local_y +  ((double)(pose.position.y) / resolution_)) * resolution_;
+		*global_x = (-(image_tmp.cols/2) + (double)local_x +  ((double)(pose.position.x) / resolution_)) * resolution_;
 		buffer.buffer_mutex_.unlock();
                 return true;                  
                 

@@ -59,46 +59,65 @@ class GazeboRetrieve{
 
     ros::NodeHandle nh_;
     image_transport::ImageTransport it_;
+    //! This publisher will publish first query result 
     image_transport::Publisher image_pub1_;
+    //! This publisher will publish second query result by adding a new goal state to current roadmap 
     image_transport::Publisher image_pub2_;
+    //! This subscriber will subscribe to odometry messages to get pose information of robot 
     ros::Subscriber sub1_;
+    //! This subscriber will subscribe to laser scan messages to get laser sensor data
     ros::Subscriber sub2_;
-    ros::Subscriber sub4_;                       //! This subscriber will get goal state when map discovery is finished
+    //! This subscriber will subscribe to chatter messages to get new goal state message from random_walk component
+    ros::Subscriber sub4_;      
+    //! This subscriber will subscribe OGMAP images
     image_transport::Subscriber sub3_;
+    //! This is the pointer to bridge incoming OGMAP messages to cv images
     cv_bridge::CvImagePtr cvPtr_;
+    
+    //! Service for RequestGoal
     ros::ServiceServer service_;
+    //! This publisher will publish PoseArray message in case we have a shortest path
     ros::Publisher path_publisher;
+    //! This is the message which will be published by 'path_publisher' 
     geometry_msgs::PoseArray path_to_publish;
+    //! This pose information will be filled to PoseArray message 
     geometry_msgs::Pose      node_on_path;
 
     int count_;//! A counter to allow executing items on N iterations
     double resolution_;//! size of OgMap in pixels
 
 
+    //! This struct will hold a deque of Pose messages and time stamps of these messages and a mutex to share data safely
     struct DataBuffer
     {
         std::deque<geometry_msgs::Pose> poseDeq;
         std::deque<ros::Time> timeStampDeq;
         std::mutex buffer_mutex_;
     };
-    DataBuffer buffer;//! And now we have our container
+    DataBuffer buffer;
 
+    //! This struct will hold a deque of cv::Mat messages and time stamps of these messages and a mutex to share data safely
     struct ImageDataBuffer
     {
         std::deque<cv::Mat> imageDeq;
         std::deque<ros::Time> timeStampDeq;
         std::mutex buffer_mutex_;
     };
-    ImageDataBuffer imageBuffer;//! And now we have our container
+    ImageDataBuffer imageBuffer;
 
 
 public:
     GazeboRetrieve(ros::NodeHandle nh)
     : nh_(nh), it_(nh)
     {
-        sub1_ = nh_.subscribe("odom", 1000, &GazeboRetrieve::odomCallback,this);
+        //! This constructor subscribes to desired messages, creates publishers for desired messages and initialize class variables
+    	
+    	//Subscribe to 'odom', 'base_scan', 'chatter' messages
+    	sub1_ = nh_.subscribe("odom", 1000, &GazeboRetrieve::odomCallback,this);
         sub2_ = nh_.subscribe("base_scan_0", 10, &GazeboRetrieve::laserCallback,this);
         sub4_ = nh_.subscribe("chatter", 100, &GazeboRetrieve::chatterCallback, this);
+        
+        //
         image_transport::ImageTransport it(nh);
         sub3_ = it.subscribe("map_image/full", 1, &GazeboRetrieve::imageCallback,this);
         path_publisher = nh_.advertise<geometry_msgs::PoseArray>("/path",1);
@@ -118,9 +137,7 @@ public:
         pn.param<double>("resolution", resolution_, 0.1);
 
         count_ =0;
-        //cv::namedWindow("view",CV_WINDOW_NORMAL);
-        //cv::startWindowThread();
-        //cv::waitKey(5);
+
 
     }
 

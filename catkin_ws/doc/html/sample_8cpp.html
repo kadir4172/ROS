@@ -77,7 +77,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html">GazeboRetrieve</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGazeboRetrieve_1_1ImageDataBuffer.html">GazeboRetrieve::ImageDataBuffer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">And now we have our container.  <a href="structGazeboRetrieve_1_1ImageDataBuffer.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct will hold a deque of cv::Mat messages and time stamps of these messages and a mutex to share data safely.  <a href="structGazeboRetrieve_1_1ImageDataBuffer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -87,10 +87,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad38016d1846d349fa06fb76fe3a810b9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sample_8cpp.html#ad38016d1846d349fa06fb76fe3a810b9">add_start_goal_and_calculate_shortest_path</a> (int, int, int, int, int)</td></tr>
-<tr class="separator:ad38016d1846d349fa06fb76fe3a810b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a027bea4629a020f2782ff80e78c05d62"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sample_8cpp.html#a027bea4629a020f2782ff80e78c05d62">detect_regions</a> (int, int, int, int, int, int, int, int, int, int, int)</td></tr>
-<tr class="separator:a027bea4629a020f2782ff80e78c05d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sample_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -119,137 +115,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>This node shows some connections and publishing images </p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00044">44</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00043">43</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ad38016d1846d349fa06fb76fe3a810b9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool add_start_goal_and_calculate_shortest_path </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>This node shows some connections and publishing images </p>
-
-</div>
-</div>
-<a class="anchor" id="a027bea4629a020f2782ff80e78c05d62"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool detect_regions </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
 <div class="memitem">
 <div class="memproto">
@@ -280,7 +152,7 @@ Variables</h2></td></tr>
 <p>ros::spin() will enter a loop, pumping callbacks. With this version, all callbacks will be called from within this thread (the main one). ros::spin() will exit when Ctrl-C is pressed, or the node is shutdown by the master.</p>
 <p>Let's cleanup everything, shutdown ros and join the thread</p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00809">809</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00756">756</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -295,7 +167,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00047">47</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00046">46</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -309,7 +181,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00049">49</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00048">48</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -323,7 +195,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00045">45</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00044">44</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -337,7 +209,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00053">53</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00052">52</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -351,7 +223,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00056">56</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00055">55</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -365,7 +237,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00046">46</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00045">45</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -375,7 +247,7 @@ Variables</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://wiki.ros.org/a3_help">a3_help</a><br />
 Author(s): </br />
-<small>autogenerated on Sun Jun 18 2017 13:35:06</small>
+<small>autogenerated on Sun Jun 18 2017 13:55:26</small>
 </div>
 </body>
 </html>

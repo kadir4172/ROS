@@ -36,7 +36,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of OgMap in pixels  <a href="structGazeboRetrieve_1_1DataBuffer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGazeboRetrieve_1_1ImageDataBuffer.html">ImageDataBuffer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">And now we have our container.  <a href="structGazeboRetrieve_1_1ImageDataBuffer.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct will hold a deque of cv::Mat messages and time stamps of these messages and a mutex to share data safely.  <a href="structGazeboRetrieve_1_1ImageDataBuffer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -52,7 +52,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a91b03ecbb41a1c8f003a819de9644177"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a91b03ecbb41a1c8f003a819de9644177">find_min_distance</a> (int *<a class="el" href="sample_8cpp.html#a1e97a7ce5e2739f574758c6ebdefd4af">distance</a>, bool *<a class="el" href="sample_8cpp.html#a5c72bcc2c1a4e7981af8b4c7dcc37463">is_point_used</a>, int size_of_graph)</td></tr>
 <tr class="separator:a91b03ecbb41a1c8f003a819de9644177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad06a4c0946436a07fa1841626ff98f94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ad06a4c0946436a07fa1841626ff98f94">GazeboRetrieve</a> (ros::NodeHandle nh)</td></tr>
-<tr class="memdesc:ad06a4c0946436a07fa1841626ff98f94"><td class="mdescLeft">&#160;</td><td class="mdescRight">And now we have our container.  <a href="#ad06a4c0946436a07fa1841626ff98f94">More...</a><br /></td></tr>
 <tr class="separator:ad06a4c0946436a07fa1841626ff98f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1e149d68e9af58aabbce211aa61f740"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#af1e149d68e9af58aabbce211aa61f740">global2image</a> (double global_x, double global_y, int *local_x, int *local_y)</td></tr>
 <tr class="separator:af1e149d68e9af58aabbce211aa61f740"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -88,10 +87,13 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a0c3250d3c3ac4f65772fb67adb5e690c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a0c3250d3c3ac4f65772fb67adb5e690c">count_</a></td></tr>
 <tr class="separator:a0c3250d3c3ac4f65772fb67adb5e690c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3fc3de0fea37034b21a90bf755b82ee"><td class="memItemLeft" align="right" valign="top">cv_bridge::CvImagePtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ad3fc3de0fea37034b21a90bf755b82ee">cvPtr_</a></td></tr>
+<tr class="memdesc:ad3fc3de0fea37034b21a90bf755b82ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the pointer to bridge incoming OGMAP messages to cv images.  <a href="#ad3fc3de0fea37034b21a90bf755b82ee">More...</a><br /></td></tr>
 <tr class="separator:ad3fc3de0fea37034b21a90bf755b82ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f5eb0e2b366cd5ad365496e99e1b1d3"><td class="memItemLeft" align="right" valign="top">image_transport::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a4f5eb0e2b366cd5ad365496e99e1b1d3">image_pub1_</a></td></tr>
+<tr class="memdesc:a4f5eb0e2b366cd5ad365496e99e1b1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This publisher will publish first query result.  <a href="#a4f5eb0e2b366cd5ad365496e99e1b1d3">More...</a><br /></td></tr>
 <tr class="separator:a4f5eb0e2b366cd5ad365496e99e1b1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab75dff60309f0439627c2948631a842d"><td class="memItemLeft" align="right" valign="top">image_transport::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ab75dff60309f0439627c2948631a842d">image_pub2_</a></td></tr>
+<tr class="memdesc:ab75dff60309f0439627c2948631a842d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This publisher will publish second query result by adding a new goal state to current roadmap.  <a href="#ab75dff60309f0439627c2948631a842d">More...</a><br /></td></tr>
 <tr class="separator:ab75dff60309f0439627c2948631a842d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3c794ddd31cefb0e52c2cb8c4aa0600"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGazeboRetrieve_1_1ImageDataBuffer.html">ImageDataBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ac3c794ddd31cefb0e52c2cb8c4aa0600">imageBuffer</a></td></tr>
 <tr class="separator:ac3c794ddd31cefb0e52c2cb8c4aa0600"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,29 +102,36 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a7b9dbd90b05f12496985452dada69b7d"><td class="memItemLeft" align="right" valign="top">ros::NodeHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a7b9dbd90b05f12496985452dada69b7d">nh_</a></td></tr>
 <tr class="separator:a7b9dbd90b05f12496985452dada69b7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07194c1b29218e959e73fc4819020160"><td class="memItemLeft" align="right" valign="top">geometry_msgs::Pose&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a07194c1b29218e959e73fc4819020160">node_on_path</a></td></tr>
+<tr class="memdesc:a07194c1b29218e959e73fc4819020160"><td class="mdescLeft">&#160;</td><td class="mdescRight">This pose information will be filled to PoseArray message.  <a href="#a07194c1b29218e959e73fc4819020160">More...</a><br /></td></tr>
 <tr class="separator:a07194c1b29218e959e73fc4819020160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80290b06af75115c5efa6af623cc483e"><td class="memItemLeft" align="right" valign="top">ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a80290b06af75115c5efa6af623cc483e">path_publisher</a></td></tr>
+<tr class="memdesc:a80290b06af75115c5efa6af623cc483e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This publisher will publish PoseArray message in case we have a shortest path.  <a href="#a80290b06af75115c5efa6af623cc483e">More...</a><br /></td></tr>
 <tr class="separator:a80290b06af75115c5efa6af623cc483e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22e9ce9cbbfc18d907bfb769d76fab64"><td class="memItemLeft" align="right" valign="top">geometry_msgs::PoseArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a22e9ce9cbbfc18d907bfb769d76fab64">path_to_publish</a></td></tr>
+<tr class="memdesc:a22e9ce9cbbfc18d907bfb769d76fab64"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the message which will be published by 'path_publisher'.  <a href="#a22e9ce9cbbfc18d907bfb769d76fab64">More...</a><br /></td></tr>
 <tr class="separator:a22e9ce9cbbfc18d907bfb769d76fab64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8aa8bf28793f47aadeb4853132c8188"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ab8aa8bf28793f47aadeb4853132c8188">resolution_</a></td></tr>
 <tr class="memdesc:ab8aa8bf28793f47aadeb4853132c8188"><td class="mdescLeft">&#160;</td><td class="mdescRight">A counter to allow executing items on N iterations.  <a href="#ab8aa8bf28793f47aadeb4853132c8188">More...</a><br /></td></tr>
 <tr class="separator:ab8aa8bf28793f47aadeb4853132c8188"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadd212deba952845f893b6f668396e1c"><td class="memItemLeft" align="right" valign="top">ros::ServiceServer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#aadd212deba952845f893b6f668396e1c">service_</a></td></tr>
+<tr class="memdesc:aadd212deba952845f893b6f668396e1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Service for RequestGoal.  <a href="#aadd212deba952845f893b6f668396e1c">More...</a><br /></td></tr>
 <tr class="separator:aadd212deba952845f893b6f668396e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08dc00e3a3d7d6c8bacefb23d2ebb45b"><td class="memItemLeft" align="right" valign="top">ros::Subscriber&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a08dc00e3a3d7d6c8bacefb23d2ebb45b">sub1_</a></td></tr>
+<tr class="memdesc:a08dc00e3a3d7d6c8bacefb23d2ebb45b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This subscriber will subscribe to odometry messages to get pose information of robot.  <a href="#a08dc00e3a3d7d6c8bacefb23d2ebb45b">More...</a><br /></td></tr>
 <tr class="separator:a08dc00e3a3d7d6c8bacefb23d2ebb45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8610e21415645599574d55f2e33ebd84"><td class="memItemLeft" align="right" valign="top">ros::Subscriber&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a8610e21415645599574d55f2e33ebd84">sub2_</a></td></tr>
+<tr class="memdesc:a8610e21415645599574d55f2e33ebd84"><td class="mdescLeft">&#160;</td><td class="mdescRight">This subscriber will subscribe to laser scan messages to get laser sensor data.  <a href="#a8610e21415645599574d55f2e33ebd84">More...</a><br /></td></tr>
 <tr class="separator:a8610e21415645599574d55f2e33ebd84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7feda51695c24c266c9a1340395afd3d"><td class="memItemLeft" align="right" valign="top">image_transport::Subscriber&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a7feda51695c24c266c9a1340395afd3d">sub3_</a></td></tr>
-<tr class="memdesc:a7feda51695c24c266c9a1340395afd3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This subscriber will get goal state when map discovery is finished.  <a href="#a7feda51695c24c266c9a1340395afd3d">More...</a><br /></td></tr>
+<tr class="memdesc:a7feda51695c24c266c9a1340395afd3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This subscriber will subscribe OGMAP images.  <a href="#a7feda51695c24c266c9a1340395afd3d">More...</a><br /></td></tr>
 <tr class="separator:a7feda51695c24c266c9a1340395afd3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee9085ce0907e1d69f2d4bca4af25b31"><td class="memItemLeft" align="right" valign="top">ros::Subscriber&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#aee9085ce0907e1d69f2d4bca4af25b31">sub4_</a></td></tr>
+<tr class="memdesc:aee9085ce0907e1d69f2d4bca4af25b31"><td class="mdescLeft">&#160;</td><td class="mdescRight">This subscriber will subscribe to chatter messages to get new goal state message from random_walk component.  <a href="#aee9085ce0907e1d69f2d4bca4af25b31">More...</a><br /></td></tr>
 <tr class="separator:aee9085ce0907e1d69f2d4bca4af25b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00059">59</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00058">58</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ad06a4c0946436a07fa1841626ff98f94"></a>
 <div class="memitem">
@@ -145,10 +154,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>This constructor subscribes to desired messages, creates publishers for desired messages and initialize class variables </p>
 
-<p>And now we have our container. </p>
-
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00097">97</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00110">110</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -173,7 +181,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00128">128</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00141">141</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -228,7 +236,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00712">712</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00659">659</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -254,7 +262,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00133">133</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00146">146</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -302,7 +310,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00480">480</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00427">427</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -392,7 +400,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00503">503</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00450">450</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -434,7 +442,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00592">592</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00539">539</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -482,7 +490,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00282">282</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00295">295</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -530,7 +538,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00317">317</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00330">330</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -557,7 +565,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Below code pushes the image and time to a deque, to share across threads </p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00366">366</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00379">379</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -595,7 +603,7 @@ Private Attributes</h2></td></tr>
 <p>Lock image buffer, take one message from deque and unlock it</p>
 <p>Check up, down, left, right cells to calculate local configuration space with Minkowski sums </p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00213">213</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00226">226</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -622,7 +630,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Below sample cicrulates through the scan and finds closest point to robot </p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00348">348</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00361">361</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -648,7 +656,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00263">263</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00276">276</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -684,7 +692,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00607">607</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00554">554</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -732,7 +740,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00633">633</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00580">580</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -768,7 +776,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00247">247</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00260">260</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -792,12 +800,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The below loop runs until ros is shutdown, to ensure this thread does not remain a zombie thread</p>
-<p>The loop locks the buffer, checks the size And then pulls items: the pose and timer_t You can think if these could have been combined into one ...</p>
-<p>The below gets the current Ros Time</p>
-<p>Lock image buffer, take one message from deque and unlock it </p>
+<p>The below loop runs until ros is shutdown, to ensure this thread does not remain a zombie thread Loop is reserved for future usage</p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00394">394</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00407">407</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -839,7 +844,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00646">646</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00593">593</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -881,7 +886,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00689">689</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00636">636</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -904,7 +909,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00085">85</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00097">97</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -926,7 +931,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00075">75</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00086">86</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -948,7 +953,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00069">69</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>This is the pointer to bridge incoming OGMAP messages to cv images. </p>
+
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00075">75</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -969,6 +976,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>This publisher will publish first query result. </p>
 
 <p>Definition at line <a class="el" href="sample_8cpp_source.html#l00063">63</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
@@ -992,7 +1001,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00064">64</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>This publisher will publish second query result by adding a new goal state to current roadmap. </p>
+
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00065">65</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1014,7 +1025,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00093">93</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00106">106</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1036,7 +1047,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00062">62</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00061">61</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1058,7 +1069,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00061">61</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00060">60</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1080,7 +1091,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00073">73</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>This pose information will be filled to PoseArray message. </p>
+
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00084">84</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1102,7 +1115,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00071">71</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>This publisher will publish PoseArray message in case we have a shortest path. </p>
+
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00080">80</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1124,7 +1139,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00072">72</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>This is the message which will be published by 'path_publisher'. </p>
+
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00082">82</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1148,7 +1165,7 @@ Private Attributes</h2></td></tr>
 
 <p>A counter to allow executing items on N iterations. </p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00076">76</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00087">87</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1170,7 +1187,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00070">70</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Service for RequestGoal. </p>
+
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00078">78</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1192,7 +1211,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00065">65</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>This subscriber will subscribe to odometry messages to get pose information of robot. </p>
+
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00067">67</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1214,7 +1235,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00066">66</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>This subscriber will subscribe to laser scan messages to get laser sensor data. </p>
+
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00069">69</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1236,9 +1259,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>This subscriber will get goal state when map discovery is finished. </p>
+<p>This subscriber will subscribe OGMAP images. </p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00068">68</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00073">73</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1260,7 +1283,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00067">67</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>This subscriber will subscribe to chatter messages to get new goal state message from random_walk component. </p>
+
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00071">71</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1273,7 +1298,7 @@ Private Attributes</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://wiki.ros.org/a3_help">a3_help</a><br />
 Author(s): </br />
-<small>autogenerated on Sun Jun 18 2017 13:35:06</small>
+<small>autogenerated on Sun Jun 18 2017 13:55:26</small>
 </div>
 </body>
 </html>

@@ -481,115 +481,154 @@ public:
       }
     }
 
-
-
-bool check_line_segment(int start_row, int start_col, int end_row, int end_col){
-
-    cv::LineIterator it(image, cv::Point(start_col, start_row), cv::Point(end_col, end_row), 8);
-	for(int i = 0; i < it.count; i++, ++it)
-	{
-           //check point is free 
-	   if(!isConfigurationFree(it.pos().y,it.pos().x)){
-		   return false;
-	   }
-	}
-
-    cv::line  (tmp, cv::Point(start_col, start_row), cv::Point(end_col, end_row), CV_RGB(255,0,0), 1);
-	return true;
-}
-
-
-
-
-
-
-
-
-
-bool detect_regions(int min_col, int min_row, int max_col, int max_row, int number_of_regions_in_col, int number_of_regions_in_row, int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
-	double row_length = (max_row - min_row) / number_of_regions_in_row;
-	double col_length   = (max_col    - min_col) / number_of_regions_in_col;
-    std::cout << "row_length: " << row_length << std::endl;
-    std::cout << "col_length: " << col_length << std::endl;
-	int total_occupied_cells = 0;
-	int row_region;
-	int col_region;
-
-	std::vector< std::vector<int> > occupied_pixel_counter(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
-	std::vector< std::vector<int> > number_of_configurations(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
-    //std::cout << "buraya geldi" <<  occupied_pixel_counter[7][20]  << std::endl;
-
-
-
-
-    for(int i = min_row; i<max_row; i++){
-    	for(int j = min_col; j<max_col; j++){
-            row_region = std::min((int)(floor(((double)i - min_row) / row_length)), (number_of_regions_in_row-1));
-            col_region = std::min((int)(floor(((double)j - min_col) / col_length)), (number_of_regions_in_col-1));
-            //std::cout << "i: " << i << std::endl;
-            //std::cout << "j: " << j << std::endl;
-            //std::cout << "row_region: " << row_region << std::endl;
-            //std::cout << "col_region: " << col_region << std::endl;
-            if(!isConfigurationFree(i,j)){ //if that pixel is not free
-            	occupied_pixel_counter[row_region][col_region] ++;
-            	total_occupied_cells ++;
-            }
-    	}
+    bool check_line_segment(int start_row, int start_col, int end_row, int end_col){
+    //! This utility function get start and end point of a line, and sweeps all points in that line by checking they are in free configuration space
+     
+      //This iterator will sweep all points in this line	
+      cv::LineIterator it(image, cv::Point(start_col, start_row), cv::Point(end_col, end_row), 8);
+	  for(int i = 0; i < it.count; i++, ++it){
+        //check point is free, this will check up, down, left, right neighbors also(i.e. Minkowski Sums)
+	    if(!isConfigurationFree(it.pos().y,it.pos().x)){
+		  return false;
+	    }
+	  }
+	  
+	  //If all points on that line are on free configuration space that draw this line on OGMAP and return true
+      cv::line  (tmp, cv::Point(start_col, start_row), cv::Point(end_col, end_row), CV_RGB(255,0,0), 1);
+	  return true;
     }
 
-    std::cout << "total_occupied_cells" << total_occupied_cells<<  std::endl;
-    int total_configuration_points = 0;
-    for(int k = 0; k<number_of_regions_in_row; k++){
+
+    bool detect_regions(int min_col, int min_row, int max_col, int max_row, int number_of_regions_in_col, int number_of_regions_in_row, int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
+	  //! This function partitions current OGMAP into desired number of regions and assigns weighted configuration points to these regions
+    	
+      //calculate row_length and col_length variables of a single region
+      double row_length = (max_row - min_row) / number_of_regions_in_row;
+	  double col_length   = (max_col    - min_col) / number_of_regions_in_col;
+      
+	  //Dump these length variables for debug purposes
+	  std::cout << "row_length: " << row_length << std::endl;
+      std::cout << "col_length: " << col_length << std::endl;
+	  
+      //initialize total_occupied_cells,  this variable will count non-free cells of entire map
+      int total_occupied_cells = 0;
+	  
+      //row and column indexes of regions
+      int row_region;
+	  int col_region;
+
+	  //initialize 'occupied_pixel_counter' as a vector of vector, this object will store non-free cells of each region
+	  std::vector< std::vector<int> > occupied_pixel_counter(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
+	  
+	  //initialize 'number_of_configurations' as a vector of vector, this object will store number of configurations for each region
+	  std::vector< std::vector<int> > number_of_configurations(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
+      
+
+      for(int i = min_row; i<max_row; i++){
+        for(int j = min_col; j<max_col; j++){
+          //calculate the region of pixel (i,j)
+          row_region = std::min((int)(floor(((double)i - min_row) / row_length)), (number_of_regions_in_row-1));
+          col_region = std::min((int)(floor(((double)j - min_col) / col_length)), (number_of_regions_in_col-1));
+          
+          //Dump these variables for debug purposes
+          //std::cout << "i: " << i << std::endl;
+          //std::cout << "j: " << j << std::endl;
+          //std::cout << "row_region: " << row_region << std::endl;
+          //std::cout << "col_region: " << col_region << std::endl;
+          
+          //Check that this pixel(i,j) is free or not
+          if(!isConfigurationFree(i,j)){
+        	//If this pixel is not on free configuration space, increment counter of this region and total_occupied_cells  
+            occupied_pixel_counter[row_region][col_region] ++;
+            total_occupied_cells ++;
+          }
+    	}
+      }
+
+      //Dump total_occupied_cells for debug purposes      
+      std::cout << "total_occupied_cells" << total_occupied_cells<<  std::endl;
+      
+      //total_configuration_points will count succesfully assigned configuration points to all regions
+      int total_configuration_points = 0;
+      for(int k = 0; k<number_of_regions_in_row; k++){
     	for(int l = 0; l<number_of_regions_in_col; l++){
-    		std::cout << "region counter:" << occupied_pixel_counter[k][l] << std::endl;
-    		number_of_configurations[k][l] =  (int)(floor((double)(total_number_of_configurations * occupied_pixel_counter[k][l]) / total_occupied_cells));
-    		total_configuration_points += number_of_configurations[k][l];
-    		std::cout << "number of points to be assigned to this region:" << number_of_configurations[k][l] << std::endl;
+    	  //Dump occupied_pixel_counter of this region for debug purposes	
+    	  std::cout << "region counter:" << occupied_pixel_counter[k][l] << std::endl;
+    	  
+    	  //Calculate number_of_configurations which will be assigned to this region with weighting algorithm
+    	  number_of_configurations[k][l] =  (int)(floor((double)(total_number_of_configurations * occupied_pixel_counter[k][l]) / total_occupied_cells));
+    	  
+    	  //Increment total_configuration_points counter
+    	  total_configuration_points += number_of_configurations[k][l];
+    	  
+    	  //Dump number of configuration points which will be assigned to this region
+    	  std::cout << "number of points to be assigned to this region:" << number_of_configurations[k][l] << std::endl;
     	}
-    }
-    std::cout << "Number of Additional Configurations to be added" << total_number_of_configurations - total_configuration_points << std::endl;
-    number_of_configurations[number_of_regions_in_row-1][number_of_regions_in_col-1] += total_number_of_configurations - total_configuration_points;
-    int configuration_point_row;
-    int configuration_point_col;
-    int points_in_region = 0;
+      }
+      
+      
+      //Due to floor, round operations it may not be possible to not to assign desired number of points 
+      std::cout << "Number of Additional Configurations to be added" << total_number_of_configurations - total_configuration_points << std::endl;
+      
+      //If this is the case, add required number of configuration to the last region to meet total desired configuration points
+      number_of_configurations[number_of_regions_in_row-1][number_of_regions_in_col-1] += total_number_of_configurations - total_configuration_points;
+      
+      //These variables will be used to assign row, col coordinates of assigned configuration points
+      int configuration_point_row;
+      int configuration_point_col;
+      int points_in_region = 0;
 
-    configuration_point_list.clear();
-    for(int k = 0; k<number_of_regions_in_row; k++){
+      //Clear configuration_point_list global object which is a vector of <int,int> tuples to hold list of configuration points
+      configuration_point_list.clear();
+      
+      for(int k = 0; k<number_of_regions_in_row; k++){
     	for(int l = 0; l<number_of_regions_in_col; l++){
-    		points_in_region = 0;
-            int region_min_row = min_row + k          *   (int)row_length;
-            int region_max_row = min_row + (k+1) *  (int)row_length;
-            int region_min_col  = min_col + l          *   (int)col_length;
-            int region_max_col = min_col + (l+1) *  (int)col_length;
-            std::cout << "region:" << k << " ," << l << std::endl;
-            std::cout << "region_min_row: " << region_min_row << std::endl;
-            std::cout << "region_max_row: " << region_max_row << std::endl;
-            std::cout << "region_min_col: " << region_min_col << std::endl;
-            std::cout << "region_max_col: " << region_max_col << std::endl;
+    	  //This variable will count successfully assigned configuration points in that region
+    	  points_in_region = 0;
+          
+    	  //calculate local boundaries of this region
+    	  int region_min_row = min_row + k          *   (int)row_length;
+          int region_max_row = min_row + (k+1) *  (int)row_length;
+          int region_min_col  = min_col + l          *   (int)col_length;
+          int region_max_col = min_col + (l+1) *  (int)col_length;
+          
+          //Dump these boundaries for debug purposes
+          std::cout << "region:" << k << " ," << l << std::endl;
+          std::cout << "region_min_row: " << region_min_row << std::endl;
+          std::cout << "region_max_row: " << region_max_row << std::endl;
+          std::cout << "region_min_col: " << region_min_col << std::endl;
+          std::cout << "region_max_col: " << region_max_col << std::endl;
 
-            while(points_in_region < number_of_configurations[k][l] ){
-            	configuration_point_row = region_min_row + rand() % (int)row_length;
-            	configuration_point_col = region_min_col + rand() % (int)col_length;
-            	//check whether this point is free
-            	if(isConfigurationFree(configuration_point_row, configuration_point_col)){
-            		points_in_region ++ ;
-            		configuration_point_list.push_back( std::tuple<int, int>(configuration_point_row,configuration_point_col) );
-            		std::cout << "Node: " << configuration_point_list.size() << " " << configuration_point_row << "," << configuration_point_col << std::endl;
-            	}
+          //Repeat until we assign required number of configurations to this region
+          while(points_in_region < number_of_configurations[k][l] ){
+            //Randomly select potential configuratio point within boundaries of current region
+        	configuration_point_row = region_min_row + rand() % (int)row_length;
+            configuration_point_col = region_min_col + rand() % (int)col_length;
+            
+            //Check whether this point is free
+            if(isConfigurationFree(configuration_point_row, configuration_point_col)){
+              //If its free, add this configuration point to list and increment counter
+              points_in_region ++ ;
+              configuration_point_list.push_back( std::tuple<int, int>(configuration_point_row,configuration_point_col) );
+              
+              //Dump this configuration point for debug purposes
+              std::cout << "Node: " << configuration_point_list.size() << " " << configuration_point_row << "," << configuration_point_col << std::endl;
             }
+          }
     	}
-    }
+      }
 
-    if(add_new_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
-     return true;  
+      //After successfully assigning required number of configuration points, add start and goal states and call Shortest Path algorithm
+      if(add_new_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
+        //We have found a succesfull Shortest Path between this start and goal points
+        return true;  
+      }
+      else{
+    	//We couldnt find a shortest path with current roadmap, it will try to add more points
+        ROS_INFO("detect_regions: No Path Found, will try with more configuration points"); 
+        return false;       
+      }
     }
-    else{
-      ROS_INFO("detect_regions: No Path Found, will try with more configuration points"); 
-      return false;       
-    }
-
-
-}
 
 
 

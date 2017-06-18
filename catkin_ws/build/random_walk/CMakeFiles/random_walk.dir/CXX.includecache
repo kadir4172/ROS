@@ -65,6 +65,10 @@ opencv2/highgui/highgui.hpp
 -
 cv_bridge/cv_bridge.h
 -
+geometry_msgs/PoseArray.h
+-
+geometry_msgs/Pose.h
+-
 sstream
 -
 iostream
@@ -184,6 +188,26 @@ ros/message_operations.h
 geometry_msgs/Point.h
 -
 geometry_msgs/Quaternion.h
+-
+
+/opt/ros/kinetic/include/geometry_msgs/PoseArray.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+geometry_msgs/Pose.h
 -
 
 /opt/ros/kinetic/include/geometry_msgs/PoseStamped.h

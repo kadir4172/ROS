@@ -11,6 +11,7 @@ random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o: /opt/ros/kinet
 random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Point.h
 random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PointStamped.h
 random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Pose.h
+random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseArray.h
 random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseStamped.h
 random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseWithCovariance.h
 random_walk/CMakeFiles/random_walk.dir/src/gazebo_retrieve.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
@@ -241,6 +242,7 @@ random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o: /opt/ros/kinetic/include/
 random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Point.h
 random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PointStamped.h
 random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Pose.h
+random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseArray.h
 random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseStamped.h
 random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseWithCovariance.h
 random_walk/CMakeFiles/random_walk.dir/src/main.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Quaternion.h

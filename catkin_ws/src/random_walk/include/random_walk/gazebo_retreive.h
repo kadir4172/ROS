@@ -9,6 +9,8 @@
 #include <image_transport/image_transport.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
+#include <geometry_msgs/PoseArray.h>
+#include <geometry_msgs/Pose.h>
 
 #include <sstream>
 #include <iostream>
@@ -50,7 +52,7 @@ public:
 private:
     void odomCallback(const nav_msgs::OdometryConstPtr& msg);   //! Odometry Callback
     void laserCallback(const sensor_msgs::LaserScanConstPtr& msg);//! Laser Calback
-
+    void pathCallback(const geometry_msgs::PoseArrayConstPtr& msg);//! Path Calback
 
 private:
     ros::NodeHandle nh_;//! Node Handle
@@ -61,6 +63,7 @@ private:
     ros::Subscriber sub1;                   //! Subscriber 1
     ros::Subscriber sub2;                   //! Subscriber 2
     image_transport::Subscriber sub3_;      //! Subscriber 3
+    ros::Subscriber sub4;                   //! Subscriber 4
     ros::ServiceClient request_goal_client; //! Request Goal Service Client
     cv_bridge::CvImagePtr cvPtr_;	    //! Image pointer to get OGMAP
 
@@ -78,7 +81,7 @@ private:
     double turnrate;
 
     bool active_discovery;
-
+    bool continue_to_walk;
       int randint;
       int randcount;
       int avoidcount;

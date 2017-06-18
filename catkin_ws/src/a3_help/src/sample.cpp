@@ -11,6 +11,7 @@
 #include <image_transport/image_transport.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
+#include <geometry_msgs/PoseArray.h>
 
 #include "a3_help/RequestGoal.h"
 
@@ -67,10 +68,13 @@ class GazeboRetrieve{
     image_transport::Subscriber sub3_;
     cv_bridge::CvImagePtr cvPtr_;
     ros::ServiceServer service_;
-
+    ros::Publisher path_publisher;
+    geometry_msgs::PoseArray path_to_publish;
+    geometry_msgs::Pose      node_on_path;
 
     int count_;//! A counter to allow executing items on N iterations
     double resolution_;//! size of OgMap in pixels
+
 
     struct DataBuffer
     {
@@ -98,6 +102,7 @@ public:
         sub4_ = nh_.subscribe("chatter", 100, &GazeboRetrieve::chatterCallback, this);
         image_transport::ImageTransport it(nh);
         sub3_ = it.subscribe("map_image/full", 1, &GazeboRetrieve::imageCallback,this);
+        path_publisher = nh_.advertise<geometry_msgs::PoseArray>("/path",1);
 
         //Publishing an image ... just to show how
         image_pub1_ = it_.advertise("roadmap/first_query", 1);
@@ -170,12 +175,35 @@ public:
 
   int number_of_configurations = 12;
   while(!detect_regions(min_col, min_row, max_col, max_row, 2,2, number_of_configurations-2, start_row, start_col, goal_row, goal_col)){
-    number_of_configurations++;;
+    number_of_configurations+= 10;
+    if(number_of_configurations > 100){
+      ROS_INFO("No Shortest Path is found even with more configuration points, please restart random_walk component and this component");
+      return;
+    }
   }
-  sensor_msgs::ImagePtr msg_to_dump = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
-  image_pub1_.publish(msg_to_dump);
+  sensor_msgs::ImagePtr msg_to_dump_first_roadmap = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+  image_pub1_.publish(msg_to_dump_first_roadmap);
 
+           goal_col = rand() % (int)(image.cols-1) + 1;
+	   goal_row = rand() % (int)(image.rows-1) + 1;
+           while(!isConfigurationFree(goal_row, goal_col)){             
+           goal_col = rand() % (int)(image.cols-1) + 1;
+	   goal_row = rand() % (int)(image.rows-1) + 1;  
+          }
 
+ROS_INFO("New Random Goal Point will be added to current roadmap");
+std::cout << "Goal_Row: " << goal_row << " Goal_Column: " << goal_col << std::endl; 
+
+    if(add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
+     //return;  
+    }
+    else{
+      ROS_INFO("detect_regions: No Path Found to new goal point, its needed to generate a new roadmap with more configuration points"); 
+      return;       
+    }
+
+ sensor_msgs::ImagePtr msg_to_dump_second_roadmap = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+  image_pub2_.publish(msg_to_dump_second_roadmap);
 
 
     }
@@ -583,6 +611,15 @@ void printPath(int parent[], int j)
         return;
 
     printPath(parent, parent[j]);
+
+    node_on_path.position.x = std::get<1>(configuration_point_list.at(j));
+    node_on_path.position.y = std::get<0>(configuration_point_list.at(j));
+    node_on_path.position.z = 0;
+    node_on_path.orientation.x = 0;
+    node_on_path.orientation.y = 0;
+    node_on_path.orientation.z = 0;
+    node_on_path.orientation.w = 0;
+    path_to_publish.poses.push_back(node_on_path);
     cv::line  (tmp, cv::Point(std::get<1>(configuration_point_list.at(j)), std::get<0>(configuration_point_list.at(j))), cv::Point(std::get<1>(configuration_point_list.at(parent[j])), std::get<0>(configuration_point_list.at(parent[j]))), CV_RGB(0,0,255), 2);
     //printf("  %d \n", parent[j]);
     printf("  %d ", j);
@@ -690,7 +727,8 @@ bool add_start_goal_and_calculate_shortest_path(int total_number_of_configuratio
     configuration_point_list.insert ( it , std::tuple<int, int>(goal_row,goal_col) );
     it = configuration_point_list.begin();
     configuration_point_list.insert ( it , std::tuple<int, int>(start_row,start_col) );
-
+    cv::putText(tmp, "Start", cv::Point(start_col, start_row), 1, 0.8, cv::Scalar(20,20,20), 1, 8);
+    cv::putText(tmp, "Goal" , cv::Point(goal_col , goal_row) , 1, 0.8, cv::Scalar(20,20,20), 1, 8);
 
 	int length_array[ total_number_of_configurations +2];
 	int length;
@@ -703,8 +741,9 @@ bool add_start_goal_and_calculate_shortest_path(int total_number_of_configuratio
 	std::multimap<int,int> point_list;
    for (std::vector< std::tuple<int,int> >::iterator it1 = configuration_point_list.begin() ; it1 != configuration_point_list.end(); ++it1){
 	   std::cout << "Distances to node" << std::distance(configuration_point_list.begin(), it1) << ": "<< std::get<0>(*it1) << " , "<< std::get<1>(*it1) << std::endl;
-	   cv::circle(tmp,cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 2, CV_RGB(0,255,0),-1);
-	   cv::putText(tmp, std::to_string(std::distance(configuration_point_list.begin(), it1)), cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 1, 0.4, cv::Scalar(0,100,100), 1, 8);
+	   cv::circle(tmp,cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 3, CV_RGB(0,255,0),-1);
+	   
+   //std::this_thread::sleep_for (std::chrono::milliseconds(500));
      for (std::vector< std::tuple<int,int> >::iterator it2 = configuration_point_list.begin() ; it2 != configuration_point_list.end(); ++it2){
     	 //length_array[std::distance(configuration_point_list.begin(), it2)] = pow((std::get<0>(*it1) - std::get<0>(*it2)), 2) + pow((std::get<1>(*it1) - std::get<1>(*it2)), 2);
     	//std::cout << "row: " << std::get<0>(*it) << " col: " << std::get<1>(*it) << std::endl;
@@ -729,7 +768,7 @@ bool add_start_goal_and_calculate_shortest_path(int total_number_of_configuratio
      std::cout << std::endl;
      point_list.clear();
      memcpy(graph[std::distance(configuration_point_list.begin(), it1)], &length_array, sizeof(int) * configuration_point_list.size());
-
+   //std::this_thread::sleep_for (std::chrono::milliseconds(500));
    }
 std::cout << "Number of Configuration Points:" << configuration_point_list.size()  << std::endl;
 
@@ -746,9 +785,15 @@ int destination = 1;
 
 if((distance[destination] < INT_MAX) && distance[destination] > 0 ){
 	std::cout << "Path Found" <<  std::endl;
+        path_to_publish.poses.clear();
 	printPath(parent, destination);
 	std::cout << "Distance is:" << distance[destination] << std::endl;
-        delete(graph);
+    if(path_to_publish.poses.size() > 0)
+    {
+     path_publisher.publish(path_to_publish);
+     ROS_INFO("Path is Published with /path topic");
+    }
+        delete(graph);   
         return true;
 }
 

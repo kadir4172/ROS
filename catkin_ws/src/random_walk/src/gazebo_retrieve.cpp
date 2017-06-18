@@ -7,6 +7,7 @@ namespace enc = sensor_msgs::image_encodings;
     {
         sub1 = nh_.subscribe("odom", 1000, &GazeboRetrieve::odomCallback,this);
         sub2 = nh_.subscribe("base_scan_0", 10, &GazeboRetrieve::laserCallback,this);
+        sub4 = nh_.subscribe("/path", 10, &GazeboRetrieve::pathCallback,this);
 
 //subscribe map_image/full to get OGMAP, this will be used to calculate percentage of known configuration space
         image_transport::ImageTransport it(nh);
@@ -32,6 +33,9 @@ namespace enc = sensor_msgs::image_encodings;
         count_ =0;
         cv::waitKey(30);
 
+    /* initialize random seed: */
+    srand (time(NULL));
+
 	minfrontdistance = 0.750;
 	speed = 0.200;
 	avoidspeed = 0; // -150;
@@ -46,16 +50,27 @@ namespace enc = sensor_msgs::image_encodings;
 	newspeed=0.0f;
 
         active_discovery = true; //! Start discovery of map at each initializer
-
+        continue_to_walk = true; //! 
 
     }
 
     GazeboRetrieve::~GazeboRetrieve()
-    {
+    { 
 
     }
 
+    void GazeboRetrieve::pathCallback(const geometry_msgs::PoseArrayConstPtr& msg){
 
+
+  ROS_INFO("Path Message is Received");
+     for (unsigned int i=0; i < msg->poses.size(); i++)
+     {
+       std::cout << "Point_" << i << "_on Path // Col:" << msg->poses[i].position.x << " Row:" << msg->poses[i].position.y << std::endl;
+
+
+     }
+
+     }
     void GazeboRetrieve::imageCallback(const sensor_msgs::ImageConstPtr& msg)
     {
         double discovered_percentage = 0;
@@ -107,7 +122,7 @@ namespace enc = sensor_msgs::image_encodings;
 
 	  a3_help::RequestGoal srv;
 
-
+            continue_to_walk = false;
             srv.request.x = rand() % size_x ;
 	    srv.request.y = rand() % size_y;
             if (request_goal_client.call(srv))
@@ -233,7 +248,7 @@ namespace enc = sensor_msgs::image_encodings;
         /// The below gets the current Ros Time
         ros::Time timeOdom = ros::Time::now();;
         while (ros::ok()) {
-          if(active_discovery){
+          if(continue_to_walk){
             int deqSz =-1;
 
             buffer.buffer_mutex_.lock();

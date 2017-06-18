@@ -11,6 +11,7 @@ a3_help/CMakeFiles/sample.dir/src/sample.cpp.o
  /opt/ros/kinetic/include/geometry_msgs/Point.h
  /opt/ros/kinetic/include/geometry_msgs/PointStamped.h
  /opt/ros/kinetic/include/geometry_msgs/Pose.h
+ /opt/ros/kinetic/include/geometry_msgs/PoseArray.h
  /opt/ros/kinetic/include/geometry_msgs/PoseStamped.h
  /opt/ros/kinetic/include/geometry_msgs/PoseWithCovariance.h
  /opt/ros/kinetic/include/geometry_msgs/Quaternion.h

@@ -10,6 +10,7 @@ a3_help/CMakeFiles/sample.dir/src/sample.cpp.o: /opt/ros/kinetic/include/gazebo_
 a3_help/CMakeFiles/sample.dir/src/sample.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Point.h
 a3_help/CMakeFiles/sample.dir/src/sample.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PointStamped.h
 a3_help/CMakeFiles/sample.dir/src/sample.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Pose.h
+a3_help/CMakeFiles/sample.dir/src/sample.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseArray.h
 a3_help/CMakeFiles/sample.dir/src/sample.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseStamped.h
 a3_help/CMakeFiles/sample.dir/src/sample.cpp.o: /opt/ros/kinetic/include/geometry_msgs/PoseWithCovariance.h
 a3_help/CMakeFiles/sample.dir/src/sample.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Quaternion.h

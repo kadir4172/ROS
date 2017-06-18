@@ -20,7 +20,7 @@ namespace enc = sensor_msgs::image_encodings;
         ros::NodeHandle pn("~");
         double mapSize;
         double resolution;
-        pn.param<double>("map_size", mapSize, 300.0);
+        pn.param<double>("map_size", mapSize, 20.0);
         pn.param<double>("resolution", resolution, 0.1);
 
         pixels_ = (int) mapSize / resolution;
@@ -58,6 +58,7 @@ namespace enc = sensor_msgs::image_encodings;
 
     void GazeboRetrieve::imageCallback(const sensor_msgs::ImageConstPtr& msg)
     {
+        double discovered_percentage = 0;
 
         //! Below code pushes the image and time to a deque, to share across threads
         try
@@ -77,6 +78,10 @@ namespace enc = sensor_msgs::image_encodings;
         int size_x = cvPtr_->image.cols; //!get x size from number of columns
 
 	int counter = 0;
+
+
+        
+      if(active_discovery){
       	for (int y = 0; y < size_y; y++){
 	  for (int x = 0; x < size_x; x++){
 
@@ -92,11 +97,9 @@ namespace enc = sensor_msgs::image_encodings;
             break;
           }
         }
-      }
+        }
 
-        
-      if(active_discovery){
-        double discovered_percentage = (counter*100)/9844; //!get discovered percentage of actual map with size of 6.27x15,7[m] and 0.1[m] resolution
+        discovered_percentage = (counter*100)/9844; //!get discovered percentage of actual map with size of 6.27x15,7[m] and 0.1[m] resolution
 	std::cout << "Discovered Percentage: %" << discovered_percentage << std::endl;
         if(discovered_percentage > 70.0){ //! When robot discover the working space more than %90, stop random walk process and publish goal state
           std_msgs::String msg;  
@@ -104,7 +107,7 @@ namespace enc = sensor_msgs::image_encodings;
 
 	  a3_help::RequestGoal srv;
 
-          while(true){
+
             srv.request.x = rand() % size_x ;
 	    srv.request.y = rand() % size_y;
             if (request_goal_client.call(srv))
@@ -114,20 +117,20 @@ namespace enc = sensor_msgs::image_encodings;
 		ss << srv.request.x << "," << srv.request.y;
 	        msg.data = ss.str();         
                 chatter_pub.publish(msg); 
-                active_discovery = false;  
-                break;
+                active_discovery = false; 
               }
               else{
                 ROS_INFO("Invalid Goal State");
+                std::this_thread::sleep_for (std::chrono::milliseconds(50));
               }
             }
             else
             {
-              ROS_INFO("Failed to call service request_goal");         
+              ROS_INFO("Failed to call service request_goal");
+              std::this_thread::sleep_for (std::chrono::milliseconds(50));         
             }
-         }
-     } 
         }
+      }
 
         imageBuffer.buffer_mutex_.lock();
         imageBuffer.imageDeq.push_back(cvPtr_->image);

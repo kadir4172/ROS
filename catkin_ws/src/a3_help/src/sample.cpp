@@ -59,7 +59,8 @@ class GazeboRetrieve{
 
     ros::NodeHandle nh_;
     image_transport::ImageTransport it_;
-    image_transport::Publisher image_pub_;
+    image_transport::Publisher image_pub1_;
+    image_transport::Publisher image_pub2_;
     ros::Subscriber sub1_;
     ros::Subscriber sub2_;
     ros::Subscriber sub4_;                       //! This subscriber will get goal state when map discovery is finished
@@ -99,7 +100,8 @@ public:
         sub3_ = it.subscribe("map_image/full", 1, &GazeboRetrieve::imageCallback,this);
 
         //Publishing an image ... just to show how
-        image_pub_ = it_.advertise("test/image", 1);
+        image_pub1_ = it_.advertise("roadmap/first_query", 1);
+        image_pub2_ = it_.advertise("roadmap/second_query", 1);
 
         //Allowing an incoming service
         service_ = nh_.advertiseService("request_goal", &GazeboRetrieve::requestGoal,this);
@@ -155,19 +157,26 @@ public:
      start_col = (int)image.cols/2;
 
 
-     std::cout << "Start Row" << start_row << std::endl;
-     std::cout << "Start Col" << start_col << std::endl;
-     std::cout << "Goal  Row" << goal_row  << std::endl;
-     std::cout << "Goal  Col" << goal_col  << std::endl;
-     std::cout << "Min   Row" << min_row   << std::endl;
-     std::cout << "Min   Col" << min_col   << std::endl;
-     std::cout << "Max   Row" << max_row   << std::endl;
-     std::cout << "Max   Col" << max_col   << std::endl;
+     std::cout << "Start Row: " << start_row << std::endl;
+     std::cout << "Start Col: " << start_col << std::endl;
+     std::cout << "Goal  Row: " << goal_row  << std::endl;
+     std::cout << "Goal  Col: " << goal_col  << std::endl;
+     std::cout << "Min   Row: " << min_row   << std::endl;
+     std::cout << "Min   Col: " << min_col   << std::endl;
+     std::cout << "Max   Row: " << max_row   << std::endl;
+     std::cout << "Max   Col: " << max_col   << std::endl;
 
 
 
+  int number_of_configurations = 12;
+  while(!detect_regions(min_col, min_row, max_col, max_row, 2,2, number_of_configurations-2, start_row, start_col, goal_row, goal_col)){
+    number_of_configurations++;;
+  }
+  sensor_msgs::ImagePtr msg_to_dump = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+  image_pub1_.publish(msg_to_dump);
 
-  while(!detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_col, goal_row, goal_col));
+
+
 
     }
 
@@ -238,7 +247,7 @@ public:
         }
         buffer.buffer_mutex_.unlock();
 
-        std::cout << "Pose x: " << pose.position.x << "  Pose y: "<< pose.position.y << std::endl;
+        //std::cout << "Pose x: " << pose.position.x << "  Pose y: "<< pose.position.y << std::endl;
 
     }
 
@@ -374,20 +383,20 @@ public:
 	geometry_msgs::Pose pose;
 
         while (ros::ok()) {
-            int deqSz =-1;
+            //int deqSz =-1;
 
-            buffer.buffer_mutex_.lock();
-            deqSz = buffer.poseDeq.size();
-            if (deqSz > 0) {
-                pose=buffer.poseDeq.front();
-                yaw = tf::getYaw(pose.orientation);
-                x = pose.position.x;
-                y = pose.position.y;
-                timeOdom = buffer.timeStampDeq.front();
+            //buffer.buffer_mutex_.lock();
+            //deqSz = buffer.poseDeq.size();
+            //if (deqSz > 0) {
+            //    pose=buffer.poseDeq.front();
+            //    yaw = tf::getYaw(pose.orientation);
+            //    x = pose.position.x;
+            //    y = pose.position.y;
+            //    timeOdom = buffer.timeStampDeq.front();
                 //buffer.poseDeq.pop_front();
                 //buffer.timeStampDeq.pop_front();
-            }
-            buffer.buffer_mutex_.unlock();
+            //}
+            //buffer.buffer_mutex_.unlock();
 
             //! Lock image buffer, take one message from deque and unlock it
             //imageBuffer.buffer_mutex_.lock();
@@ -405,25 +414,25 @@ public:
                count_=0;
 
 
-               std::cout << "rows"  << image.rows << std::endl;
-               std::cout << "cols"  << image.cols << std::endl;
-               int local_x ;
-               int local_y ;
-               double global_x;
-               double global_y;
+               //std::cout << "rows"  << image.rows << std::endl;
+               //std::cout << "cols"  << image.cols << std::endl;
+               //int local_x ;
+               //int local_y ;
+               //double global_x;
+               //double global_y;
     
-               global2image(pose.position.x, pose.position.y, &local_x, &local_y);
-               image2global(&global_x, &global_y, local_x, local_y);
+               //global2image(pose.position.x, pose.position.y, &local_x, &local_y);
+               //image2global(&global_x, &global_y, local_x, local_y);
 
-               bool result = isConfigurationFree(local_y, local_x);
-               std::cout << "local_y:"  << local_y  << " local_x:"  << local_x  << " is:" << result << std::endl;   
-               std::cout << "global_y:" << global_y << " global_x:" << global_x << " is:" << result << std::endl;   
+               //bool result = isConfigurationFree(local_y, local_x);
+               //std::cout << "local_y:"  << local_y  << " local_x:"  << local_x  << " is:" << result << std::endl;   
+               //std::cout << "global_y:" << global_y << " global_x:" << global_x << " is:" << result << std::endl;   
 
  	       //cv::cvtColor(image,tmp,CV_GRAY2RGB);
                //cv::circle(tmp, cv::Point(local_x, local_y), 50, CV_RGB(0,0,255),-1);               
-               sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+               //sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
                //sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", image).toImageMsg();
-               image_pub_.publish(msg);
+               //image_pub1_.publish(msg);
 
             }
             else{
@@ -476,15 +485,7 @@ bool detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
 	std::vector< std::vector<int> > number_of_configurations(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
     //std::cout << "buraya geldi" <<  occupied_pixel_counter[7][20]  << std::endl;
 
-            imageBuffer.buffer_mutex_.lock();
-            while(imageBuffer.imageDeq.size()<=0){
-                ROS_INFO("detect_regions: Unable to proceed, no image found on buffer"); 
-                imageBuffer.buffer_mutex_.unlock(); 
-                return false;              
-            }
-            image = imageBuffer.imageDeq.front();
-            cv::cvtColor(image,tmp,CV_GRAY2RGB);
-            imageBuffer.buffer_mutex_.unlock(); 
+
 
 
     for(int i = min_row; i<max_row; i++){
@@ -673,6 +674,18 @@ void test_ordered_multimap(int* length_array, std::multimap<int,int> first, int 
 
 bool add_start_goal_and_calculate_shortest_path(int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
 
+            imageBuffer.buffer_mutex_.lock();
+            while(imageBuffer.imageDeq.size()<=0){
+                ROS_INFO("detect_regions: Unable to proceed, no image found on buffer"); 
+                imageBuffer.buffer_mutex_.unlock(); 
+                return false;              
+            }
+            image = imageBuffer.imageDeq.front();
+            cv::cvtColor(image,tmp,CV_GRAY2RGB);
+            imageBuffer.buffer_mutex_.unlock(); 
+
+
+
     std::vector< std::tuple<int,int> >::iterator it = configuration_point_list.begin();
     configuration_point_list.insert ( it , std::tuple<int, int>(goal_row,goal_col) );
     it = configuration_point_list.begin();
@@ -731,7 +744,7 @@ Shortest_Path(graph, 0, configuration_point_list.size());
 int destination = 1;
 
 
-if(distance[destination] < INT_MAX){
+if((distance[destination] < INT_MAX) && distance[destination] > 0 ){
 	std::cout << "Path Found" <<  std::endl;
 	printPath(parent, destination);
 	std::cout << "Distance is:" << distance[destination] << std::endl;

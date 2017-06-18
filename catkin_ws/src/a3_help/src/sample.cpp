@@ -151,7 +151,8 @@ public:
     void chatterCallback(const std_msgs::String::ConstPtr& msg)
     {
      //! This member function is invoked with 'chatter' message from 'random_walk' component when we are ready to construct roadmap
-      int counter = 0;
+      
+      //define start, goal positions,local coordinates (i.e min-max rows and columns of OGMAP) 
       int goal_col;
       int goal_row;
       int min_col;
@@ -160,26 +161,37 @@ public:
       int max_row;
       int start_col;
       int start_row;
+      
+      //This stringstream and string will be used to parse incoming message published with 'chatter' topic
       std::stringstream s;
       std::string token;
       s << msg->data.c_str();
-      ROS_INFO("I heard: [%s]", msg->data.c_str()); 
+      ROS_INFO("I heard: [%s]", msg->data.c_str());
+      
+      //Use a counter to parse comma seperated string message
+      int counter = 0;
       while(std::getline(s, token, ',')) {
         std::cout << token << '\n';
         if(counter == 0){
+          //First value is goal state column	
           goal_col = std::stoi(token);   
         }
         else{
+          //Second value is goal state row
           goal_row = std::stoi(token);
         }
         counter++;
       }
+      
+      //Convert these global coordinates(from 'uoa_robotics_lab.world') of stage into local pixel values, wait for succesful conversion
       while(!global2image((-6.27/2), (15.7/2), &min_col, &min_row)){}
       while(!global2image((6.27/2), (-15.7/2), &max_col, &max_row)){}
     
+      //Since robot position is always centered at OGMAP, local coordinates of robot is center of OGMAP
       start_row = (int)image.rows/2;
       start_col = (int)image.cols/2;
 
+      //Dump all variables for debug
       std::cout << "Start Row: " << start_row << std::endl;
       std::cout << "Start Col: " << start_col << std::endl;
       std::cout << "Goal  Row: " << goal_row  << std::endl;
@@ -189,7 +201,10 @@ public:
       std::cout << "Max   Row: " << max_row   << std::endl;
       std::cout << "Max   Col: " << max_col   << std::endl;
 
+      //Initialize desired number of configurations with 12 - 10:configuration point; 1: goal point; 1:start point
       int number_of_configurations = 12;
+      
+      //Call detect_regions function to divide map into local regions to focus on narrow passages
       while(!detect_regions(min_col, min_row, max_col, max_row, 2,2, number_of_configurations-2, start_row, start_col, goal_row, goal_col)){
         number_of_configurations+= 10;
         if(number_of_configurations > 100){

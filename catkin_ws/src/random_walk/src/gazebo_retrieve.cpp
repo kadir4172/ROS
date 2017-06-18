@@ -2,14 +2,17 @@
 #include "random_walk/RequestGoal.h"
 namespace enc = sensor_msgs::image_encodings;
 
-    GazeboRetrieve::GazeboRetrieve(ros::NodeHandle nh)
+GazeboRetrieve::GazeboRetrieve(ros::NodeHandle nh)
     : nh_(nh), it_(nh)
     {
-        sub1 = nh_.subscribe("odom", 1000, &GazeboRetrieve::odomCallback,this);
-        sub2 = nh_.subscribe("base_scan_0", 10, &GazeboRetrieve::laserCallback,this);
-        sub4 = nh_.subscribe("/path", 10, &GazeboRetrieve::pathCallback,this);
+	  //! This subscriber will subscribe to odometry messages to get pose information of robot 
+      sub1 = nh_.subscribe("odom", 1000, &GazeboRetrieve::odomCallback,this);
+      
+      //! This subscriber will subscribe to laser scan messages to get laser sensor data
+      sub2 = nh_.subscribe("base_scan_0", 10, &GazeboRetrieve::laserCallback,this);
+      sub4 = nh_.subscribe("/path", 10, &GazeboRetrieve::pathCallback,this);
 
-//subscribe map_image/full to get OGMAP, this will be used to calculate percentage of known configuration space
+     //subscribe map_image/full to get OGMAP, this will be used to calculate percentage of known configuration space
         image_transport::ImageTransport it(nh);
         sub3_ = it.subscribe("map_image/full", 1, &GazeboRetrieve::imageCallback,this);
         request_goal_client = nh_.serviceClient<a3_help::RequestGoal>("request_goal");
@@ -116,7 +119,7 @@ namespace enc = sensor_msgs::image_encodings;
 
         discovered_percentage = (counter*100)/9844; //!get discovered percentage of actual map with size of 6.27x15,7[m] and 0.1[m] resolution
 	std::cout << "Discovered Percentage: %" << discovered_percentage << std::endl;
-        if(discovered_percentage > 70.0){ //! When robot discover the working space more than %90, stop random walk process and publish goal state
+        if(discovered_percentage > 80.0){ //! When robot discover the working space more than %90, stop random walk process and publish goal state
           std_msgs::String msg;  
           std::stringstream ss;
 

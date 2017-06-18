@@ -703,127 +703,158 @@ public:
       }
     }
 
-
-
-
-void test_ordered_multimap(int* length_array, std::multimap<int,int> first, int size_of_graph){
-
+    void test_ordered_multimap(int* length_array, std::multimap<int,int> first, int size_of_graph){
+    //! This function will get a multimap of distances from a configuration point to all others and will determine 5 nearest neighbor
+      
+      //This variable will count for 6 configuration point - configuration point itself + 5 nearest neighbor
       int counter = 1;
-	  for (std::multimap<int,int>::iterator it=first.begin(); it!=first.end(); ++it){
-		  if(counter <= 6){
-			  length_array[(*it).second - 1] = (*it).first;
-		  }
-		  else{
-			  length_array[(*it).second - 1] = 0;
-		  }
-		  counter ++;
+	  
+      //Sweep all elements in multimap with this iterator
+      for (std::multimap<int,int>::iterator it=first.begin(); it!=first.end(); ++it){
+		//Since multimap will store an ordered list, simply select first 6 element to detect 5 nearest neighbor + point itself
+    	if(counter <= 6){
+    	  //If element is in first 6, write this distance to length_array	
+		  length_array[(*it).second - 1] = (*it).first;
+		}
+		else{
+		  //If element is not in first 6, make this distance zero to show that there is no path to this configuration point
+		  length_array[(*it).second - 1] = 0;
+		}
+		counter ++;
 	  }
 
+      //Dump trimmed length vector for debug purposes
 	  for(int i = 0; i < size_of_graph; i++){
 		  std::cout << length_array[i] << ";";
 	  }
 	  std::cout << std::endl;
-
-}
-
-
-
-
-bool add_new_goal_and_calculate_shortest_path(int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
-
-            imageBuffer.buffer_mutex_.lock();
-            while(imageBuffer.imageDeq.size()<=0){
-                ROS_INFO("detect_regions: Unable to proceed, no image found on buffer"); 
-                imageBuffer.buffer_mutex_.unlock(); 
-                return false;              
-            }
-            image = imageBuffer.imageDeq.front();
-            cv::cvtColor(image,tmp,CV_GRAY2RGB);
-            imageBuffer.buffer_mutex_.unlock(); 
-
-
-
-    std::vector< std::tuple<int,int> >::iterator it = configuration_point_list.begin();
-    configuration_point_list.insert ( it , std::tuple<int, int>(goal_row,goal_col) );
-    it = configuration_point_list.begin();
-    configuration_point_list.insert ( it , std::tuple<int, int>(start_row,start_col) );
-    cv::putText(tmp, "Start", cv::Point(start_col, start_row), 1, 0.8, cv::Scalar(20,20,20), 1, 8);
-    cv::putText(tmp, "Goal" , cv::Point(goal_col , goal_row) , 1, 0.8, cv::Scalar(20,20,20), 1, 8);
-
-	int length_array[ total_number_of_configurations +2];
-	int length;
-	int **graph;
-	graph = new int *[total_number_of_configurations +2];
-	for(int i = 0; i <(total_number_of_configurations+2); i++){
-	    graph[i] = new int[total_number_of_configurations+2];
-	}
-
-	std::multimap<int,int> point_list;
-   for (std::vector< std::tuple<int,int> >::iterator it1 = configuration_point_list.begin() ; it1 != configuration_point_list.end(); ++it1){
-	   std::cout << "Distances to node" << std::distance(configuration_point_list.begin(), it1) << ": "<< std::get<0>(*it1) << " , "<< std::get<1>(*it1) << std::endl;
-	   cv::circle(tmp,cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 3, CV_RGB(0,255,0),-1);
-	   
-   //std::this_thread::sleep_for (std::chrono::milliseconds(500));
-     for (std::vector< std::tuple<int,int> >::iterator it2 = configuration_point_list.begin() ; it2 != configuration_point_list.end(); ++it2){
-    	 //length_array[std::distance(configuration_point_list.begin(), it2)] = pow((std::get<0>(*it1) - std::get<0>(*it2)), 2) + pow((std::get<1>(*it1) - std::get<1>(*it2)), 2);
-    	//std::cout << "row: " << std::get<0>(*it) << " col: " << std::get<1>(*it) << std::endl;
-
-
-    	length = sqrt(pow((std::get<0>(*it1) - std::get<0>(*it2)), 2) + pow((std::get<1>(*it1) - std::get<1>(*it2)), 2));
-    	//line_segment_check[std::distance(configuration_point_list.begin(), it2)] = check_line_segment(std::get<0>(*it1), std::get<1>(*it1), std::get<0>(*it2), std::get<1>(*it2));
-
-    	 std::cout<< length << ";" ;
-    	 point_list.insert(std::pair<int,int>(length, (std::distance(configuration_point_list.begin(), it2))+ 1));
-    	 }
-     std::cout << std::endl;
-     test_ordered_multimap(length_array, point_list, configuration_point_list.size());
-     for (int c=0; c < (total_number_of_configurations+2); c++){
-    	 if(length_array[c]){ // if node is one of 5 nearest neighbor
-    		 if(!check_line_segment(std::get<0>(*it1), std::get<1>(*it1), std::get<0>(configuration_point_list.at(c)), std::get<1>(configuration_point_list.at(c)))){ //if line segment is not free to this close neighbor
-    			 length_array[c] = 0;
-    		 }
-    	 }
-    	 std::cout<< length_array[c] << ";" ;
-     }
-     std::cout << std::endl;
-     point_list.clear();
-     memcpy(graph[std::distance(configuration_point_list.begin(), it1)], &length_array, sizeof(int) * configuration_point_list.size());
-   //std::this_thread::sleep_for (std::chrono::milliseconds(500));
-   }
-std::cout << "Number of Configuration Points:" << configuration_point_list.size()  << std::endl;
-
-for(int m=0; m<configuration_point_list.size(); m++){
-	for(int n=0; n<configuration_point_list.size(); n++){
-		std::cout << graph[m][n] << " " ;
-	}
-	std::cout << std::endl;
-}
-
-Shortest_Path(graph, 0, configuration_point_list.size());
-int destination = 1;
-
-
-if((distance[destination] < INT_MAX) && distance[destination] > 0 ){
-	std::cout << "Path Found" <<  std::endl;
-        path_to_publish.poses.clear();
-	printPath(parent, destination);
-	std::cout << "Distance is:" << distance[destination] << std::endl;
-    if(path_to_publish.poses.size() > 0)
-    {
-     path_publisher.publish(path_to_publish);
-     ROS_INFO("Path is Published with /path topic");
     }
-        delete(graph);   
-        return true;
-}
-
-delete(graph);
-return false;
-}
 
 
+    bool add_new_goal_and_calculate_shortest_path(int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
+    //! This function will add start and goal states to current roadmap and will call Shortest Path function to find a path
+            
+     //Lock imageBuffer for secure read
+     imageBuffer.buffer_mutex_.lock();
+     while(imageBuffer.imageDeq.size()<=0){
+       ROS_INFO("detect_regions: Unable to proceed, no image found on buffer"); 
+       imageBuffer.buffer_mutex_.unlock(); 
+       return false;              
+     }
+     //If there is an image in buffer take it and assign 'tmp' by converting color space, this 'tmp' object will be used to draw line segments and circles
+     image = imageBuffer.imageDeq.front();
+     cv::cvtColor(image,tmp,CV_GRAY2RGB);
+     imageBuffer.buffer_mutex_.unlock(); 
 
-};
+     //Point this iterator to the beginning of roadmap configuration_point_list
+     std::vector< std::tuple<int,int> >::iterator it = configuration_point_list.begin();
+     
+     //Insert desired goal point to the beginning of configuration_point_list
+     configuration_point_list.insert ( it , std::tuple<int, int>(goal_row,goal_col) );
+     
+     //Point iterator to the beginning of list
+     it = configuration_point_list.begin();
+     
+     //Insert current position of robot(i.e. start point) to the beginning of list, now first item is start, second item is goal point in the list
+     configuration_point_list.insert ( it , std::tuple<int, int>(start_row,start_col) );
+     
+     //Put text to show start and goal points on OGMAP
+     cv::putText(tmp, "Start", cv::Point(start_col, start_row), 1, 0.8, cv::Scalar(20,20,20), 1, 8);
+     cv::putText(tmp, "Goal" , cv::Point(goal_col , goal_row) , 1, 0.8, cv::Scalar(20,20,20), 1, 8);
+
+	 //Create variable length array by adding 2 to the length of the list
+     int length_array[ total_number_of_configurations +2];
+	 int length;
+	 
+	 //Dynamically allocate memory for adjaceny graph, this will be used by shortest path algorithm
+	 int **graph;
+	 graph = new int *[total_number_of_configurations +2];
+	 for(int i = 0; i <(total_number_of_configurations+2); i++){
+	   graph[i] = new int[total_number_of_configurations+2];
+	 }
+
+	 //Create a multimao object to store configuration points
+	 std::multimap<int,int> point_list;
+	 
+	 //For each point calculate p2 norm to other configuration points
+     for (std::vector< std::tuple<int,int> >::iterator it1 = configuration_point_list.begin() ; it1 != configuration_point_list.end(); ++it1){
+	   std::cout << "Distances to node" << std::distance(configuration_point_list.begin(), it1) << ": "<< std::get<0>(*it1) << " , "<< std::get<1>(*it1) << std::endl;
+	   //Add a circle on OGMAP to make configuration point easily visible
+	   cv::circle(tmp,cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 3, CV_RGB(0,255,0),-1);   
+       for (std::vector< std::tuple<int,int> >::iterator it2 = configuration_point_list.begin() ; it2 != configuration_point_list.end(); ++it2){
+         //Calculate p2 norm to this point
+    	 length = sqrt(pow((std::get<0>(*it1) - std::get<0>(*it2)), 2) + pow((std::get<1>(*it1) - std::get<1>(*it2)), 2));
+    	 //Dump this length for debug purposes
+    	 std::cout<< length << ";" ;
+    	 //Insert this length to point list multimap object
+    	 point_list.insert(std::pair<int,int>(length, (std::distance(configuration_point_list.begin(), it2))+ 1));
+       }
+       std::cout << std::endl;
+       
+       //Call this function to find 5 nearest neighbor and cut the line segments to neighbors which are far away
+       test_ordered_multimap(length_array, point_list, configuration_point_list.size());
+       
+       //Sweep new 'length_array' array to test the line segments to these 5 nearest neighbors lie in free configuration space 
+       for (int c=0; c < (total_number_of_configurations+2); c++){
+         if(length_array[c]){ // if node is one of 5 nearest neighbor (otherwise length_array[i] is '0')
+    	   //If line segment to neighbor is not on free configuration space, assign length to zero to show there is no path
+           if(!check_line_segment(std::get<0>(*it1), std::get<1>(*it1), std::get<0>(configuration_point_list.at(c)), std::get<1>(configuration_point_list.at(c)))){ //if line segment is not free to this close neighbor
+    	     length_array[c] = 0;
+    	   }
+    	 }
+       std::cout<< length_array[c] << ";" ;
+       }
+       std::cout << std::endl;
+       //Clear point_list for next usage
+       point_list.clear();
+       //Copy final length_array to the related row of adjaceny graph
+       memcpy(graph[std::distance(configuration_point_list.begin(), it1)], &length_array, sizeof(int) * configuration_point_list.size());   
+     }
+     //Dump size of configuration_point_list for debug purposes
+     std::cout << "Number of Configuration Points:" << configuration_point_list.size()  << std::endl;
+
+     //Dump Adjacenycy graph for debug purposes
+     std::cout << "Adjacency Graph" << std::endl;
+     for(int m=0; m<configuration_point_list.size(); m++){
+	   for(int n=0; n<configuration_point_list.size(); n++){
+		 std::cout << graph[m][n] << " " ;
+	   }
+	   std::cout << std::endl;
+     }
+
+     //Call shortest path algorithm with this adjacency graph
+     Shortest_Path(graph, 0, configuration_point_list.size());
+     int destination = 1;
+
+
+     //if distance to destination is not maximum int value or negative, then we have found a successful path
+     if((distance[destination] < INT_MAX) && distance[destination] > 0 ){
+	   std::cout << "Path Found" <<  std::endl;
+       //Clear path_to_publish.poses field because we will publish new path
+	   path_to_publish.poses.clear();
+	   
+	   //Call this function to draw shortest path on OGMAP and to publish /path message
+	   printPath(parent, destination);
+	   
+	   //Dump distance to the goal for debug purposes
+	   std::cout << "Distance is:" << distance[destination] << std::endl;
+       
+	   //Be sure we have filled path to path_publisher message
+	   if(path_to_publish.poses.size() > 0){
+		 //Publish shortest path with /path topic
+         path_publisher.publish(path_to_publish);
+         ROS_INFO("Path is Published with /path topic");
+       }
+	   //Release memory for graph and return successful
+       delete(graph);   
+       return true;
+     }
+     //Release memory for graph and return false
+     delete(graph);
+     return false;
+    }
+
+}; //end of class definition
 
 
 int main(int argc, char **argv)

@@ -87,6 +87,18 @@ mutex
 -
 random
 -
+stdio.h
+-
+limits.h
+-
+math.h
+-
+vector
+-
+tuple
+-
+stdlib.h
+-
 
 /opt/ros/kinetic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h

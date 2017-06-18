@@ -23,12 +23,33 @@
 #include <deque>
 #include <mutex>
 #include <random>
+#include <stdio.h>
+#include <limits.h>
+#include <math.h>
+#include <vector>
+#include <tuple>
+#include <stdlib.h>
 
 namespace enc = sensor_msgs::image_encodings;
 
 /**
  * This node shows some connections and publishing images
  */
+void add_start_goal_and_calculate_shortest_path(int , int , int , int , int );
+
+
+#define BUFFER_SIZE 10000
+cv::Mat image;
+std::vector< std::tuple<int,int> > configuration_point_list;
+//This array will hold distance of shortest paths to node j from source
+int distance[BUFFER_SIZE];
+
+
+//This array stores info about whether node i is used currently or not
+bool is_point_used[BUFFER_SIZE];
+
+// This parent array stores shortest paths in tree
+int parent[BUFFER_SIZE];
 
 
 class GazeboRetrieve{
@@ -104,6 +125,12 @@ public:
      int counter = 0;
      int goal_col;
      int goal_row;
+     int min_col;
+     int min_row;
+     int max_col;
+     int max_row;
+     int start_col;
+     int start_row;
      std::stringstream s;
      std::string token;
      s << msg->data.c_str();
@@ -118,13 +145,23 @@ public:
        }
        counter++;
      }
+     while(global2image((-6.27/2), (-15.7/2), &min_col, &min_row)){}
+     while(global2image((6.27/2), (15.7/2), &max_col, &max_row)){}
+
+
+
+
+    //bool global2image(double global_x, double global_y, int* local_x, int* local_y){
 //TODO call shortest path function here
+
+//detect_regions(100,100,1600,900, 2,2,12-2, 400, 120, 300, 1200);
+//void detect_regions(int min_col, int min_row, int max_col, int max_row, int number_of_regions_in_col, int number_of_regions_in_row, int total_number_of_configurations, int start_row, int
     }
 
 
     //This function will be used to check whether a pixel in OGMAP is in free configuration space by augmenting it Minkowski sums
     bool isConfigurationFree(int local_y, int local_x){
-      cv::Mat image;
+
       //! Lock image buffer, take one message from deque and unlock it
       imageBuffer.buffer_mutex_.lock();
       if(imageBuffer.imageDeq.size()>0){
@@ -151,6 +188,7 @@ public:
       else{
         ROS_INFO("No Available OGMAP to check");
         imageBuffer.buffer_mutex_.unlock();
+        return false;
       }
     }
 
@@ -425,5 +463,303 @@ int main(int argc, char **argv)
   t.join();
 
   return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bool check_line_segment(int start_row, int start_col, int end_row, int end_col){
+	//cv::Mat tmp = image.clone();
+
+
+    cv::LineIterator it(image, cv::Point(start_col, start_row), cv::Point(end_col, end_row), 8);
+	for(int i = 0; i < it.count; i++, ++it)
+	{
+		//call check point is free with pos().x(col) and pos().y(row)
+	   if(false){
+		   return false;
+	   }
+	}
+
+    cv::line  (image, cv::Point(start_col, start_row), cv::Point(end_col, end_row), CV_RGB(255,0,0), 1);
+	return true;
+}
+
+
+
+
+
+
+
+
+
+void detect_regions(int min_col, int min_row, int max_col, int max_row, int number_of_regions_in_col, int number_of_regions_in_row, int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
+	double row_length = (max_row - min_row) / number_of_regions_in_row;
+	double col_length   = (max_col    - min_col) / number_of_regions_in_col;
+    std::cout << "row_length: " << row_length << std::endl;
+    std::cout << "col_length: " << col_length << std::endl;
+	int total_occupied_cells = 0;
+	int row_region;
+	int col_region;
+	int pixel_in_this_i_j = 127;
+	std::vector< std::vector<int> > occupied_pixel_counter(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
+	std::vector< std::vector<int> > number_of_configurations(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
+    //std::cout << "buraya geldi" <<  occupied_pixel_counter[7][20]  << std::endl;
+    for(int i = min_row; i<max_row; i++){
+    	for(int j = min_col; j<max_col; j++){
+            row_region = (int)(floor(((double)i - min_row) / row_length));
+            col_region = (int)(floor(((double)j - min_col) / col_length));
+            //std::cout << "row_region: " << row_region << std::endl;
+            //std::cout << "col_region: " << col_region << std::endl;
+            //TODO assign pixel_in_this_i_j
+            if(pixel_in_this_i_j != 255){ //if that pixel is not free
+            	occupied_pixel_counter[row_region][col_region] ++;
+            	total_occupied_cells ++;
+            }
+    	}
+    }
+    std::cout << "total_occupied_cells" << total_occupied_cells<<  std::endl;
+    int total_configuration_points = 0;
+    for(int k = 0; k<number_of_regions_in_row; k++){
+    	for(int l = 0; l<number_of_regions_in_col; l++){
+    		std::cout << "region counter:" << occupied_pixel_counter[k][l] << std::endl;
+    		number_of_configurations[k][l] =  (int)(floor((double)(total_number_of_configurations * occupied_pixel_counter[k][l]) / total_occupied_cells));
+    		total_configuration_points += number_of_configurations[k][l];
+    		std::cout << "number of points to be assigned to this region:" << number_of_configurations[k][l] << std::endl;
+    	}
+    }
+    std::cout << "Number of Additional Configurations to be added" << total_number_of_configurations - total_configuration_points << std::endl;
+    number_of_configurations[number_of_regions_in_row-1][number_of_regions_in_col-1] += total_number_of_configurations - total_configuration_points;
+    int configuration_point_row;
+    int configuration_point_col;
+    int points_in_region = 0;
+
+    configuration_point_list.clear();
+    for(int k = 0; k<number_of_regions_in_row; k++){
+    	for(int l = 0; l<number_of_regions_in_col; l++){
+    		points_in_region = 0;
+            int region_min_row = min_row + k          *   (int)row_length;
+            int region_max_row = min_row + (k+1) *  (int)row_length;
+            int region_min_col  = min_col + l          *   (int)col_length;
+            int region_max_col = min_col + (l+1) *  (int)col_length;
+            std::cout << "region:" << k << " ," << l << std::endl;
+            std::cout << "region_min_row: " << region_min_row << std::endl;
+            std::cout << "region_max_row: " << region_max_row << std::endl;
+            std::cout << "region_min_col: " << region_min_col << std::endl;
+            std::cout << "region_max_col: " << region_max_col << std::endl;
+
+            while(points_in_region < number_of_configurations[k][l] ){
+            	configuration_point_row = region_min_row + rand() % (int)row_length;
+            	configuration_point_col = region_min_col + rand() % (int)col_length;
+            	//if(check whether this point is free)
+            	if(true){
+            		points_in_region ++ ;
+            		configuration_point_list.push_back( std::tuple<int, int>(configuration_point_row,configuration_point_col) );
+            		std::cout << "Node: " << configuration_point_list.size() << " " << configuration_point_row << "," << configuration_point_col << std::endl;
+            	}
+            }
+    	}
+    }
+    add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col);
+}
+
+
+
+
+//This function returns minimum distance to uncovered vertices
+int find_min_distance(int* distance, bool* is_point_used, int size_of_graph)
+{
+    //determine  minimum value as maximum possible value
+    int min = INT_MAX, min_index;
+
+    for (int v = 0; v < size_of_graph; v++)
+        if (is_point_used[v] == false && distance[v] <= min)
+            min = distance[v], min_index = v;
+
+    return min_index;
+}
+
+
+
+//This recursive function sweeps parent list up to source itself
+void printPath(int parent[], int j)
+{
+    // Base Case : If j is source
+    if (parent[j]==-1)
+        return;
+
+    printPath(parent, parent[j]);
+    cv::line  (image, cv::Point(std::get<1>(configuration_point_list.at(j)), std::get<0>(configuration_point_list.at(j))), cv::Point(std::get<1>(configuration_point_list.at(parent[j])), std::get<0>(configuration_point_list.at(parent[j]))), CV_RGB(255,255,0), 1);
+    //printf("  %d \n", parent[j]);
+    printf("  %d ", j);
+}
+
+
+
+
+// A utility function to print the constructed distance
+// array
+int printSolution(int dist[], int n, int parent[], int size_of_graph)
+{
+    int src = 0;
+    printf("Vertex\t  Distance\tPath");
+    for (int i = 1; i < size_of_graph; i++)
+    {
+        printf("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src);
+        printPath(parent, i);
+    }
+    return 0;
+}
+
+//Dijkstra algorithm to find shortest path, given an adjacency graph
+void Shortest_Path(int**graph, int src, int size_of_graph)
+{
+
+
+    //determine  initial minimum value as maximum possible and is_point_used to false
+    for (int i = 0; i < size_of_graph; i++)
+    {
+        parent[0] = -1;
+        distance[i] = INT_MAX;
+        is_point_used[i] = false;
+    }
+
+    // Distance of source node to itself is always zero
+    distance[src] = 0;
+
+    //For all nodes in adjacency graph, find the shortest path from source
+    for (int count = 0; count < size_of_graph-1; count++)
+    {
+       //Find minimum distance between unused nodes
+        int u = find_min_distance(distance, is_point_used, size_of_graph);
+
+        //Change flag of this minimum distance node to 'used'
+        is_point_used[u] = true;
+
+        //Update distances to this node
+        for (int v = 0; v < size_of_graph; v++)
+
+        	// Update distance[v] only if its not used
+            if (!is_point_used[v] && graph[u][v] &&
+                distance[u] + graph[u][v] < distance[v])
+            {
+                parent[v]  = u; //Update parent list of v
+                distance[v] = distance[u] + graph[u][v]; //Update distance array of v
+            }
+    }
+
+    // print the constructed distance array
+    //printSolution(distance, NUMBER_OF_NODES, parent);
+}
+
+
+
+
+void test_ordered_multimap(int* length_array, std::multimap<int,int> first, int size_of_graph){
+
+      int counter = 1;
+	  for (std::multimap<int,int>::iterator it=first.begin(); it!=first.end(); ++it){
+		  if(counter <= 6){
+			  length_array[(*it).second - 1] = (*it).first;
+		  }
+		  else{
+			  length_array[(*it).second - 1] = 0;
+		  }
+		  counter ++;
+	  }
+
+	  for(int i = 0; i < size_of_graph; i++){
+		  std::cout << length_array[i] << ";";
+	  }
+	  std::cout << std::endl;
+
+}
+
+
+
+
+void add_start_goal_and_calculate_shortest_path(int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
+
+    std::vector< std::tuple<int,int> >::iterator it = configuration_point_list.begin();
+    configuration_point_list.insert ( it , std::tuple<int, int>(goal_row,goal_col) );
+    it = configuration_point_list.begin();
+    configuration_point_list.insert ( it , std::tuple<int, int>(start_row,start_col) );
+
+
+	int length_array[ total_number_of_configurations +2];
+	int length;
+	int **graph;
+	graph = new int *[total_number_of_configurations +2];
+	for(int i = 0; i <(total_number_of_configurations+2); i++){
+	    graph[i] = new int[total_number_of_configurations+2];
+	}
+
+	std::multimap<int,int> point_list;
+   for (std::vector< std::tuple<int,int> >::iterator it1 = configuration_point_list.begin() ; it1 != configuration_point_list.end(); ++it1){
+	   std::cout << "Distances to node" << std::distance(configuration_point_list.begin(), it1) << ": "<< std::get<0>(*it1) << " , "<< std::get<1>(*it1) << std::endl;
+	   cv::circle(image,cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 10, CV_RGB(255,0,0),-1);
+	   cv::putText(image, std::to_string(std::distance(configuration_point_list.begin(), it1)), cv::Point(std::get<1>(*it1),std::get<0>(*it1)), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0,200,200), 4);
+     for (std::vector< std::tuple<int,int> >::iterator it2 = configuration_point_list.begin() ; it2 != configuration_point_list.end(); ++it2){
+    	 //length_array[std::distance(configuration_point_list.begin(), it2)] = pow((std::get<0>(*it1) - std::get<0>(*it2)), 2) + pow((std::get<1>(*it1) - std::get<1>(*it2)), 2);
+    	//std::cout << "row: " << std::get<0>(*it) << " col: " << std::get<1>(*it) << std::endl;
+
+
+    	length = sqrt(pow((std::get<0>(*it1) - std::get<0>(*it2)), 2) + pow((std::get<1>(*it1) - std::get<1>(*it2)), 2));
+    	//line_segment_check[std::distance(configuration_point_list.begin(), it2)] = check_line_segment(std::get<0>(*it1), std::get<1>(*it1), std::get<0>(*it2), std::get<1>(*it2));
+
+    	 std::cout<< length << ";" ;
+    	 point_list.insert(std::pair<int,int>(length, (std::distance(configuration_point_list.begin(), it2))+ 1));
+    	 }
+     std::cout << std::endl;
+     test_ordered_multimap(length_array, point_list, configuration_point_list.size());
+     for (int c=0; c < (total_number_of_configurations+2); c++){
+    	 if(length_array[c]){ // if node is one of 5 nearest neighbor
+    		 if(!check_line_segment(std::get<0>(*it1), std::get<1>(*it1), std::get<0>(configuration_point_list.at(c)), std::get<1>(configuration_point_list.at(c)))){ //if line segment is not free to this close neighbor
+    			 length_array[c] = 0;
+    		 }
+    	 }
+    	 std::cout<< length_array[c] << ";" ;
+     }
+     std::cout << std::endl;
+     point_list.clear();
+     memcpy(graph[std::distance(configuration_point_list.begin(), it1)], &length_array, sizeof(int) * configuration_point_list.size());
+
+   }
+std::cout << "Number of Configuration Points:" << configuration_point_list.size()  << std::endl;
+
+for(int m=0; m<configuration_point_list.size(); m++){
+	for(int n=0; n<configuration_point_list.size(); n++){
+		std::cout << graph[m][n] << " " ;
+	}
+	std::cout << std::endl;
+}
+
+Shortest_Path(graph, 0, configuration_point_list.size());
+int destination = 1;
+
+
+if(distance[destination] < INT_MAX){
+	std::cout << "Path Found" <<  std::endl;
+	printPath(parent, destination);
+	std::cout << "Distance is:" << distance[destination] << std::endl;
+}
+
+delete(graph);
+
 }
 

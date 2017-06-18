@@ -206,64 +206,77 @@ public:
       
       //Call detect_regions function to divide map into local regions to focus on narrow passages
       while(!detect_regions(min_col, min_row, max_col, max_row, 2,2, number_of_configurations-2, start_row, start_col, goal_row, goal_col)){
-        number_of_configurations+= 10;
+        //If its not possible to find a shortest path, add more points to the configurations and try until we find a shortest path
+    	number_of_configurations+= 10;
         if(number_of_configurations > 100){
-          ROS_INFO("No Shortest Path is found even with more configuration points, please restart random_walk component and this component");
+          //If its not possible to find a shortest path even with 100 points, most probably goal state(which is randomly assigned) is not accessible in map
+          ROS_INFO("No Shortest Path, most probably goal state is selected from an unaccessible place, please restart 'random_walk' component to generate new goal state");
           return;
         }
       }
+      //If a shortest path is found for this query, publish it with 'roadmap/first_query' topic
       sensor_msgs::ImagePtr msg_to_dump_first_roadmap = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
       image_pub1_.publish(msg_to_dump_first_roadmap);
 
+      //To demonstrate that this roadmap is reusable for next queries, add a new random goal point and query again
       goal_col = rand() % (int)(image.cols-1) + 1;
 	  goal_row = rand() % (int)(image.rows-1) + 1;
-      while(!isConfigurationFree(goal_row, goal_col)){             
+      
+	  //Select this new goal point from free configuration space, randomly
+	  while(!isConfigurationFree(goal_row, goal_col)){             
         goal_col = rand() % (int)(image.cols-1) + 1;
 	    goal_row = rand() % (int)(image.rows-1) + 1;  
       }
       
-      ROS_INFO("New Random Goal Point will be added to current roadmap");
+      //Dump debug messages
+	  ROS_INFO("New Random Goal Point will be added to current roadmap");
       std::cout << "Goal_Row: " << goal_row << " Goal_Column: " << goal_col << std::endl; 
 
-      if(add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
-        //return;  
+      //Call this function to add new goal position to current roadmap and query shortest path
+      if(add_new_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
+        //nothing to do;  
       }
       else{
+    	//Its not possible to find a shortest path to this new goal point with current roadmap, nothing to do  
         ROS_INFO("detect_regions: No Path Found to new goal point, its needed to generate a new roadmap with more configuration points"); 
       return;       
       }
+      
+      //If its possible to find a shortest path to this new configuration point, then publish it with 'roadmap/second_query'
       sensor_msgs::ImagePtr msg_to_dump_second_roadmap = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
       image_pub2_.publish(msg_to_dump_second_roadmap);
     }
 
 
-    //This function will be used to check whether a pixel in OGMAP is in free configuration space by augmenting it Minkowski sums
+    
     bool isConfigurationFree(int local_y, int local_x){
-
-      //! Lock image buffer, take one message from deque and unlock it
+      //!This function will be used to check whether a pixel in OGMAP is in free configuration space by augmenting it Minkowski sums
+      
+      // Lock image buffer, take one message from deque and unlock it
       imageBuffer.buffer_mutex_.lock();
       if(imageBuffer.imageDeq.size()>0){
         image = imageBuffer.imageDeq.front();
         imageBuffer.buffer_mutex_.unlock();
         
+        //First check whether point is in boundaries of OGMAP
         if((local_y<=0) || (local_y>=image.rows-1) || (local_x<=0) || (local_x>=image.cols-1)){
           ROS_INFO("Point is out of boundaries");
           return false; 
         }
-        //! Check up, down, left, right cells to calculate local configuration space with Minkowski sums
+        //Check that if up, down, left, right cells to calculate local configuration space with Minkowski sums
         if(((int)image.at<uchar>(local_y  , local_x  ) == 255) && 
-	   ((int)image.at<uchar>(local_y+1, local_x  ) == 255) &&
-	   ((int)image.at<uchar>(local_y-1, local_x  ) == 255) &&
-	   ((int)image.at<uchar>(local_y  , local_x+1) == 255) &&
-	   ((int)image.at<uchar>(local_y  , local_x-1) == 255)){
-
-           return true;
-	}
+	    ((int)image.at<uchar>(local_y+1, local_x  ) == 255) &&
+	    ((int)image.at<uchar>(local_y-1, local_x  ) == 255) &&
+	    ((int)image.at<uchar>(local_y  , local_x+1) == 255) &&
+	    ((int)image.at<uchar>(local_y  , local_x-1) == 255)){
+          return true;
+	    }
         else{
-           return false;
+          return false;
         }
       }
       else{
+    	//If we cannot take an image from imageBuffer, i.e. no image available in buffer yet
         ROS_INFO("No Available OGMAP to check");
         imageBuffer.buffer_mutex_.unlock();
         return false;
@@ -272,74 +285,90 @@ public:
 
 
 
-    bool requestGoal(a3_help::RequestGoal::Request  &req,
-             a3_help::RequestGoal::Response &res)
-    {
+    bool requestGoal(a3_help::RequestGoal::Request  &req, a3_help::RequestGoal::Response &res){
+    //! This servie will be used by 'random_walk' component to request a goal point
       ROS_INFO("request: x=%ld, y=%ld", (long int)req.x, (long int)req.y);
+      
+      //When a new goal point is requested, first check whether if its in free configuration space
       if(isConfigurationFree((int)req.y, (int)req.x)){
         res.ack = true;
         ROS_INFO("sending back response: [%d]", res.ack);
         return true;
       }
       else{
+    	//If this goal point is not in free configuration space, reject request  
         res.ack = false;
         ROS_INFO("sending back response: [%d]", res.ack);
         return true;
       }
     }
 
-    void odomCallback(const nav_msgs::OdometryConstPtr& msg)
-    {
-        //Let's get the pose out from odometry message
-        // REMEBER: on command line you can view entier msg as
-        //rosmsg show nav_msgs/Odometry
-        geometry_msgs::Pose pose=msg->pose.pose;
-        buffer.buffer_mutex_.lock();
-        buffer.poseDeq.push_back(pose);
-        buffer.timeStampDeq.push_back(msg->header.stamp);
-        if(buffer.poseDeq.size()>2){
-            buffer.poseDeq.pop_front();
-            buffer.timeStampDeq.pop_front();
-        }
-        buffer.buffer_mutex_.unlock();
+    void odomCallback(const nav_msgs::OdometryConstPtr& msg){
+    //!	This callback is invoked with 'odom' message and is used to store new position info on buffer
+        
+      //Define local pose variable to get position data from msg
+      geometry_msgs::Pose pose=msg->pose.pose;
+        
+      //Lock buffer first, to write safely
+      buffer.buffer_mutex_.lock();
+      buffer.poseDeq.push_back(pose);
+      buffer.timeStampDeq.push_back(msg->header.stamp);
+        
+      //If there are more than 2 position data on buffer, delete oldest one
+      if(buffer.poseDeq.size()>2){
+        buffer.poseDeq.pop_front();
+        buffer.timeStampDeq.pop_front();
+      }
+      //Unlock buffer
+      buffer.buffer_mutex_.unlock();
 
-        //std::cout << "Pose x: " << pose.position.x << "  Pose y: "<< pose.position.y << std::endl;
-
+      //Dump data for debug
+      //std::cout << "Pose x: " << pose.position.x << "  Pose y: "<< pose.position.y << std::endl;
     }
 
     bool global2image(double global_x, double global_y, int* local_x, int* local_y){
-            cv::Mat image_tmp;
-            imageBuffer.buffer_mutex_.lock();
-            if(imageBuffer.imageDeq.size()>0){
-                image_tmp = imageBuffer.imageDeq.front();
-                imageBuffer.buffer_mutex_.unlock();
-            }
-            else{
-                ROS_INFO("global2image: Unable to convert, no image found on buffer");
-                imageBuffer.buffer_mutex_.unlock();
-                return false;
-            }
+    //! This utility function will be used to convert global position data to local OGMAP pixel values
+      
+      //Create a local temporary cv::Mat variable
+      cv::Mat image_tmp;
+      
+      //Lock buffer for secure read
+      imageBuffer.buffer_mutex_.lock();
+      if(imageBuffer.imageDeq.size()>0){
+    	//If there is an image on buffer, read it to local variable and unlock buffer
+        image_tmp = imageBuffer.imageDeq.front();
+        imageBuffer.buffer_mutex_.unlock();
+      }
+      else{
+    	//If there is no image in the buffer nothing to do 
+        ROS_INFO("global2image: Unable to convert, no image found on buffer");
+        imageBuffer.buffer_mutex_.unlock();
+        return false;
+      }
 
- 
-
-            buffer.buffer_mutex_.lock();
-            if (buffer.poseDeq.size() > 0) {
-                geometry_msgs::Pose pose=buffer.poseDeq.front();
+      //Lock position buffer for secure read
+      buffer.buffer_mutex_.lock();
+      if (buffer.poseDeq.size() > 0) {
+    	//If there is data on buffer read it to local pose variable
+        geometry_msgs::Pose pose=buffer.poseDeq.front();
+        //calculate local_x and local_y with respect to robot's global position since OGMAP is centered with robot itself
 		*local_y = (int)((double)image_tmp.rows/2 + (double)(pose.position.y - global_y) / resolution_);
 		*local_x = (int)((double)image_tmp.cols/2 - (double)(pose.position.x - global_x) / resolution_);
 		buffer.buffer_mutex_.unlock();
-                std::cout << "incoming request global_x" << global_x << std::endl;
-                std::cout << "incoming request global_y" << global_y << std::endl;
-                std::cout << "calculated position local_x" << *local_x << std::endl;
-                std::cout << "calculated position local_y" << *local_y << std::endl;
-                return true;                  
-                
-            }
-            else{
-                ROS_INFO("global2image: Unable to convert, no position info found on buffer");
-                buffer.buffer_mutex_.unlock();
-                return false;
-            }
+		
+		//Dump these variable for debug purposes
+        std::cout << "incoming request global_x" << global_x << std::endl;
+        std::cout << "incoming request global_y" << global_y << std::endl;
+        std::cout << "calculated position local_x" << *local_x << std::endl;
+        std::cout << "calculated position local_y" << *local_y << std::endl;
+        return true;                  
+      }
+      else{
+    	//If there is no position data on buffer, nothing to do
+        ROS_INFO("global2image: Unable to convert, no position info found on buffer");
+        buffer.buffer_mutex_.unlock();
+        return false;
+      }
     }
 
     bool image2global(double* global_x, double* global_y, int local_x, int local_y){
@@ -536,7 +565,7 @@ bool detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
     	}
     }
 
-    if(add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
+    if(add_new_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
      return true;  
     }
     else{
@@ -671,7 +700,7 @@ void test_ordered_multimap(int* length_array, std::multimap<int,int> first, int 
 
 
 
-bool add_start_goal_and_calculate_shortest_path(int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
+bool add_new_goal_and_calculate_shortest_path(int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
 
             imageBuffer.buffer_mutex_.lock();
             while(imageBuffer.imageDeq.size()<=0){

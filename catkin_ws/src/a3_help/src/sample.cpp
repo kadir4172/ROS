@@ -356,7 +356,7 @@ public:
 		*local_x = (int)((double)image_tmp.cols/2 - (double)(pose.position.x - global_x) / resolution_);
 		buffer.buffer_mutex_.unlock();
 		
-		//Dump these variable for debug purposes
+		//Dump these variables for debug purposes
         std::cout << "incoming request global_x" << global_x << std::endl;
         std::cout << "incoming request global_y" << global_y << std::endl;
         std::cout << "calculated position local_x" << *local_x << std::endl;
@@ -372,34 +372,47 @@ public:
     }
 
     bool image2global(double* global_x, double* global_y, int local_x, int local_y){
-            cv::Mat image_tmp;
-            imageBuffer.buffer_mutex_.lock();
-            if(imageBuffer.imageDeq.size()>0){
-                image_tmp = imageBuffer.imageDeq.front();
-                imageBuffer.buffer_mutex_.unlock();
-            }
-            else{
-                ROS_INFO("image2global: Unable to convert, no image found on buffer");
-                imageBuffer.buffer_mutex_.unlock();
-                return false;
-            }
+    //! This utility function will be used to convert local position data to global map coordinates frame
+    	
+      //Create a local temporary cv::Mat variable
+      cv::Mat image_tmp;
+      
+      //Lock buffer for secure read
+      imageBuffer.buffer_mutex_.lock();
+      if(imageBuffer.imageDeq.size()>0){
+    	//If there is an image on buffer, read it to local variable and unlock buffer
+        image_tmp = imageBuffer.imageDeq.front();
+        imageBuffer.buffer_mutex_.unlock();
+      }
+      else{
+    	//If there is no image in the buffer nothing to do 
+        ROS_INFO("image2global: Unable to convert, no image found on buffer");
+        imageBuffer.buffer_mutex_.unlock();
+        return false;
+      }
 
- 
-
-            buffer.buffer_mutex_.lock();
-            if (buffer.poseDeq.size() > 0) {
-                geometry_msgs::Pose pose=buffer.poseDeq.front();
+      //Lock position buffer for secure read
+      buffer.buffer_mutex_.lock();
+      if (buffer.poseDeq.size() > 0) {
+    	//If there is data on buffer read it to local pose variable
+        geometry_msgs::Pose pose=buffer.poseDeq.front();
+        //calculate global_x and global_y with respect to robot's global position since OGMAP is centered with robot itself
 		*global_y = ( (image_tmp.rows/2) - (double)local_y +  ((double)(pose.position.y) / resolution_)) * resolution_;
 		*global_x = (-(image_tmp.cols/2) + (double)local_x +  ((double)(pose.position.x) / resolution_)) * resolution_;
 		buffer.buffer_mutex_.unlock();
-                return true;                  
-                
-            }
-            else{
-                ROS_INFO("image2global: Unable to convert, no position info found on buffer");
-                buffer.buffer_mutex_.unlock();
-                return false;
-            }
+		//Dump these variables for debug purposes
+        std::cout << "incoming request global_x" << *global_x << std::endl;
+        std::cout << "incoming request global_y" << *global_y << std::endl;
+        std::cout << "calculated position local_x" << local_x << std::endl;
+        std::cout << "calculated position local_y" << local_y << std::endl;
+        return true;               
+      }
+      else{
+    	//If there is no position data on buffer, nothing to do
+        ROS_INFO("image2global: Unable to convert, no position info found on buffer");
+        buffer.buffer_mutex_.unlock();
+        return false;
+      }
     }
 
     void laserCallback(const sensor_msgs::LaserScanConstPtr& msg)

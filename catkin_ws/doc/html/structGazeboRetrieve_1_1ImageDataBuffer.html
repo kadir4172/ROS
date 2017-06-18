@@ -1,5 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-<title>a3_help: GazeboRetrieve::ImageDataBuffer Struct Reference</title>
+<title>random_walk: GazeboRetrieve::ImageDataBuffer Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head>
@@ -8,6 +8,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -15,6 +16,7 @@
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -31,23 +33,21 @@
 <div class="title">GazeboRetrieve::ImageDataBuffer Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>This struct will hold a deque of cv::Mat messages and time stamps of these messages and a mutex to share data safely.  
- <a href="structGazeboRetrieve_1_1ImageDataBuffer.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aba8f9bdd2ee257c3f7e056db09daf7e5"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGazeboRetrieve_1_1ImageDataBuffer.html#aba8f9bdd2ee257c3f7e056db09daf7e5">buffer_mutex_</a></td></tr>
+<tr class="memdesc:aba8f9bdd2ee257c3f7e056db09daf7e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deque to store time of image.  <a href="#aba8f9bdd2ee257c3f7e056db09daf7e5">More...</a><br /></td></tr>
 <tr class="separator:aba8f9bdd2ee257c3f7e056db09daf7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab12439a49d18a94c70534ff5f96ae7d9"><td class="memItemLeft" align="right" valign="top">std::deque&lt; cv::Mat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGazeboRetrieve_1_1ImageDataBuffer.html#ab12439a49d18a94c70534ff5f96ae7d9">imageDeq</a></td></tr>
 <tr class="separator:ab12439a49d18a94c70534ff5f96ae7d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a634013684b46b1e8dc033f4c66309cf5"><td class="memItemLeft" align="right" valign="top">std::deque&lt; ros::Time &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGazeboRetrieve_1_1ImageDataBuffer.html#a634013684b46b1e8dc033f4c66309cf5">timeStampDeq</a></td></tr>
+<tr class="memdesc:a634013684b46b1e8dc033f4c66309cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deque to store image.  <a href="#a634013684b46b1e8dc033f4c66309cf5">More...</a><br /></td></tr>
 <tr class="separator:a634013684b46b1e8dc033f4c66309cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This struct will hold a deque of cv::Mat messages and time stamps of these messages and a mutex to share data safely. </p>
-
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00100">100</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<div class="textblock">
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00035">35</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="aba8f9bdd2ee257c3f7e056db09daf7e5"></a>
 <div class="memitem">
@@ -59,7 +59,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00104">104</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Deque to store time of image. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00039">39</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -73,7 +75,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00102">102</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00037">37</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -87,20 +89,22 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00103">103</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Deque to store image. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00038">38</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="sample_8cpp_source.html">sample.cpp</a></li>
+<li><a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a></li>
 </ul>
 </div><!-- contents -->
 
 <br clear="all" />
 <hr size="1"><div style="align: right;">
-<a href="http://wiki.ros.org/a3_help">a3_help</a><br />
+<a href="http://wiki.ros.org/random_walk">random_walk</a><br />
 Author(s): </br />
-<small>autogenerated on Sun Jun 18 2017 17:07:00</small>
+<small>autogenerated on Sun Jun 18 2017 18:38:21</small>
 </div>
 </body>
 </html>

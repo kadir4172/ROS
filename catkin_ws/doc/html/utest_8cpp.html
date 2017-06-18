@@ -1,5 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-<title>a3_help: utest.cpp File Reference</title>
+<title>random_walk: utest.cpp File Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head>
@@ -8,6 +8,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -20,13 +21,12 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_82f09aa3410b92995ec84f62e8317f5a.html">a3_help</a></li><li class="navelem"><a class="el" href="dir_dcf06d88a6a62b957dc87aa4da7a8467.html">test</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_619944215e86e0b53892a2cf2726c302.html">random_walk</a></li><li class="navelem"><a class="el" href="dir_ee116d3aa4cc7fcf0ffe7635081778cc.html">test</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">utest.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -35,7 +35,6 @@
 <code>#include &lt;climits&gt;</code><br />
 <code>#include &lt;opencv2/highgui/highgui.hpp&gt;</code><br />
 <code>#include &lt;cv_bridge/cv_bridge.h&gt;</code><br />
-<code>#include &lt;geometry_msgs/Pose.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for utest.cpp:</div>
 <div class="dyncontent">
@@ -46,54 +45,31 @@ Include dependency graph for utest.cpp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abeb9e0475cf0e780790f0121442aa955"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#abeb9e0475cf0e780790f0121442aa955">global2image</a> (double global_x, double global_y, int *local_x, int *local_y)</td></tr>
-<tr class="separator:abeb9e0475cf0e780790f0121442aa955"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa337be22e669d901b81848f728b00860"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#aa337be22e669d901b81848f728b00860">image2global</a> (double *global_x, double *global_y, int local_x, int local_y)</td></tr>
-<tr class="separator:aa337be22e669d901b81848f728b00860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa99823a0fc8313c9c32541ce768fb801"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#aa99823a0fc8313c9c32541ce768fb801">add</a> (int a, int b)</td></tr>
+<tr class="separator:aa99823a0fc8313c9c32541ce768fb801"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add3db1bc59508758111acbf5a818daf7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#add3db1bc59508758111acbf5a818daf7">TEST</a> (NumberCmpTest, ShouldPass)</td></tr>
+<tr class="separator:add3db1bc59508758111acbf5a818daf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04a07043b5c67ffe3859919582a3cbe6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#a04a07043b5c67ffe3859919582a3cbe6">TEST</a> (ImageSize, ShouldPass)</td></tr>
 <tr class="separator:a04a07043b5c67ffe3859919582a3cbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:aca3006a770e0e39a4c80202325df25ed"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#aca3006a770e0e39a4c80202325df25ed">image</a></td></tr>
-<tr class="separator:aca3006a770e0e39a4c80202325df25ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1df6c79a35d799606435ad164d7fd2ec"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#a1df6c79a35d799606435ad164d7fd2ec">mapSize</a> =30.0</td></tr>
-<tr class="separator:a1df6c79a35d799606435ad164d7fd2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7debd75727e1d1e3e960ed6d28108474"><td class="memItemLeft" align="right" valign="top">geometry_msgs::Pose&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#a7debd75727e1d1e3e960ed6d28108474">pose</a></td></tr>
-<tr class="separator:a7debd75727e1d1e3e960ed6d28108474"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c33150be7fa35123dd02ba26fbfbc23"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utest_8cpp.html#a5c33150be7fa35123dd02ba26fbfbc23">resolution_</a> =0.1</td></tr>
-<tr class="separator:a5c33150be7fa35123dd02ba26fbfbc23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="abeb9e0475cf0e780790f0121442aa955"></a>
+<a class="anchor" id="aa99823a0fc8313c9c32541ce768fb801"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void global2image </td>
+          <td class="memname">int add </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>global_x</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>global_y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>local_x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>local_y</em>&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -103,47 +79,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00014">14</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa337be22e669d901b81848f728b00860"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void image2global </td>
-          <td>(</td>
-          <td class="paramtype">double *&#160;</td>
-          <td class="paramname"><em>global_x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double *&#160;</td>
-          <td class="paramname"><em>global_y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>local_x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>local_y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00018">18</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
+<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00011">11</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
 
 </div>
 </div>
@@ -171,7 +107,35 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00070">70</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
+<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00057">57</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="add3db1bc59508758111acbf5a818daf7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">NumberCmpTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ShouldPass&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00015">15</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
 
 </div>
 </div>
@@ -201,64 +165,7 @@ Variables</h2></td></tr>
 <p>I would STRONGLY suggest to write two functions image2global and global2image and Unit test them The functions would allow to go from image space To Global coordinate system and vice versa</p>
 <p>The below code does not do this, it merley sets up the framework For testing and allows accessing an OPENCV image </p>
 
-<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00023">23</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="aca3006a770e0e39a4c80202325df25ed"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cv::Mat image</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00009">9</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a1df6c79a35d799606435ad164d7fd2ec"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double mapSize =30.0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00011">11</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7debd75727e1d1e3e960ed6d28108474"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">geometry_msgs::Pose pose</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00010">10</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5c33150be7fa35123dd02ba26fbfbc23"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double resolution_ =0.1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00012">12</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
+<p>Definition at line <a class="el" href="utest_8cpp_source.html#l00019">19</a> of file <a class="el" href="utest_8cpp_source.html">utest.cpp</a>.</p>
 
 </div>
 </div>
@@ -266,9 +173,9 @@ Variables</h2></td></tr>
 
 <br clear="all" />
 <hr size="1"><div style="align: right;">
-<a href="http://wiki.ros.org/a3_help">a3_help</a><br />
+<a href="http://wiki.ros.org/random_walk">random_walk</a><br />
 Author(s): </br />
-<small>autogenerated on Sun Jun 18 2017 17:07:00</small>
+<small>autogenerated on Sun Jun 18 2017 18:38:21</small>
 </div>
 </body>
 </html>

@@ -117,19 +117,21 @@ public:
         sub2_ = nh_.subscribe("base_scan_0", 10, &GazeboRetrieve::laserCallback,this);
         sub4_ = nh_.subscribe("chatter", 100, &GazeboRetrieve::chatterCallback, this);
         
-        //
+        //Subscribe to 'map_image/full'
         image_transport::ImageTransport it(nh);
         sub3_ = it.subscribe("map_image/full", 1, &GazeboRetrieve::imageCallback,this);
+        
+        //Create path_publisher to publish shortest path with PoseArray message
         path_publisher = nh_.advertise<geometry_msgs::PoseArray>("/path",1);
 
-        //Publishing an image ... just to show how
+        //Create two independent publisher to publish shortest path of sequential two queries
         image_pub1_ = it_.advertise("roadmap/first_query", 1);
         image_pub2_ = it_.advertise("roadmap/second_query", 1);
 
         //Allowing an incoming service
         service_ = nh_.advertiseService("request_goal", &GazeboRetrieve::requestGoal,this);
 
-        //Below is how to get parameters from command line, on command line they need to be _param:=value
+        //Get map_size and resolution_ parameters from command line if needed
         ros::NodeHandle pn("~");
         double mapSize;
         double resolution;
@@ -143,85 +145,80 @@ public:
 
     ~GazeboRetrieve()
     {
-        //cv::destroyWindow("view");
+        //nothing to do on destructor
     }
 
     void chatterCallback(const std_msgs::String::ConstPtr& msg)
     {
-     int counter = 0;
-     int goal_col;
-     int goal_row;
-     int min_col;
-     int min_row;
-     int max_col;
-     int max_row;
-     int start_col;
-     int start_row;
-     std::stringstream s;
-     std::string token;
-     s << msg->data.c_str();
-     ROS_INFO("I heard: [%s]", msg->data.c_str()); 
-     while(std::getline(s, token, ',')) {
-       std::cout << token << '\n';
-       if(counter == 0){
-         goal_col = std::stoi(token);   
-       }
-       else{
-         goal_row = std::stoi(token);
-       }
-       counter++;
-     }
-     while(!global2image((-6.27/2), (15.7/2), &min_col, &min_row)){}
-     while(!global2image((6.27/2), (-15.7/2), &max_col, &max_row)){}
+     //! This member function is invoked with 'chatter' message from 'random_walk' component when we are ready to construct roadmap
+      int counter = 0;
+      int goal_col;
+      int goal_row;
+      int min_col;
+      int min_row;
+      int max_col;
+      int max_row;
+      int start_col;
+      int start_row;
+      std::stringstream s;
+      std::string token;
+      s << msg->data.c_str();
+      ROS_INFO("I heard: [%s]", msg->data.c_str()); 
+      while(std::getline(s, token, ',')) {
+        std::cout << token << '\n';
+        if(counter == 0){
+          goal_col = std::stoi(token);   
+        }
+        else{
+          goal_row = std::stoi(token);
+        }
+        counter++;
+      }
+      while(!global2image((-6.27/2), (15.7/2), &min_col, &min_row)){}
+      while(!global2image((6.27/2), (-15.7/2), &max_col, &max_row)){}
     
-     start_row = (int)image.rows/2;
-     start_col = (int)image.cols/2;
+      start_row = (int)image.rows/2;
+      start_col = (int)image.cols/2;
 
+      std::cout << "Start Row: " << start_row << std::endl;
+      std::cout << "Start Col: " << start_col << std::endl;
+      std::cout << "Goal  Row: " << goal_row  << std::endl;
+      std::cout << "Goal  Col: " << goal_col  << std::endl;
+      std::cout << "Min   Row: " << min_row   << std::endl;
+      std::cout << "Min   Col: " << min_col   << std::endl;
+      std::cout << "Max   Row: " << max_row   << std::endl;
+      std::cout << "Max   Col: " << max_col   << std::endl;
 
-     std::cout << "Start Row: " << start_row << std::endl;
-     std::cout << "Start Col: " << start_col << std::endl;
-     std::cout << "Goal  Row: " << goal_row  << std::endl;
-     std::cout << "Goal  Col: " << goal_col  << std::endl;
-     std::cout << "Min   Row: " << min_row   << std::endl;
-     std::cout << "Min   Col: " << min_col   << std::endl;
-     std::cout << "Max   Row: " << max_row   << std::endl;
-     std::cout << "Max   Col: " << max_col   << std::endl;
+      int number_of_configurations = 12;
+      while(!detect_regions(min_col, min_row, max_col, max_row, 2,2, number_of_configurations-2, start_row, start_col, goal_row, goal_col)){
+        number_of_configurations+= 10;
+        if(number_of_configurations > 100){
+          ROS_INFO("No Shortest Path is found even with more configuration points, please restart random_walk component and this component");
+          return;
+        }
+      }
+      sensor_msgs::ImagePtr msg_to_dump_first_roadmap = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+      image_pub1_.publish(msg_to_dump_first_roadmap);
 
+      goal_col = rand() % (int)(image.cols-1) + 1;
+	  goal_row = rand() % (int)(image.rows-1) + 1;
+      while(!isConfigurationFree(goal_row, goal_col)){             
+        goal_col = rand() % (int)(image.cols-1) + 1;
+	    goal_row = rand() % (int)(image.rows-1) + 1;  
+      }
+      
+      ROS_INFO("New Random Goal Point will be added to current roadmap");
+      std::cout << "Goal_Row: " << goal_row << " Goal_Column: " << goal_col << std::endl; 
 
-
-  int number_of_configurations = 12;
-  while(!detect_regions(min_col, min_row, max_col, max_row, 2,2, number_of_configurations-2, start_row, start_col, goal_row, goal_col)){
-    number_of_configurations+= 10;
-    if(number_of_configurations > 100){
-      ROS_INFO("No Shortest Path is found even with more configuration points, please restart random_walk component and this component");
-      return;
-    }
-  }
-  sensor_msgs::ImagePtr msg_to_dump_first_roadmap = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
-  image_pub1_.publish(msg_to_dump_first_roadmap);
-
-           goal_col = rand() % (int)(image.cols-1) + 1;
-	   goal_row = rand() % (int)(image.rows-1) + 1;
-           while(!isConfigurationFree(goal_row, goal_col)){             
-           goal_col = rand() % (int)(image.cols-1) + 1;
-	   goal_row = rand() % (int)(image.rows-1) + 1;  
-          }
-
-ROS_INFO("New Random Goal Point will be added to current roadmap");
-std::cout << "Goal_Row: " << goal_row << " Goal_Column: " << goal_col << std::endl; 
-
-    if(add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
-     //return;  
-    }
-    else{
-      ROS_INFO("detect_regions: No Path Found to new goal point, its needed to generate a new roadmap with more configuration points"); 
+      if(add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
+        //return;  
+      }
+      else{
+        ROS_INFO("detect_regions: No Path Found to new goal point, its needed to generate a new roadmap with more configuration points"); 
       return;       
-    }
-
- sensor_msgs::ImagePtr msg_to_dump_second_roadmap = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
-  image_pub2_.publish(msg_to_dump_second_roadmap);
-
-
+      }
+      sensor_msgs::ImagePtr msg_to_dump_second_roadmap = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+      image_pub2_.publish(msg_to_dump_second_roadmap);
     }
 
 

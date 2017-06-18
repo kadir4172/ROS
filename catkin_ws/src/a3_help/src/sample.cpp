@@ -37,11 +37,12 @@ namespace enc = sensor_msgs::image_encodings;
  * This node shows some connections and publishing images
  */
 void add_start_goal_and_calculate_shortest_path(int , int , int , int , int );
-void detect_regions(int , int , int , int , int , int, int, int, int, int, int );
+bool detect_regions(int , int , int , int , int , int, int, int, int, int, int );
 
 
 #define BUFFER_SIZE 10000
 cv::Mat image;
+cv::Mat tmp ;	
 std::vector< std::tuple<int,int> > configuration_point_list;
 //This array will hold distance of shortest paths to node j from source
 int distance[BUFFER_SIZE];
@@ -167,7 +168,7 @@ public:
     //bool global2image(double global_x, double global_y, int* local_x, int* local_y){
 //TODO call shortest path function here
 
-detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_col, goal_row, goal_col);
+  while(!detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_col, goal_row, goal_col));
 
     }
 
@@ -369,7 +370,7 @@ detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_c
         ros::Time timeOdom = ros::Time::now();;
         ros::Time timeImage = ros::Time::now();;
         //cv::Mat image;
-	cv::Mat tmp ;		
+	
 
 	geometry_msgs::Pose pose;
 
@@ -390,14 +391,14 @@ detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_c
             buffer.buffer_mutex_.unlock();
 
             //! Lock image buffer, take one message from deque and unlock it
-            imageBuffer.buffer_mutex_.lock();
-            if(imageBuffer.imageDeq.size()>0){
-                image = imageBuffer.imageDeq.front();
-                timeImage = imageBuffer.timeStampDeq.front();
+            //imageBuffer.buffer_mutex_.lock();
+            //if(imageBuffer.imageDeq.size()>0){
+                //image = imageBuffer.imageDeq.front();
+                //timeImage = imageBuffer.timeStampDeq.front();
                 //imageBuffer.imageDeq.pop_front();
                 //imageBuffer.timeStampDeq.pop_front();
-            }
-            imageBuffer.buffer_mutex_.unlock();
+            //}
+            //imageBuffer.buffer_mutex_.unlock();
 
             //Let's do something with the incoming ogMap now;
             //on every 100 iterations
@@ -419,10 +420,10 @@ detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_c
                std::cout << "local_y:"  << local_y  << " local_x:"  << local_x  << " is:" << result << std::endl;   
                std::cout << "global_y:" << global_y << " global_x:" << global_x << " is:" << result << std::endl;   
 
- 	       cv::cvtColor(image,tmp,CV_GRAY2RGB);
-               cv::circle(tmp, cv::Point(local_x, local_y), 1, CV_RGB(0,0,255),-1);               
-               //sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
-               sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", image).toImageMsg();
+ 	       //cv::cvtColor(image,tmp,CV_GRAY2RGB);
+               //cv::circle(tmp, cv::Point(local_x, local_y), 50, CV_RGB(0,0,255),-1);               
+               sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+               //sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", image).toImageMsg();
                image_pub_.publish(msg);
 
             }
@@ -433,67 +434,6 @@ detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_c
             }
         }
     }
-
-};
-
-
-int main(int argc, char **argv)
-{
-
-
-  /**
-   * The ros::init() function needs to see argc and argv so that it can perform
-   * any ROS arguments and name remapping that were provided at the command line. For programmatic
-   * remappings you can use a different version of init() which takes remappings
-   * directly, but for most command-line programs, passing argc and argv is the easiest
-   * way to do it.  The third argument to init() is the name of the node.
-   *
-   * You must call one of the versions of ros::init() before using any other
-   * part of the ROS system.
-   */
-  ros::init(argc, argv, "gazebo_retrieve");
-
-  /**
-   * NodeHandle is the main access point to communications with the ROS system.
-   * The first NodeHandle constructed will fully initialize this node, and the last
-   * NodeHandle destructed will close down the node.
-   */
-  ros::NodeHandle nh;
-
-  /**
-   * Let's start seperate thread first, to do that we need to create object
-   * and thereafter start the thread on teh function desired
-   */
-  std::shared_ptr<GazeboRetrieve> gc(new GazeboRetrieve(nh));
-  std::thread t(&GazeboRetrieve::seperateThread,gc);
-
-  /**
-   * ros::spin() will enter a loop, pumping callbacks.  With this version, all
-   * callbacks will be called from within this thread (the main one).  ros::spin()
-   * will exit when Ctrl-C is pressed, or the node is shutdown by the master.
-   */
-  ros::spin();
-
-  /**
-   * Let's cleanup everything, shutdown ros and join the thread
-   */
-  ros::shutdown();
-  t.join();
-
-  return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -514,7 +454,7 @@ bool check_line_segment(int start_row, int start_col, int end_row, int end_col){
 	   }
 	}
 
-    cv::line  (image, cv::Point(start_col, start_row), cv::Point(end_col, end_row), CV_RGB(255,0,0), 1);
+    cv::line  (tmp, cv::Point(start_col, start_row), cv::Point(end_col, end_row), CV_RGB(255,0,0), 1);
 	return true;
 }
 
@@ -526,7 +466,7 @@ bool check_line_segment(int start_row, int start_col, int end_row, int end_col){
 
 
 
-void detect_regions(int min_col, int min_row, int max_col, int max_row, int number_of_regions_in_col, int number_of_regions_in_row, int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
+bool detect_regions(int min_col, int min_row, int max_col, int max_row, int number_of_regions_in_col, int number_of_regions_in_row, int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
 	double row_length = (max_row - min_row) / number_of_regions_in_row;
 	double col_length   = (max_col    - min_col) / number_of_regions_in_col;
     std::cout << "row_length: " << row_length << std::endl;
@@ -538,6 +478,17 @@ void detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
 	std::vector< std::vector<int> > occupied_pixel_counter(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
 	std::vector< std::vector<int> > number_of_configurations(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
     //std::cout << "buraya geldi" <<  occupied_pixel_counter[7][20]  << std::endl;
+
+            imageBuffer.buffer_mutex_.lock();
+            while(imageBuffer.imageDeq.size()<=0){
+                ROS_INFO("detect_regions: Unable to proceed, no image found on buffer"); 
+                imageBuffer.buffer_mutex_.unlock(); 
+                return false;              
+            }
+            image = imageBuffer.imageDeq.front();
+            cv::cvtColor(image,tmp,CV_GRAY2RGB);
+            imageBuffer.buffer_mutex_.unlock(); 
+
 
     for(int i = min_row; i<max_row; i++){
     	for(int j = min_col; j<max_col; j++){
@@ -599,6 +550,7 @@ void detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
     }
 
     add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col);
+ return true; 
 }
 
 
@@ -627,7 +579,7 @@ void printPath(int parent[], int j)
         return;
 
     printPath(parent, parent[j]);
-    cv::line  (image, cv::Point(std::get<1>(configuration_point_list.at(j)), std::get<0>(configuration_point_list.at(j))), cv::Point(std::get<1>(configuration_point_list.at(parent[j])), std::get<0>(configuration_point_list.at(parent[j]))), CV_RGB(255,255,0), 1);
+    cv::line  (tmp, cv::Point(std::get<1>(configuration_point_list.at(j)), std::get<0>(configuration_point_list.at(j))), cv::Point(std::get<1>(configuration_point_list.at(parent[j])), std::get<0>(configuration_point_list.at(parent[j]))), CV_RGB(0,0,255), 2);
     //printf("  %d \n", parent[j]);
     printf("  %d ", j);
 }
@@ -735,8 +687,8 @@ void add_start_goal_and_calculate_shortest_path(int total_number_of_configuratio
 	std::multimap<int,int> point_list;
    for (std::vector< std::tuple<int,int> >::iterator it1 = configuration_point_list.begin() ; it1 != configuration_point_list.end(); ++it1){
 	   std::cout << "Distances to node" << std::distance(configuration_point_list.begin(), it1) << ": "<< std::get<0>(*it1) << " , "<< std::get<1>(*it1) << std::endl;
-	   cv::circle(image,cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 10, CV_RGB(255,0,0),-1);
-	   cv::putText(image, std::to_string(std::distance(configuration_point_list.begin(), it1)), cv::Point(std::get<1>(*it1),std::get<0>(*it1)), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0,200,200), 4);
+	   cv::circle(tmp,cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 2, CV_RGB(0,255,0),-1);
+	   cv::putText(tmp, std::to_string(std::distance(configuration_point_list.begin(), it1)), cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 0, 0.7, cv::Scalar(0,100,100), 1, 8);
      for (std::vector< std::tuple<int,int> >::iterator it2 = configuration_point_list.begin() ; it2 != configuration_point_list.end(); ++it2){
     	 //length_array[std::distance(configuration_point_list.begin(), it2)] = pow((std::get<0>(*it1) - std::get<0>(*it2)), 2) + pow((std::get<1>(*it1) - std::get<1>(*it2)), 2);
     	//std::cout << "row: " << std::get<0>(*it) << " col: " << std::get<1>(*it) << std::endl;
@@ -785,4 +737,69 @@ if(distance[destination] < INT_MAX){
 delete(graph);
 
 }
+
+
+
+};
+
+
+int main(int argc, char **argv)
+{
+
+
+  /**
+   * The ros::init() function needs to see argc and argv so that it can perform
+   * any ROS arguments and name remapping that were provided at the command line. For programmatic
+   * remappings you can use a different version of init() which takes remappings
+   * directly, but for most command-line programs, passing argc and argv is the easiest
+   * way to do it.  The third argument to init() is the name of the node.
+   *
+   * You must call one of the versions of ros::init() before using any other
+   * part of the ROS system.
+   */
+  ros::init(argc, argv, "gazebo_retrieve");
+
+  /**
+   * NodeHandle is the main access point to communications with the ROS system.
+   * The first NodeHandle constructed will fully initialize this node, and the last
+   * NodeHandle destructed will close down the node.
+   */
+  ros::NodeHandle nh;
+
+  /**
+   * Let's start seperate thread first, to do that we need to create object
+   * and thereafter start the thread on teh function desired
+   */
+  std::shared_ptr<GazeboRetrieve> gc(new GazeboRetrieve(nh));
+  std::thread t(&GazeboRetrieve::seperateThread,gc);
+
+  /**
+   * ros::spin() will enter a loop, pumping callbacks.  With this version, all
+   * callbacks will be called from within this thread (the main one).  ros::spin()
+   * will exit when Ctrl-C is pressed, or the node is shutdown by the master.
+   */
+  ros::spin();
+
+  /**
+   * Let's cleanup everything, shutdown ros and join the thread
+   */
+  ros::shutdown();
+  t.join();
+
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -67,8 +67,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0c9f85c5bdba78af3771cf66b3fb6747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33bd7b14e010bda5f1fcf5d061facd03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a33bd7b14e010bda5f1fcf5d061facd03">printPath</a> (int <a class="el" href="sample_8cpp.html#ab61d0469f556b9855d58bf2364d509d9">parent</a>[], int j)</td></tr>
 <tr class="separator:a33bd7b14e010bda5f1fcf5d061facd03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ac79025372200fb05052f70fafb84fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a3ac79025372200fb05052f70fafb84fc">printSolution</a> (int dist[], int n, int <a class="el" href="sample_8cpp.html#ab61d0469f556b9855d58bf2364d509d9">parent</a>[], int size_of_graph)</td></tr>
-<tr class="separator:a3ac79025372200fb05052f70fafb84fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8013191ebdb8969eae47c56e34449589"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a8013191ebdb8969eae47c56e34449589">requestGoal</a> (a3_help::RequestGoal::Request &amp;req, a3_help::RequestGoal::Response &amp;res)</td></tr>
 <tr class="separator:a8013191ebdb8969eae47c56e34449589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a796dcc46dce0bc0e04d1f5a2670b2f07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a796dcc46dce0bc0e04d1f5a2670b2f07">seperateThread</a> ()</td></tr>
@@ -236,7 +234,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00757">757</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00732">732</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -444,8 +442,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>This function returns minimum distance to uncovered vertices, it will be used by Shortest Path algorithm </p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00637">637</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00633">633</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -696,56 +695,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>This recursive function sweeps parent list up to source itself </p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00652">652</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a3ac79025372200fb05052f70fafb84fc"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int GazeboRetrieve::printSolution </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>dist</em>[], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>parent</em>[], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>size_of_graph</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00678">678</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00646">646</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -849,8 +801,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Dijkstra algorithm to find shortest path, given an adjacency graph </p>
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00691">691</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00673">673</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -892,7 +845,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00734">734</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sample_8cpp_source.html#l00709">709</a> of file <a class="el" href="sample_8cpp_source.html">sample.cpp</a>.</p>
 
 </div>
 </div>
@@ -1304,7 +1257,7 @@ Private Attributes</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://wiki.ros.org/a3_help">a3_help</a><br />
 Author(s): </br />
-<small>autogenerated on Sun Jun 18 2017 16:30:43</small>
+<small>autogenerated on Sun Jun 18 2017 16:39:10</small>
 </div>
 </body>
 </html>

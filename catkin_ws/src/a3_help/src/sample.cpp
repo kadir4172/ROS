@@ -629,84 +629,63 @@ public:
         return false;       
       }
     }
-
-
-
-
-//This function returns minimum distance to uncovered vertices
-int find_min_distance(int* distance, bool* is_point_used, int size_of_graph)
-{
-    //determine  minimum value as maximum possible value
-    int min = INT_MAX, min_index;
-
-    for (int v = 0; v < size_of_graph; v++)
+    
+    int find_min_distance(int* distance, bool* is_point_used, int size_of_graph){
+    //!This function returns minimum distance to uncovered vertices, it will be used by Shortest Path algorithm
+    	
+      //determine  minimum value as maximum possible value
+      int min = INT_MAX, min_index;
+    
+      //Look for a minimum distance neighbor
+      for (int v = 0; v < size_of_graph; v++)
         if (is_point_used[v] == false && distance[v] <= min)
-            min = distance[v], min_index = v;
-
-    return min_index;
-}
-
-
-
-//This recursive function sweeps parent list up to source itself
-void printPath(int parent[], int j)
-{
-    // Base Case : If j is source
-    if (parent[j]==-1)
-        return;
-
-    printPath(parent, parent[j]);
-
-    node_on_path.position.x = std::get<1>(configuration_point_list.at(j));
-    node_on_path.position.y = std::get<0>(configuration_point_list.at(j));
-    node_on_path.position.z = 0;
-    node_on_path.orientation.x = 0;
-    node_on_path.orientation.y = 0;
-    node_on_path.orientation.z = 0;
-    node_on_path.orientation.w = 0;
-    path_to_publish.poses.push_back(node_on_path);
-    cv::line  (tmp, cv::Point(std::get<1>(configuration_point_list.at(j)), std::get<0>(configuration_point_list.at(j))), cv::Point(std::get<1>(configuration_point_list.at(parent[j])), std::get<0>(configuration_point_list.at(parent[j]))), CV_RGB(0,0,255), 2);
-    //printf("  %d \n", parent[j]);
-    printf("  %d ", j);
-}
-
-
-
-
-// A utility function to print the constructed distance
-// array
-int printSolution(int dist[], int n, int parent[], int size_of_graph)
-{
-    int src = 0;
-    printf("Vertex\t  Distance\tPath");
-    for (int i = 1; i < size_of_graph; i++)
-    {
-        printf("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src);
-        printPath(parent, i);
+          min = distance[v], min_index = v;
+      return min_index;
     }
-    return 0;
-}
 
-//Dijkstra algorithm to find shortest path, given an adjacency graph
-void Shortest_Path(int**graph, int src, int size_of_graph)
-{
+    void printPath(int parent[], int j){
+    //!This recursive function sweeps parent list up to source itself
+    
+      // Base Case : If j is source
+      if (parent[j]==-1)
+        return;
+       
+      //Call this function recursively to find parent of each node
+      printPath(parent, parent[j]);
 
+      //Fill node_on_path object with parent node to be published as a PoseArray
+      node_on_path.position.x = std::get<1>(configuration_point_list.at(j));
+      node_on_path.position.y = std::get<0>(configuration_point_list.at(j));
+      node_on_path.position.z = 0;
+      node_on_path.orientation.x = 0;
+      node_on_path.orientation.y = 0;
+      node_on_path.orientation.z = 0;
+      node_on_path.orientation.w = 0;
+      path_to_publish.poses.push_back(node_on_path);
+      
+      //Add this line on shortest path to OGMAP with red color
+      cv::line  (tmp, cv::Point(std::get<1>(configuration_point_list.at(j)), std::get<0>(configuration_point_list.at(j))), cv::Point(std::get<1>(configuration_point_list.at(parent[j])), std::get<0>(configuration_point_list.at(parent[j]))), CV_RGB(0,0,255), 2);
+      
+      //Print index of this parent node
+      printf("  %d ", j);
+    }
 
-    //determine  initial minimum value as maximum possible and is_point_used to false
-    for (int i = 0; i < size_of_graph; i++)
-    {
+    void Shortest_Path(int**graph, int src, int size_of_graph){
+    //!Dijkstra algorithm to find shortest path, given an adjacency graph
+
+      //Determine  initial minimum value as maximum possible and is_point_used to false
+      for (int i = 0; i < size_of_graph; i++){
         parent[0] = -1;
         distance[i] = INT_MAX;
         is_point_used[i] = false;
-    }
+      }
 
-    // Distance of source node to itself is always zero
-    distance[src] = 0;
+      // Distance of source node to itself is always zero
+      distance[src] = 0;
 
-    //For all nodes in adjacency graph, find the shortest path from source
-    for (int count = 0; count < size_of_graph-1; count++)
-    {
-       //Find minimum distance between unused nodes
+      //For all nodes in adjacency graph, find the shortest path from source
+      for (int count = 0; count < size_of_graph-1; count++){
+        //Find minimum distance between unused nodes
         int u = find_min_distance(distance, is_point_used, size_of_graph);
 
         //Change flag of this minimum distance node to 'used'
@@ -714,19 +693,15 @@ void Shortest_Path(int**graph, int src, int size_of_graph)
 
         //Update distances to this node
         for (int v = 0; v < size_of_graph; v++)
-
-        	// Update distance[v] only if its not used
-            if (!is_point_used[v] && graph[u][v] &&
-                distance[u] + graph[u][v] < distance[v])
-            {
-                parent[v]  = u; //Update parent list of v
-                distance[v] = distance[u] + graph[u][v]; //Update distance array of v
-            }
+          // Update distance[v] only if its not used
+          if (!is_point_used[v] && graph[u][v] &&
+             distance[u] + graph[u][v] < distance[v])
+          {
+            parent[v]  = u; //Update parent list of v
+            distance[v] = distance[u] + graph[u][v]; //Update distance array of v
+          }
+      }
     }
-
-    // print the constructed distance array
-    //printSolution(distance, NUMBER_OF_NODES, parent);
-}
 
 
 

@@ -415,69 +415,71 @@ public:
       }
     }
 
-    void laserCallback(const sensor_msgs::LaserScanConstPtr& msg)
-    {
-        //! Below sample cicrulates through the scan and finds closest point to robot
-        double closest_point=msg->range_max;
-        double angle=0;
-        double x,y;
-        for (unsigned int idx=0 ; idx < msg->ranges.size() ; idx++){
-            if(msg->ranges.at(idx)<closest_point){
-                closest_point=msg->ranges.at(idx);
-                angle=msg->angle_min+(idx*msg->angle_increment);
-            }
+    void laserCallback(const sensor_msgs::LaserScanConstPtr& msg){
+    //! Below sample circulates through the scan and finds closest point to robot
+      
+      //Initialize closest_point variable with range_max from incoming message
+      double closest_point=msg->range_max;
+      double angle=0;
+      double x,y;
+      
+      //Sweep all message components to find closest point within range
+      for (unsigned int idx=0 ; idx < msg->ranges.size() ; idx++){
+        if(msg->ranges.at(idx)<closest_point){
+          closest_point=msg->ranges.at(idx);
+          angle=msg->angle_min+(idx*msg->angle_increment);
         }
-        ros::Time timeLaser = msg->header.stamp;
-        x = closest_point * cos(angle);
-        y = closest_point * sin(angle);
-        //std::cout << timeLaser << " L: [d,theta,x,y]=[" << closest_point << "," << angle << "," << x << "," << y << "]" << std::endl;
+      }
+      
+      //Get Timestamp
+      ros::Time timeLaser = msg->header.stamp;
+      
+      //Find x,y values of closest point
+      x = closest_point * cos(angle);
+      y = closest_point * sin(angle);
+      
+      //Dump message for debug purposes
+      //std::cout << timeLaser << " L: [d,theta,x,y]=[" << closest_point << "," << angle << "," << x << "," << y << "]" << std::endl;
     }
 
-    void imageCallback(const sensor_msgs::ImageConstPtr& msg)
-    {
-        //! Below code pushes the image and time to a deque, to share across threads
-        try
-        {
-          if (enc::isColor(msg->encoding))
-            cvPtr_ = cv_bridge::toCvCopy(msg, enc::BGR8);
-          else
-            cvPtr_ = cv_bridge::toCvCopy(msg, enc::MONO8);
-        }
-        catch (cv_bridge::Exception& e)
-        {
-          ROS_ERROR("cv_bridge exception: %s", e.what());
-          return;
-        }
+    void imageCallback(const sensor_msgs::ImageConstPtr& msg){
+    //! Below code pushes the image and time to a deque, to share across threads
+      
+      //bridge incoming message to cvPtr_ securely, otherwise throw exception
+      try{
+        if (enc::isColor(msg->encoding))
+          cvPtr_ = cv_bridge::toCvCopy(msg, enc::BGR8);
+        else
+          cvPtr_ = cv_bridge::toCvCopy(msg, enc::MONO8);
+      }
+      catch (cv_bridge::Exception& e){
+        ROS_ERROR("cv_bridge exception: %s", e.what());
+        return;
+      }
 
-        imageBuffer.buffer_mutex_.lock();
-        imageBuffer.imageDeq.push_back(cvPtr_->image);
-        imageBuffer.timeStampDeq.push_back(msg->header.stamp);
-        if(imageBuffer.imageDeq.size()>2){
-            imageBuffer.imageDeq.pop_front();
-            imageBuffer.timeStampDeq.pop_front();
-        }
-        imageBuffer.buffer_mutex_.unlock();
-
-    }
-
-
-    void seperateThread() {
-       /**
-        * The below loop runs until ros is shutdown, to ensure this thread does not remain
-        * a zombie thread
-        * Loop is reserved for future usage
-        */
-
-
-        while (ros::ok()) {      
-                std::this_thread::sleep_for (std::chrono::milliseconds(10));
-            
-        }
+      //Lock imageBuffer for secure write operation
+      imageBuffer.buffer_mutex_.lock();
+      
+      //Add image and timestamp to deq
+      imageBuffer.imageDeq.push_back(cvPtr_->image);
+      imageBuffer.timeStampDeq.push_back(msg->header.stamp);
+      //If we have more than 2 images on deq, release the oldest one
+      if(imageBuffer.imageDeq.size()>2){
+        imageBuffer.imageDeq.pop_front();
+        imageBuffer.timeStampDeq.pop_front();
+      }
+      imageBuffer.buffer_mutex_.unlock();
     }
 
 
-
-
+    void seperateThread(){
+    //! The below loop runs until ros is shutdown, to ensure this thread does not remain a zombie thread        
+    
+      //There is nothing to do specifically within this thread	
+      while (ros::ok()){      
+        std::this_thread::sleep_for (std::chrono::milliseconds(10));
+      }
+    }
 
 
 

@@ -93,10 +93,11 @@ namespace enc = sensor_msgs::image_encodings;
           }
         }
       }
-        double discovered_percentage = (counter*100)/9844; //!get discovered percentage of actual map with size of 6.27x15,7[m] and 0.1[m] resolution
-	std::cout << "Discovered Percentage: %" << discovered_percentage << std::endl;
+
         
       if(active_discovery){
+        double discovered_percentage = (counter*100)/9844; //!get discovered percentage of actual map with size of 6.27x15,7[m] and 0.1[m] resolution
+	std::cout << "Discovered Percentage: %" << discovered_percentage << std::endl;
         if(discovered_percentage > 70.0){ //! When robot discover the working space more than %90, stop random walk process and publish goal state
           std_msgs::String msg;  
           std::stringstream ss;

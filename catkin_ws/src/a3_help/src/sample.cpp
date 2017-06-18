@@ -36,7 +36,7 @@ namespace enc = sensor_msgs::image_encodings;
 /**
  * This node shows some connections and publishing images
  */
-void add_start_goal_and_calculate_shortest_path(int , int , int , int , int );
+bool add_start_goal_and_calculate_shortest_path(int , int , int , int , int );
 bool detect_regions(int , int , int , int , int , int, int, int, int, int, int );
 
 
@@ -165,8 +165,7 @@ public:
      std::cout << "Max   Col" << max_col   << std::endl;
 
 
-    //bool global2image(double global_x, double global_y, int* local_x, int* local_y){
-//TODO call shortest path function here
+
 
   while(!detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_col, goal_row, goal_col));
 
@@ -442,14 +441,12 @@ public:
 
 
 bool check_line_segment(int start_row, int start_col, int end_row, int end_col){
-	//cv::Mat tmp = image.clone();
-
 
     cv::LineIterator it(image, cv::Point(start_col, start_row), cv::Point(end_col, end_row), 8);
 	for(int i = 0; i < it.count; i++, ++it)
 	{
-		//call check point is free with pos().x(col) and pos().y(row)
-	   if(false){
+           //check point is free 
+	   if(!isConfigurationFree(it.pos().y,it.pos().x)){
 		   return false;
 	   }
 	}
@@ -474,7 +471,7 @@ bool detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
 	int total_occupied_cells = 0;
 	int row_region;
 	int col_region;
-	int pixel_in_this_i_j = 127;
+
 	std::vector< std::vector<int> > occupied_pixel_counter(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
 	std::vector< std::vector<int> > number_of_configurations(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
     //std::cout << "buraya geldi" <<  occupied_pixel_counter[7][20]  << std::endl;
@@ -498,14 +495,13 @@ bool detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
             //std::cout << "j: " << j << std::endl;
             //std::cout << "row_region: " << row_region << std::endl;
             //std::cout << "col_region: " << col_region << std::endl;
-            //TODO assign pixel_in_this_i_j
-            if(pixel_in_this_i_j != 255){ //if that pixel is not free
+            if(!isConfigurationFree(i,j)){ //if that pixel is not free
             	occupied_pixel_counter[row_region][col_region] ++;
             	total_occupied_cells ++;
             }
     	}
     }
-    std::cout << "buraya geldi" << std::endl;   
+
     std::cout << "total_occupied_cells" << total_occupied_cells<<  std::endl;
     int total_configuration_points = 0;
     for(int k = 0; k<number_of_regions_in_row; k++){
@@ -539,8 +535,8 @@ bool detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
             while(points_in_region < number_of_configurations[k][l] ){
             	configuration_point_row = region_min_row + rand() % (int)row_length;
             	configuration_point_col = region_min_col + rand() % (int)col_length;
-            	//if(check whether this point is free)
-            	if(true){
+            	//check whether this point is free
+            	if(isConfigurationFree(configuration_point_row, configuration_point_col)){
             		points_in_region ++ ;
             		configuration_point_list.push_back( std::tuple<int, int>(configuration_point_row,configuration_point_col) );
             		std::cout << "Node: " << configuration_point_list.size() << " " << configuration_point_row << "," << configuration_point_col << std::endl;
@@ -549,8 +545,15 @@ bool detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
     	}
     }
 
-    add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col);
- return true; 
+    if(add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col)){
+     return true;  
+    }
+    else{
+      ROS_INFO("detect_regions: No Path Found, will try with more configuration points"); 
+      return false;       
+    }
+
+
 }
 
 
@@ -668,7 +671,7 @@ void test_ordered_multimap(int* length_array, std::multimap<int,int> first, int 
 
 
 
-void add_start_goal_and_calculate_shortest_path(int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
+bool add_start_goal_and_calculate_shortest_path(int total_number_of_configurations, int start_row, int start_col, int goal_row, int goal_col){
 
     std::vector< std::tuple<int,int> >::iterator it = configuration_point_list.begin();
     configuration_point_list.insert ( it , std::tuple<int, int>(goal_row,goal_col) );
@@ -688,7 +691,7 @@ void add_start_goal_and_calculate_shortest_path(int total_number_of_configuratio
    for (std::vector< std::tuple<int,int> >::iterator it1 = configuration_point_list.begin() ; it1 != configuration_point_list.end(); ++it1){
 	   std::cout << "Distances to node" << std::distance(configuration_point_list.begin(), it1) << ": "<< std::get<0>(*it1) << " , "<< std::get<1>(*it1) << std::endl;
 	   cv::circle(tmp,cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 2, CV_RGB(0,255,0),-1);
-	   cv::putText(tmp, std::to_string(std::distance(configuration_point_list.begin(), it1)), cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 0, 0.7, cv::Scalar(0,100,100), 1, 8);
+	   cv::putText(tmp, std::to_string(std::distance(configuration_point_list.begin(), it1)), cv::Point(std::get<1>(*it1),std::get<0>(*it1)), 1, 0.4, cv::Scalar(0,100,100), 1, 8);
      for (std::vector< std::tuple<int,int> >::iterator it2 = configuration_point_list.begin() ; it2 != configuration_point_list.end(); ++it2){
     	 //length_array[std::distance(configuration_point_list.begin(), it2)] = pow((std::get<0>(*it1) - std::get<0>(*it2)), 2) + pow((std::get<1>(*it1) - std::get<1>(*it2)), 2);
     	//std::cout << "row: " << std::get<0>(*it) << " col: " << std::get<1>(*it) << std::endl;
@@ -732,10 +735,12 @@ if(distance[destination] < INT_MAX){
 	std::cout << "Path Found" <<  std::endl;
 	printPath(parent, destination);
 	std::cout << "Distance is:" << distance[destination] << std::endl;
+        delete(graph);
+        return true;
 }
 
 delete(graph);
-
+return false;
 }
 
 

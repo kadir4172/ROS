@@ -37,8 +37,7 @@ namespace enc = sensor_msgs::image_encodings;
 /**
  * This node shows some connections and publishing images
  */
-bool add_start_goal_and_calculate_shortest_path(int , int , int , int , int );
-bool detect_regions(int , int , int , int , int , int, int, int, int, int, int );
+
 
 
 #define BUFFER_SIZE 10000
@@ -395,79 +394,13 @@ std::cout << "Goal_Row: " << goal_row << " Goal_Column: " << goal_col << std::en
        /**
         * The below loop runs until ros is shutdown, to ensure this thread does not remain
         * a zombie thread
-        *
-        * The loop locks the buffer, checks the size
-        * And then pulls items: the pose and timer_t
-        * You can think if these could have been combined into one ...
+        * Loop is reserved for future usage
         */
 
-        double yaw,x,y;
-        /// The below gets the current Ros Time
-        ros::Time timeOdom = ros::Time::now();;
-        ros::Time timeImage = ros::Time::now();;
-        //cv::Mat image;
-	
 
-	geometry_msgs::Pose pose;
-
-        while (ros::ok()) {
-            //int deqSz =-1;
-
-            //buffer.buffer_mutex_.lock();
-            //deqSz = buffer.poseDeq.size();
-            //if (deqSz > 0) {
-            //    pose=buffer.poseDeq.front();
-            //    yaw = tf::getYaw(pose.orientation);
-            //    x = pose.position.x;
-            //    y = pose.position.y;
-            //    timeOdom = buffer.timeStampDeq.front();
-                //buffer.poseDeq.pop_front();
-                //buffer.timeStampDeq.pop_front();
-            //}
-            //buffer.buffer_mutex_.unlock();
-
-            //! Lock image buffer, take one message from deque and unlock it
-            //imageBuffer.buffer_mutex_.lock();
-            //if(imageBuffer.imageDeq.size()>0){
-                //image = imageBuffer.imageDeq.front();
-                //timeImage = imageBuffer.timeStampDeq.front();
-                //imageBuffer.imageDeq.pop_front();
-                //imageBuffer.timeStampDeq.pop_front();
-            //}
-            //imageBuffer.buffer_mutex_.unlock();
-
-            //Let's do something with the incoming ogMap now;
-            //on every 100 iterations
-            if (count_>100){
-               count_=0;
-
-
-               //std::cout << "rows"  << image.rows << std::endl;
-               //std::cout << "cols"  << image.cols << std::endl;
-               //int local_x ;
-               //int local_y ;
-               //double global_x;
-               //double global_y;
-    
-               //global2image(pose.position.x, pose.position.y, &local_x, &local_y);
-               //image2global(&global_x, &global_y, local_x, local_y);
-
-               //bool result = isConfigurationFree(local_y, local_x);
-               //std::cout << "local_y:"  << local_y  << " local_x:"  << local_x  << " is:" << result << std::endl;   
-               //std::cout << "global_y:" << global_y << " global_x:" << global_x << " is:" << result << std::endl;   
-
- 	       //cv::cvtColor(image,tmp,CV_GRAY2RGB);
-               //cv::circle(tmp, cv::Point(local_x, local_y), 50, CV_RGB(0,0,255),-1);               
-               //sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
-               //sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", image).toImageMsg();
-               //image_pub1_.publish(msg);
-
-            }
-            else{
-                count_++;
-                 // This delay slows the loop down for the sake of readability
+        while (ros::ok()) {      
                 std::this_thread::sleep_for (std::chrono::milliseconds(10));
-            }
+            
         }
     }
 

@@ -213,35 +213,50 @@ GazeboRetrieve::GazeboRetrieve(ros::NodeHandle nh)
 
     void GazeboRetrieve::laserCallback(const sensor_msgs::LaserScanConstPtr& msg){
     //! Below sample circulates through the scan and finds closest point to robot
+      
+      //Initialize closest_point variable with range_max from incoming message
       double closest_point=msg->range_max;
       double angle=0;
       double x,y;
+      
+      //Sweep all message components to find closest point within range
       for (unsigned int idx=0 ; idx < msg->ranges.size() ; idx++){
         if(msg->ranges.at(idx)<closest_point){
           closest_point=msg->ranges.at(idx);
           angle=msg->angle_min+(idx*msg->angle_increment);
         }
       }
+      
+      //Get Timestamp
       ros::Time timeLaser = msg->header.stamp;
+      
+      //Find x,y values of closest point
       x = closest_point * cos(angle);
       y = closest_point * sin(angle);
+      
+      //Dump message for debug purposes
       //std::cout << timeLaser << " L: [d,theta,x,y]=[" << closest_point << "," << angle << "," << x << "," << y << "]" << std::endl;
 
+      //Initialze 'obstacle found' with false
       obs = false;
       for (unsigned int i = 0; i < msg->ranges.size(); i++){
+    	//If any of the points in lase message is closer than minimum distance than assign obs=true
         if(msg->ranges.at(i) < minfrontdistance){
           obs = true;
           break;
         }
       }
 
+      //If obs or avoidcount is different from zero
       if(obs || avoidcount ){
         newspeed = avoidspeed;
         // once we start avoiding, continue avoiding for 2 seconds 
         // (we run at about 10Hz, so 20 loop iterations is about 2 sec) 
         if(!avoidcount){
+          //Reset avoid counter to 15 and randcount to zero	
           avoidcount = 15;
           randcount = 0;
+          //Start to turn to other side
           if(msg->ranges.at(msg->ranges.size()-1) <  msg->ranges.at(0))
             newturnrate = -turnrate;
           else
@@ -256,65 +271,41 @@ GazeboRetrieve::GazeboRetrieve(ros::NodeHandle nh)
         if(!randcount){
           // make random int tween -20 and 20 
           //randint = (1+(int)(40.0*rand()/(RAND_MAX+1.0))) - 20;
-              randint = rand() % 41 - 20;
-              newturnrate = randint*M_PI/180.0;
-              randcount = 20;
-            }
-            randcount--;
-          }
+          randint = rand() % 41 - 20;
+          newturnrate = randint*M_PI/180.0;
+          randcount = 20;
+        }
+        randcount--;
+      }
     }
 
 
-    void GazeboRetrieve::seperateThread() {
-       /**
-        * The thread runs until ros is shutdown, to ensure this thread does not remain
-        * a zombie thread
-        *
-        * The loop gets the velocity and turnrate computed from other thread
-        * and then feeds the velocity controller of the robot with the speed/turnrate
-		* Sleeps for 20ms thereafter
-        */
+    void GazeboRetrieve::seperateThread(){
+    //! The below loop runs until ros is shutdown, to ensure this thread does not remain a zombie thread      
 
-        double yaw,x,y;
-        /// The below gets the current Ros Time
-        ros::Time timeOdom = ros::Time::now();;
-        while (ros::ok()) {
-          if(continue_to_walk){
-            int deqSz =-1;
-
-            buffer.buffer_mutex_.lock();
-            deqSz = buffer.poseDeq.size();
-            if (deqSz > 0) {
-                geometry_msgs::Pose pose=buffer.poseDeq.front();
-                yaw = tf::getYaw(pose.orientation);
-                x = pose.position.x;
-                y = pose.position.y;
-                timeOdom = buffer.timeStampDeq.front();
-                buffer.poseDeq.pop_front();
-                buffer.timeStampDeq.pop_front();
-            }
-            buffer.buffer_mutex_.unlock();
-
-
-            // write commands to robot
-            cmdvel.linear.x = newspeed;
-            cmdvel.angular.z = newturnrate;
-			// printf("sending...[%f, %f]\n", cmdvel.linear.x, cmdvel.angular.z);
-
-
-	    velocity_pub.publish(cmdvel);
-            std::this_thread::sleep_for (std::chrono::milliseconds(10));
-          }
-          else{
-            cmdvel.linear.x = 0;
-            cmdvel.angular.z = 0;
-            velocity_pub.publish(cmdvel);
-            break;
-          }
-            
-
-
+      double yaw,x,y;
+      /// The below gets the current Ros Time
+      ros::Time timeOdom = ros::Time::now();;
+      while (ros::ok()) {
+        //If random walk flag is still true
+    	if(continue_to_walk){
+          // write commands to robot
+          cmdvel.linear.x = newspeed;
+          cmdvel.angular.z = newturnrate;
+ 
+          //Publish this command with velocity_pub publisher
+          velocity_pub.publish(cmdvel);
+          std::this_thread::sleep_for (std::chrono::milliseconds(10));
         }
+    	//If random walk flag is down, i.e. we are discovered at least %80 of map
+        else{
+          //Stop robot	
+          cmdvel.linear.x = 0;
+          cmdvel.angular.z = 0;
+          velocity_pub.publish(cmdvel);
+          break;
+        }
+      }
     }
 
 

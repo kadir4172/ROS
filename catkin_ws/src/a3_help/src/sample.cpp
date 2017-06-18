@@ -90,8 +90,13 @@ class GazeboRetrieve{
     //! This struct will hold a deque of Pose messages and time stamps of these messages and a mutex to share data safely
     struct DataBuffer
     {
+    	 //! Deque to store odometry message
         std::deque<geometry_msgs::Pose> poseDeq;
+        
+        //! Deque to store time of message
         std::deque<ros::Time> timeStampDeq;
+        
+        //! Mutex used to secure buffer
         std::mutex buffer_mutex_;
     };
     DataBuffer buffer;
@@ -99,8 +104,13 @@ class GazeboRetrieve{
     //! This struct will hold a deque of cv::Mat messages and time stamps of these messages and a mutex to share data safely
     struct ImageDataBuffer
     {
+    	//! Deque to store image
         std::deque<cv::Mat> imageDeq;
+        
+        //! Deque to store time of image
         std::deque<ros::Time> timeStampDeq;
+        
+        //! Mutex used to secure buffer
         std::mutex buffer_mutex_;
     };
     ImageDataBuffer imageBuffer;
@@ -211,6 +221,8 @@ public:
         if(number_of_configurations > 100){
           //If its not possible to find a shortest path even with 100 points, most probably goal state(which is randomly assigned) is not accessible in map
           ROS_INFO("No Shortest Path, most probably goal state is selected from an unaccessible place, please restart 'random_walk' component to generate new goal state");
+          std::cout << "Robot Position(row,column)" << start_row << " : " << start_col << std::endl;
+          std::cout << "Is Current Robot Position in Free Configuration Space?" << isConfigurationFree(start_row, start_col) << std::endl;
           return;
         }
       }

@@ -26,69 +26,143 @@
 class GazeboRetrieve{
 
 private:
+	//! This struct will hold a deque of Pose messages and time stamps of these messages and a mutex to share data safely
     struct DataBuffer
     {
-        std::deque<geometry_msgs::Pose> poseDeq;    //! Deque to store odometry message
-        std::deque<ros::Time> timeStampDeq;         //! Reque to store time of message
-        std::mutex buffer_mutex_;                   //! Mutex used to secure buffer
+      //! Deque to store odometry message
+      std::deque<geometry_msgs::Pose> poseDeq;
+      
+      //! Deque to store time of message
+      std::deque<ros::Time> timeStampDeq;
+      
+      //! Mutex used to secure buffer
+      std::mutex buffer_mutex_;                   
     };
+    
+    //! This struct will hold a deque of cv::Mat messages and time stamps of these messages and a mutex to share data safely
     struct ImageDataBuffer
     {
-        std::deque<cv::Mat> imageDeq;		    //! Deque to store image
-        std::deque<ros::Time> timeStampDeq;         //! Deque to store time of image
-        std::mutex buffer_mutex_;		    //! Mutex used to secure buffer
+    	 //! Deque to store image
+        std::deque<cv::Mat> imageDeq;
+        
+        //! Deque to store time of image
+        std::deque<ros::Time> timeStampDeq;
+        
+        //! Mutex used to secure buffer
+        std::mutex buffer_mutex_;		  
     };
 
 
 public:
-    GazeboRetrieve(ros::NodeHandle nh);             //! Constructore
+    //! Constructor
+    GazeboRetrieve(ros::NodeHandle nh);           
 
+    //! Destructor
     ~GazeboRetrieve();
 
-    void seperateThread();                          //! Thread of execution
+    //! Thread of execution
+    void seperateThread();
 
-    void imageCallback(const sensor_msgs::ImageConstPtr&);		//!Image Callback
-
-private:
-    void odomCallback(const nav_msgs::OdometryConstPtr& msg);   //! Odometry Callback
-    void laserCallback(const sensor_msgs::LaserScanConstPtr& msg);//! Laser Calback
-    void pathCallback(const geometry_msgs::PoseArrayConstPtr& msg);//! Path Calback
+    //!Image Callback
+    void imageCallback(const sensor_msgs::ImageConstPtr&);		
 
 private:
-    ros::NodeHandle nh_;//! Node Handle
-    image_transport::ImageTransport it_;    //! Image transport
-    image_transport::Publisher image_pub_;  //! Publisher
-    ros::Publisher velocity_pub;
-    ros::Publisher chatter_pub;             //! Goal State Publisher
-    ros::Subscriber sub1;                   //! Subscriber 1
-    ros::Subscriber sub2;                   //! Subscriber 2
-    image_transport::Subscriber sub3_;      //! Subscriber 3
-    ros::Subscriber sub4;                   //! Subscriber 4
-    ros::ServiceClient request_goal_client; //! Request Goal Service Client
-    cv_bridge::CvImagePtr cvPtr_;	    //! Image pointer to get OGMAP
+    //! Odometry Callback
+    void odomCallback(const nav_msgs::OdometryConstPtr& msg);  
+    
+    //! Laser Calback
+    void laserCallback(const sensor_msgs::LaserScanConstPtr& msg);
+    
+    //! Path Calback
+    void pathCallback(const geometry_msgs::PoseArrayConstPtr& msg);
 
+private:
+    //! Node Handle
+    ros::NodeHandle nh_;
+    
+    //! Image transport
+    image_transport::ImageTransport it_;
+    
+    //! Image transport
+    image_transport::Publisher image_pub_;
+    
+    //! Velocity Command Publisher
+    ros::Publisher velocity_pub;  
+    
+    //! Goal State Publisher
+    ros::Publisher chatter_pub;
+    
+    //! Subscriber 1
+    ros::Subscriber sub1;
+    
+    //! Subscriber 2
+    ros::Subscriber sub2;
+    
+    //! Subscriber 3
+    image_transport::Subscriber sub3_;
+    
+    //! Subscriber 4
+    ros::Subscriber sub4;
+    
+    //! Request Goal Service Client
+    ros::ServiceClient request_goal_client;
+    
+    //! Image pointer to get OGMAP
+    cv_bridge::CvImagePtr cvPtr_;	        
 
-    cv::Mat image_;                         //! Storage for OgMap in Mat
-    int count_;                             //! A counter to allow executing items on N iterations
-    int pixels_;                            //! size of OgMap in pixels
+    //! Storage for OgMap in Mat
+    cv::Mat image_;             
+    
+    //! A counter to allow executing items on N iterations
+    int count_;
+    
+    //! size of OgMap in pixels
+    int pixels_;                            
 
-    DataBuffer buffer;                      //! And now we have our container
-    ImageDataBuffer imageBuffer;            //! And now we have our container
+    
+    //! Data buffer to store position data from odometer
+    DataBuffer buffer;                      
+    
+    //! Image buffer to store image messages
+    ImageDataBuffer imageBuffer;           
 
+    //! Minimum front distance to avoid collision
     double minfrontdistance;
+    
+    //! Speed variable for random walk
     double speed;
+    
+    //! Avoid speed variable for random walk
     double avoidspeed;
+    
+    //! Turn rate variable for random walk
     double turnrate;
 
+    //! Flag to request goal position after certain threshold of discovery percentage
     bool active_discovery;
+    
+    //! Flag to stop random walk after certain threshold of discovery percentage
     bool continue_to_walk;
-      int randint;
-      int randcount;
-      int avoidcount;
-      bool obs;
-        // go into read-think-act loop
-        double newturnrate;
-double newspeed;
+    
+    //! Random variable for random walk
+    int randint;
+    
+    //! Random variable for random walk
+    int randcount;
+    
+    //! Counter variable for random walk
+    int avoidcount;
+      
+    //! Counter variable for random walk
+    bool obs;
+        
+    //! Turn rate variable for random walk
+    double newturnrate;
+
+    //! Speed variable for random walk
+    double newspeed;
+    
+    //! Cmdvel message to publish command
     geometry_msgs::Twist cmdvel;
 
 };

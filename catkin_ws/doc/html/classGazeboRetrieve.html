@@ -38,110 +38,127 @@
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGazeboRetrieve_1_1DataBuffer.html">DataBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct will hold a deque of Pose messages and time stamps of these messages and a mutex to share data safely.  <a href="structGazeboRetrieve_1_1DataBuffer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGazeboRetrieve_1_1ImageDataBuffer.html">ImageDataBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct will hold a deque of cv::Mat messages and time stamps of these messages and a mutex to share data safely.  <a href="structGazeboRetrieve_1_1ImageDataBuffer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad06a4c0946436a07fa1841626ff98f94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ad06a4c0946436a07fa1841626ff98f94">GazeboRetrieve</a> (ros::NodeHandle nh)</td></tr>
+<tr class="memdesc:ad06a4c0946436a07fa1841626ff98f94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ad06a4c0946436a07fa1841626ff98f94">More...</a><br /></td></tr>
 <tr class="separator:ad06a4c0946436a07fa1841626ff98f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6ac477e095c02d0fbe093a387372372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#af6ac477e095c02d0fbe093a387372372">imageCallback</a> (const sensor_msgs::ImageConstPtr &amp;)</td></tr>
-<tr class="memdesc:af6ac477e095c02d0fbe093a387372372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread of execution.  <a href="#af6ac477e095c02d0fbe093a387372372">More...</a><br /></td></tr>
+<tr class="memdesc:af6ac477e095c02d0fbe093a387372372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image Callback.  <a href="#af6ac477e095c02d0fbe093a387372372">More...</a><br /></td></tr>
 <tr class="separator:af6ac477e095c02d0fbe093a387372372"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a796dcc46dce0bc0e04d1f5a2670b2f07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a796dcc46dce0bc0e04d1f5a2670b2f07">seperateThread</a> ()</td></tr>
+<tr class="memdesc:a796dcc46dce0bc0e04d1f5a2670b2f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread of execution.  <a href="#a796dcc46dce0bc0e04d1f5a2670b2f07">More...</a><br /></td></tr>
 <tr class="separator:a796dcc46dce0bc0e04d1f5a2670b2f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8571db12dfbaf4317275e7ab9875d28b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a8571db12dfbaf4317275e7ab9875d28b">~GazeboRetrieve</a> ()</td></tr>
-<tr class="memdesc:a8571db12dfbaf4317275e7ab9875d28b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructore.  <a href="#a8571db12dfbaf4317275e7ab9875d28b">More...</a><br /></td></tr>
+<tr class="memdesc:a8571db12dfbaf4317275e7ab9875d28b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a8571db12dfbaf4317275e7ab9875d28b">More...</a><br /></td></tr>
 <tr class="separator:a8571db12dfbaf4317275e7ab9875d28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a0845002b918a4781adf8ccb51a040820"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a0845002b918a4781adf8ccb51a040820">laserCallback</a> (const sensor_msgs::LaserScanConstPtr &amp;msg)</td></tr>
-<tr class="memdesc:a0845002b918a4781adf8ccb51a040820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odometry Callback.  <a href="#a0845002b918a4781adf8ccb51a040820">More...</a><br /></td></tr>
+<tr class="memdesc:a0845002b918a4781adf8ccb51a040820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Laser Calback.  <a href="#a0845002b918a4781adf8ccb51a040820">More...</a><br /></td></tr>
 <tr class="separator:a0845002b918a4781adf8ccb51a040820"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c9f85c5bdba78af3771cf66b3fb6747"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a0c9f85c5bdba78af3771cf66b3fb6747">odomCallback</a> (const nav_msgs::OdometryConstPtr &amp;msg)</td></tr>
-<tr class="memdesc:a0c9f85c5bdba78af3771cf66b3fb6747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image Callback.  <a href="#a0c9f85c5bdba78af3771cf66b3fb6747">More...</a><br /></td></tr>
+<tr class="memdesc:a0c9f85c5bdba78af3771cf66b3fb6747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odometry Callback.  <a href="#a0c9f85c5bdba78af3771cf66b3fb6747">More...</a><br /></td></tr>
 <tr class="separator:a0c9f85c5bdba78af3771cf66b3fb6747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab16c15e37d222fe8321d80e0506a9cab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ab16c15e37d222fe8321d80e0506a9cab">pathCallback</a> (const geometry_msgs::PoseArrayConstPtr &amp;msg)</td></tr>
-<tr class="memdesc:ab16c15e37d222fe8321d80e0506a9cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Laser Calback.  <a href="#ab16c15e37d222fe8321d80e0506a9cab">More...</a><br /></td></tr>
+<tr class="memdesc:ab16c15e37d222fe8321d80e0506a9cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path Calback.  <a href="#ab16c15e37d222fe8321d80e0506a9cab">More...</a><br /></td></tr>
 <tr class="separator:ab16c15e37d222fe8321d80e0506a9cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a6dfcec69a7fae3796d00772351986c4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a6dfcec69a7fae3796d00772351986c4d">active_discovery</a></td></tr>
+<tr class="memdesc:a6dfcec69a7fae3796d00772351986c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to request goal position after certain threshold of discovery percentage.  <a href="#a6dfcec69a7fae3796d00772351986c4d">More...</a><br /></td></tr>
 <tr class="separator:a6dfcec69a7fae3796d00772351986c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3967913bc47b809f2b5a2b4085059214"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a3967913bc47b809f2b5a2b4085059214">avoidcount</a></td></tr>
+<tr class="memdesc:a3967913bc47b809f2b5a2b4085059214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counter variable for random walk.  <a href="#a3967913bc47b809f2b5a2b4085059214">More...</a><br /></td></tr>
 <tr class="separator:a3967913bc47b809f2b5a2b4085059214"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a330e24b141a6b52a35b12cd78d9ca1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a2a330e24b141a6b52a35b12cd78d9ca1">avoidspeed</a></td></tr>
+<tr class="memdesc:a2a330e24b141a6b52a35b12cd78d9ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avoid speed variable for random walk.  <a href="#a2a330e24b141a6b52a35b12cd78d9ca1">More...</a><br /></td></tr>
 <tr class="separator:a2a330e24b141a6b52a35b12cd78d9ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ff626bafaf7c1b9a7ad438cb8be67f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGazeboRetrieve_1_1DataBuffer.html">DataBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a2ff626bafaf7c1b9a7ad438cb8be67f1">buffer</a></td></tr>
-<tr class="memdesc:a2ff626bafaf7c1b9a7ad438cb8be67f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of OgMap in pixels  <a href="#a2ff626bafaf7c1b9a7ad438cb8be67f1">More...</a><br /></td></tr>
+<tr class="memdesc:a2ff626bafaf7c1b9a7ad438cb8be67f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data buffer to store position data from odometer.  <a href="#a2ff626bafaf7c1b9a7ad438cb8be67f1">More...</a><br /></td></tr>
 <tr class="separator:a2ff626bafaf7c1b9a7ad438cb8be67f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4de8da2ca673c01c6ea8ffc23e9c565d"><td class="memItemLeft" align="right" valign="top">ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a4de8da2ca673c01c6ea8ffc23e9c565d">chatter_pub</a></td></tr>
+<tr class="memdesc:a4de8da2ca673c01c6ea8ffc23e9c565d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal State Publisher.  <a href="#a4de8da2ca673c01c6ea8ffc23e9c565d">More...</a><br /></td></tr>
 <tr class="separator:a4de8da2ca673c01c6ea8ffc23e9c565d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0361a6ef360d1ba0a124ff9009ffc20e"><td class="memItemLeft" align="right" valign="top">geometry_msgs::Twist&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a0361a6ef360d1ba0a124ff9009ffc20e">cmdvel</a></td></tr>
+<tr class="memdesc:a0361a6ef360d1ba0a124ff9009ffc20e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cmdvel message to publish command.  <a href="#a0361a6ef360d1ba0a124ff9009ffc20e">More...</a><br /></td></tr>
 <tr class="separator:a0361a6ef360d1ba0a124ff9009ffc20e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed0991d01e5c8f5c3290f6b2a1344df1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#aed0991d01e5c8f5c3290f6b2a1344df1">continue_to_walk</a></td></tr>
+<tr class="memdesc:aed0991d01e5c8f5c3290f6b2a1344df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to stop random walk after certain threshold of discovery percentage.  <a href="#aed0991d01e5c8f5c3290f6b2a1344df1">More...</a><br /></td></tr>
 <tr class="separator:aed0991d01e5c8f5c3290f6b2a1344df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c3250d3c3ac4f65772fb67adb5e690c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a0c3250d3c3ac4f65772fb67adb5e690c">count_</a></td></tr>
-<tr class="memdesc:a0c3250d3c3ac4f65772fb67adb5e690c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for OgMap in Mat.  <a href="#a0c3250d3c3ac4f65772fb67adb5e690c">More...</a><br /></td></tr>
+<tr class="memdesc:a0c3250d3c3ac4f65772fb67adb5e690c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A counter to allow executing items on N iterations.  <a href="#a0c3250d3c3ac4f65772fb67adb5e690c">More...</a><br /></td></tr>
 <tr class="separator:a0c3250d3c3ac4f65772fb67adb5e690c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3fc3de0fea37034b21a90bf755b82ee"><td class="memItemLeft" align="right" valign="top">cv_bridge::CvImagePtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ad3fc3de0fea37034b21a90bf755b82ee">cvPtr_</a></td></tr>
-<tr class="memdesc:ad3fc3de0fea37034b21a90bf755b82ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request Goal Service Client.  <a href="#ad3fc3de0fea37034b21a90bf755b82ee">More...</a><br /></td></tr>
+<tr class="memdesc:ad3fc3de0fea37034b21a90bf755b82ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image pointer to get OGMAP.  <a href="#ad3fc3de0fea37034b21a90bf755b82ee">More...</a><br /></td></tr>
 <tr class="separator:ad3fc3de0fea37034b21a90bf755b82ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ceedf67e6bc2bf0b409e96e0d69c2e8"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a3ceedf67e6bc2bf0b409e96e0d69c2e8">image_</a></td></tr>
-<tr class="memdesc:a3ceedf67e6bc2bf0b409e96e0d69c2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image pointer to get OGMAP.  <a href="#a3ceedf67e6bc2bf0b409e96e0d69c2e8">More...</a><br /></td></tr>
+<tr class="memdesc:a3ceedf67e6bc2bf0b409e96e0d69c2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for OgMap in Mat.  <a href="#a3ceedf67e6bc2bf0b409e96e0d69c2e8">More...</a><br /></td></tr>
 <tr class="separator:a3ceedf67e6bc2bf0b409e96e0d69c2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8fe9b4b2506a62296d3d05697b93de0"><td class="memItemLeft" align="right" valign="top">image_transport::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ae8fe9b4b2506a62296d3d05697b93de0">image_pub_</a></td></tr>
 <tr class="memdesc:ae8fe9b4b2506a62296d3d05697b93de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image transport.  <a href="#ae8fe9b4b2506a62296d3d05697b93de0">More...</a><br /></td></tr>
 <tr class="separator:ae8fe9b4b2506a62296d3d05697b93de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3c794ddd31cefb0e52c2cb8c4aa0600"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGazeboRetrieve_1_1ImageDataBuffer.html">ImageDataBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ac3c794ddd31cefb0e52c2cb8c4aa0600">imageBuffer</a></td></tr>
-<tr class="memdesc:ac3c794ddd31cefb0e52c2cb8c4aa0600"><td class="mdescLeft">&#160;</td><td class="mdescRight">And now we have our container.  <a href="#ac3c794ddd31cefb0e52c2cb8c4aa0600">More...</a><br /></td></tr>
+<tr class="memdesc:ac3c794ddd31cefb0e52c2cb8c4aa0600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image buffer to store image messages.  <a href="#ac3c794ddd31cefb0e52c2cb8c4aa0600">More...</a><br /></td></tr>
 <tr class="separator:ac3c794ddd31cefb0e52c2cb8c4aa0600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84fc946c1855f038c4fccef4a0458902"><td class="memItemLeft" align="right" valign="top">image_transport::ImageTransport&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a84fc946c1855f038c4fccef4a0458902">it_</a></td></tr>
-<tr class="memdesc:a84fc946c1855f038c4fccef4a0458902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node Handle.  <a href="#a84fc946c1855f038c4fccef4a0458902">More...</a><br /></td></tr>
+<tr class="memdesc:a84fc946c1855f038c4fccef4a0458902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image transport.  <a href="#a84fc946c1855f038c4fccef4a0458902">More...</a><br /></td></tr>
 <tr class="separator:a84fc946c1855f038c4fccef4a0458902"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dc098c41aaf389de40d7881db7666ee"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a8dc098c41aaf389de40d7881db7666ee">minfrontdistance</a></td></tr>
-<tr class="memdesc:a8dc098c41aaf389de40d7881db7666ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">And now we have our container.  <a href="#a8dc098c41aaf389de40d7881db7666ee">More...</a><br /></td></tr>
+<tr class="memdesc:a8dc098c41aaf389de40d7881db7666ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum front distance to avoid collision.  <a href="#a8dc098c41aaf389de40d7881db7666ee">More...</a><br /></td></tr>
 <tr class="separator:a8dc098c41aaf389de40d7881db7666ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa97839c0da1e67a361d601f7142b5e4a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#aa97839c0da1e67a361d601f7142b5e4a">newspeed</a></td></tr>
+<tr class="memdesc:aa97839c0da1e67a361d601f7142b5e4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Speed variable for random walk.  <a href="#aa97839c0da1e67a361d601f7142b5e4a">More...</a><br /></td></tr>
 <tr class="separator:aa97839c0da1e67a361d601f7142b5e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6dd8d11b4188ad25642a9316e927578"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ad6dd8d11b4188ad25642a9316e927578">newturnrate</a></td></tr>
+<tr class="memdesc:ad6dd8d11b4188ad25642a9316e927578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn rate variable for random walk.  <a href="#ad6dd8d11b4188ad25642a9316e927578">More...</a><br /></td></tr>
 <tr class="separator:ad6dd8d11b4188ad25642a9316e927578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b9dbd90b05f12496985452dada69b7d"><td class="memItemLeft" align="right" valign="top">ros::NodeHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a7b9dbd90b05f12496985452dada69b7d">nh_</a></td></tr>
-<tr class="memdesc:a7b9dbd90b05f12496985452dada69b7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path Calback.  <a href="#a7b9dbd90b05f12496985452dada69b7d">More...</a><br /></td></tr>
+<tr class="memdesc:a7b9dbd90b05f12496985452dada69b7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node Handle.  <a href="#a7b9dbd90b05f12496985452dada69b7d">More...</a><br /></td></tr>
 <tr class="separator:a7b9dbd90b05f12496985452dada69b7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d33c179a2cdfcdf8942a00b26e2ca1b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a5d33c179a2cdfcdf8942a00b26e2ca1b">obs</a></td></tr>
+<tr class="memdesc:a5d33c179a2cdfcdf8942a00b26e2ca1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counter variable for random walk.  <a href="#a5d33c179a2cdfcdf8942a00b26e2ca1b">More...</a><br /></td></tr>
 <tr class="separator:a5d33c179a2cdfcdf8942a00b26e2ca1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49d8e842805bb51ced416fa086e2ecb7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a49d8e842805bb51ced416fa086e2ecb7">pixels_</a></td></tr>
-<tr class="memdesc:a49d8e842805bb51ced416fa086e2ecb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A counter to allow executing items on N iterations.  <a href="#a49d8e842805bb51ced416fa086e2ecb7">More...</a><br /></td></tr>
+<tr class="memdesc:a49d8e842805bb51ced416fa086e2ecb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of OgMap in pixels  <a href="#a49d8e842805bb51ced416fa086e2ecb7">More...</a><br /></td></tr>
 <tr class="separator:a49d8e842805bb51ced416fa086e2ecb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae62985d0b422a007e451ec1e664260d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ae62985d0b422a007e451ec1e664260d2">randcount</a></td></tr>
+<tr class="memdesc:ae62985d0b422a007e451ec1e664260d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random variable for random walk.  <a href="#ae62985d0b422a007e451ec1e664260d2">More...</a><br /></td></tr>
 <tr class="separator:ae62985d0b422a007e451ec1e664260d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4369809d3d244bd8ebe939bcc1654347"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a4369809d3d244bd8ebe939bcc1654347">randint</a></td></tr>
+<tr class="memdesc:a4369809d3d244bd8ebe939bcc1654347"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random variable for random walk.  <a href="#a4369809d3d244bd8ebe939bcc1654347">More...</a><br /></td></tr>
 <tr class="separator:a4369809d3d244bd8ebe939bcc1654347"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ae0acbd398e873e4a10a4e5b7dc5ec2"><td class="memItemLeft" align="right" valign="top">ros::ServiceClient&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a5ae0acbd398e873e4a10a4e5b7dc5ec2">request_goal_client</a></td></tr>
-<tr class="memdesc:a5ae0acbd398e873e4a10a4e5b7dc5ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscriber 4.  <a href="#a5ae0acbd398e873e4a10a4e5b7dc5ec2">More...</a><br /></td></tr>
+<tr class="memdesc:a5ae0acbd398e873e4a10a4e5b7dc5ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request Goal Service Client.  <a href="#a5ae0acbd398e873e4a10a4e5b7dc5ec2">More...</a><br /></td></tr>
 <tr class="separator:a5ae0acbd398e873e4a10a4e5b7dc5ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa90ddfed7d36d4f7933112ac5cac6bfc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#aa90ddfed7d36d4f7933112ac5cac6bfc">speed</a></td></tr>
+<tr class="memdesc:aa90ddfed7d36d4f7933112ac5cac6bfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Speed variable for random walk.  <a href="#aa90ddfed7d36d4f7933112ac5cac6bfc">More...</a><br /></td></tr>
 <tr class="separator:aa90ddfed7d36d4f7933112ac5cac6bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2aabb352c922ed7ede08273e856ca557"><td class="memItemLeft" align="right" valign="top">ros::Subscriber&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a2aabb352c922ed7ede08273e856ca557">sub1</a></td></tr>
-<tr class="memdesc:a2aabb352c922ed7ede08273e856ca557"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal State Publisher.  <a href="#a2aabb352c922ed7ede08273e856ca557">More...</a><br /></td></tr>
+<tr class="memdesc:a2aabb352c922ed7ede08273e856ca557"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscriber 1.  <a href="#a2aabb352c922ed7ede08273e856ca557">More...</a><br /></td></tr>
 <tr class="separator:a2aabb352c922ed7ede08273e856ca557"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5441b3037e92b3252eb6fcf317febc44"><td class="memItemLeft" align="right" valign="top">ros::Subscriber&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a5441b3037e92b3252eb6fcf317febc44">sub2</a></td></tr>
-<tr class="memdesc:a5441b3037e92b3252eb6fcf317febc44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscriber 1.  <a href="#a5441b3037e92b3252eb6fcf317febc44">More...</a><br /></td></tr>
+<tr class="memdesc:a5441b3037e92b3252eb6fcf317febc44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscriber 2.  <a href="#a5441b3037e92b3252eb6fcf317febc44">More...</a><br /></td></tr>
 <tr class="separator:a5441b3037e92b3252eb6fcf317febc44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7feda51695c24c266c9a1340395afd3d"><td class="memItemLeft" align="right" valign="top">image_transport::Subscriber&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a7feda51695c24c266c9a1340395afd3d">sub3_</a></td></tr>
-<tr class="memdesc:a7feda51695c24c266c9a1340395afd3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscriber 2.  <a href="#a7feda51695c24c266c9a1340395afd3d">More...</a><br /></td></tr>
+<tr class="memdesc:a7feda51695c24c266c9a1340395afd3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscriber 3.  <a href="#a7feda51695c24c266c9a1340395afd3d">More...</a><br /></td></tr>
 <tr class="separator:a7feda51695c24c266c9a1340395afd3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afec1bdf1895720bd8068884e2ccf6e4c"><td class="memItemLeft" align="right" valign="top">ros::Subscriber&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#afec1bdf1895720bd8068884e2ccf6e4c">sub4</a></td></tr>
-<tr class="memdesc:afec1bdf1895720bd8068884e2ccf6e4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscriber 3.  <a href="#afec1bdf1895720bd8068884e2ccf6e4c">More...</a><br /></td></tr>
+<tr class="memdesc:afec1bdf1895720bd8068884e2ccf6e4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscriber 4.  <a href="#afec1bdf1895720bd8068884e2ccf6e4c">More...</a><br /></td></tr>
 <tr class="separator:afec1bdf1895720bd8068884e2ccf6e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ac8589cf18c93bbd9c3b9dcd5771e82"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#a0ac8589cf18c93bbd9c3b9dcd5771e82">turnrate</a></td></tr>
+<tr class="memdesc:a0ac8589cf18c93bbd9c3b9dcd5771e82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn rate variable for random walk.  <a href="#a0ac8589cf18c93bbd9c3b9dcd5771e82">More...</a><br /></td></tr>
 <tr class="separator:a0ac8589cf18c93bbd9c3b9dcd5771e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab29822a8ab674d9348066f59a242e747"><td class="memItemLeft" align="right" valign="top">ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGazeboRetrieve.html#ab29822a8ab674d9348066f59a242e747">velocity_pub</a></td></tr>
-<tr class="memdesc:ab29822a8ab674d9348066f59a242e747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publisher.  <a href="#ab29822a8ab674d9348066f59a242e747">More...</a><br /></td></tr>
+<tr class="memdesc:ab29822a8ab674d9348066f59a242e747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocity Command Publisher.  <a href="#ab29822a8ab674d9348066f59a242e747">More...</a><br /></td></tr>
 <tr class="separator:ab29822a8ab674d9348066f59a242e747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -161,6 +178,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor. </p>
 <p>This publisher will publish goal state after %90 coverage of configuration space </p>
 
 <p>Definition at line <a class="el" href="gazebo__retrieve_8cpp_source.html#l00005">5</a> of file <a class="el" href="gazebo__retrieve_8cpp_source.html">gazebo_retrieve.cpp</a>.</p>
@@ -180,7 +199,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructore. </p>
+<p>Destructor. </p>
 
 <p>Definition at line <a class="el" href="gazebo__retrieve_8cpp_source.html#l00069">69</a> of file <a class="el" href="gazebo__retrieve_8cpp_source.html">gazebo_retrieve.cpp</a>.</p>
 
@@ -201,7 +220,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Thread of execution. </p>
+<p>Image Callback. </p>
 <p>Below code pushes the image and time to a deque, to share across threads </p>
 
 <p>Definition at line <a class="el" href="gazebo__retrieve_8cpp_source.html#l00084">84</a> of file <a class="el" href="gazebo__retrieve_8cpp_source.html">gazebo_retrieve.cpp</a>.</p>
@@ -230,7 +249,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Odometry Callback. </p>
+<p>Laser Calback. </p>
 <p>Below sample circulates through the scan and finds closest point to robot </p>
 
 <p>Definition at line <a class="el" href="gazebo__retrieve_8cpp_source.html#l00214">214</a> of file <a class="el" href="gazebo__retrieve_8cpp_source.html">gazebo_retrieve.cpp</a>.</p>
@@ -259,7 +278,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Image Callback. </p>
+<p>Odometry Callback. </p>
 <p>This callback is invoked with 'odom' message and is used to store new position info on buffer </p>
 
 <p>Definition at line <a class="el" href="gazebo__retrieve_8cpp_source.html#l00193">193</a> of file <a class="el" href="gazebo__retrieve_8cpp_source.html">gazebo_retrieve.cpp</a>.</p>
@@ -288,7 +307,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Laser Calback. </p>
+<p>Path Calback. </p>
 <p>This callback is invoked when a /path message is published by 'sample' component </p>
 
 <p>Definition at line <a class="el" href="gazebo__retrieve_8cpp_source.html#l00074">74</a> of file <a class="el" href="gazebo__retrieve_8cpp_source.html">gazebo_retrieve.cpp</a>.</p>
@@ -307,11 +326,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The thread runs until ros is shutdown, to ensure this thread does not remain a zombie thread</p>
-<p>The loop gets the velocity and turnrate computed from other thread and then feeds the velocity controller of the robot with the speed/turnrate Sleeps for 20ms thereafter</p>
+
+<p>Thread of execution. </p>
+<p>The below loop runs until ros is shutdown, to ensure this thread does not remain a zombie thread</p>
 <p>The below gets the current Ros Time </p>
 
-<p>Definition at line <a class="el" href="gazebo__retrieve_8cpp_source.html#l00268">268</a> of file <a class="el" href="gazebo__retrieve_8cpp_source.html">gazebo_retrieve.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retrieve_8cpp_source.html#l00283">283</a> of file <a class="el" href="gazebo__retrieve_8cpp_source.html">gazebo_retrieve.cpp</a>.</p>
 
 </div>
 </div>
@@ -334,7 +354,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00083">83</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Flag to request goal position after certain threshold of discovery percentage. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00142">142</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -356,7 +378,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00087">87</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Counter variable for random walk. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00154">154</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -378,7 +402,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00080">80</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Avoid speed variable for random walk. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00136">136</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -400,9 +426,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>size of OgMap in pixels </p>
+<p>Data buffer to store position data from odometer. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00075">75</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00124">124</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -424,7 +450,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00062">62</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Goal State Publisher. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00093">93</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -446,7 +474,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00092">92</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Cmdvel message to publish command. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00166">166</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -468,7 +498,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00084">84</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Flag to stop random walk after certain threshold of discovery percentage. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00145">145</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -490,9 +522,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Storage for OgMap in Mat. </p>
+<p>A counter to allow executing items on N iterations. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00072">72</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00117">117</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -514,9 +546,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Request Goal Service Client. </p>
+<p>Image pointer to get OGMAP. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00068">68</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00111">111</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -538,9 +570,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Image pointer to get OGMAP. </p>
+<p>Storage for OgMap in Mat. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00071">71</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00114">114</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -564,7 +596,7 @@ Private Attributes</h2></td></tr>
 
 <p>Image transport. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00060">60</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00087">87</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -586,9 +618,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>And now we have our container. </p>
+<p>Image buffer to store image messages. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00076">76</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00127">127</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -610,9 +642,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Node Handle. </p>
+<p>Image transport. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00059">59</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00084">84</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -634,9 +666,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>And now we have our container. </p>
+<p>Minimum front distance to avoid collision. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00078">78</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00130">130</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -658,7 +690,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00091">91</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Speed variable for random walk. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00163">163</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -680,7 +714,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00090">90</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Turn rate variable for random walk. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00160">160</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -702,9 +738,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Path Calback. </p>
+<p>Node Handle. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00058">58</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00081">81</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -726,7 +762,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00088">88</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Counter variable for random walk. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00157">157</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -748,9 +786,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>A counter to allow executing items on N iterations. </p>
+<p>size of OgMap in pixels </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00073">73</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00120">120</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -772,7 +810,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00086">86</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Random variable for random walk. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00151">151</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -794,7 +834,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00085">85</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Random variable for random walk. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00148">148</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -816,9 +858,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Subscriber 4. </p>
+<p>Request Goal Service Client. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00067">67</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00108">108</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -840,7 +882,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00079">79</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Speed variable for random walk. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00133">133</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -862,9 +906,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Goal State Publisher. </p>
+<p>Subscriber 1. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00063">63</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00096">96</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -886,9 +930,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Subscriber 1. </p>
+<p>Subscriber 2. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00064">64</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00099">99</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -910,9 +954,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Subscriber 2. </p>
+<p>Subscriber 3. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00065">65</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00102">102</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -934,9 +978,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Subscriber 3. </p>
+<p>Subscriber 4. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00066">66</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00105">105</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -958,7 +1002,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00081">81</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Turn rate variable for random walk. </p>
+
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00139">139</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -980,9 +1026,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Publisher. </p>
+<p>Velocity Command Publisher. </p>
 
-<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00061">61</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
+<p>Definition at line <a class="el" href="gazebo__retreive_8h_source.html#l00090">90</a> of file <a class="el" href="gazebo__retreive_8h_source.html">gazebo_retreive.h</a>.</p>
 
 </div>
 </div>
@@ -996,7 +1042,7 @@ Private Attributes</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://wiki.ros.org/random_walk">random_walk</a><br />
 Author(s): </br />
-<small>autogenerated on Sun Jun 18 2017 18:38:21</small>
+<small>autogenerated on Sun Jun 18 2017 19:20:02</small>
 </div>
 </body>
 </html>

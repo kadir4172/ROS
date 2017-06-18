@@ -29,6 +29,7 @@
 #include <vector>
 #include <tuple>
 #include <stdlib.h>
+#include <algorithm>
 
 namespace enc = sensor_msgs::image_encodings;
 
@@ -36,6 +37,7 @@ namespace enc = sensor_msgs::image_encodings;
  * This node shows some connections and publishing images
  */
 void add_start_goal_and_calculate_shortest_path(int , int , int , int , int );
+void detect_regions(int , int , int , int , int , int, int, int, int, int, int );
 
 
 #define BUFFER_SIZE 10000
@@ -145,17 +147,28 @@ public:
        }
        counter++;
      }
-     while(global2image((-6.27/2), (-15.7/2), &min_col, &min_row)){}
-     while(global2image((6.27/2), (15.7/2), &max_col, &max_row)){}
+     while(!global2image((-6.27/2), (15.7/2), &min_col, &min_row)){}
+     while(!global2image((6.27/2), (-15.7/2), &max_col, &max_row)){}
+    
+     start_row = (int)image.rows/2;
+     start_col = (int)image.cols/2;
 
 
+     std::cout << "Start Row" << start_row << std::endl;
+     std::cout << "Start Col" << start_col << std::endl;
+     std::cout << "Goal  Row" << goal_row  << std::endl;
+     std::cout << "Goal  Col" << goal_col  << std::endl;
+     std::cout << "Min   Row" << min_row   << std::endl;
+     std::cout << "Min   Col" << min_col   << std::endl;
+     std::cout << "Max   Row" << max_row   << std::endl;
+     std::cout << "Max   Col" << max_col   << std::endl;
 
 
     //bool global2image(double global_x, double global_y, int* local_x, int* local_y){
 //TODO call shortest path function here
 
-//detect_regions(100,100,1600,900, 2,2,12-2, 400, 120, 300, 1200);
-//void detect_regions(int min_col, int min_row, int max_col, int max_row, int number_of_regions_in_col, int number_of_regions_in_row, int total_number_of_configurations, int start_row, int
+detect_regions(min_col, min_row, max_col, max_row, 2,2, 12-2, start_row, start_col, goal_row, goal_col);
+
     }
 
 
@@ -250,6 +263,10 @@ public:
 		*local_y = (int)((double)image.rows/2 + (double)(pose.position.y - global_y) / resolution_);
 		*local_x = (int)((double)image.cols/2 - (double)(pose.position.x - global_x) / resolution_);
 		buffer.buffer_mutex_.unlock();
+                std::cout << "incoming request global_x" << global_x << std::endl;
+                std::cout << "incoming request global_y" << global_y << std::endl;
+                std::cout << "calculated position local_x" << *local_x << std::endl;
+                std::cout << "calculated position local_y" << *local_y << std::endl;
                 return true;                  
                 
             }
@@ -351,7 +368,7 @@ public:
         /// The below gets the current Ros Time
         ros::Time timeOdom = ros::Time::now();;
         ros::Time timeImage = ros::Time::now();;
-        cv::Mat image;
+        //cv::Mat image;
 	cv::Mat tmp ;		
 
 	geometry_msgs::Pose pose;
@@ -403,8 +420,9 @@ public:
                std::cout << "global_y:" << global_y << " global_x:" << global_x << " is:" << result << std::endl;   
 
  	       cv::cvtColor(image,tmp,CV_GRAY2RGB);
-               cv::circle(tmp, cv::Point(local_x, local_y), 1, CV_RGB(0,0,255),-1);
-               sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+               cv::circle(tmp, cv::Point(local_x, local_y), 1, CV_RGB(0,0,255),-1);               
+               //sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", tmp).toImageMsg();
+               sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", image).toImageMsg();
                image_pub_.publish(msg);
 
             }
@@ -520,10 +538,13 @@ void detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
 	std::vector< std::vector<int> > occupied_pixel_counter(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
 	std::vector< std::vector<int> > number_of_configurations(number_of_regions_in_row, std::vector<int>(number_of_regions_in_col));
     //std::cout << "buraya geldi" <<  occupied_pixel_counter[7][20]  << std::endl;
+
     for(int i = min_row; i<max_row; i++){
     	for(int j = min_col; j<max_col; j++){
-            row_region = (int)(floor(((double)i - min_row) / row_length));
-            col_region = (int)(floor(((double)j - min_col) / col_length));
+            row_region = std::min((int)(floor(((double)i - min_row) / row_length)), (number_of_regions_in_row-1));
+            col_region = std::min((int)(floor(((double)j - min_col) / col_length)), (number_of_regions_in_col-1));
+            //std::cout << "i: " << i << std::endl;
+            //std::cout << "j: " << j << std::endl;
             //std::cout << "row_region: " << row_region << std::endl;
             //std::cout << "col_region: " << col_region << std::endl;
             //TODO assign pixel_in_this_i_j
@@ -533,6 +554,7 @@ void detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
             }
     	}
     }
+    std::cout << "buraya geldi" << std::endl;   
     std::cout << "total_occupied_cells" << total_occupied_cells<<  std::endl;
     int total_configuration_points = 0;
     for(int k = 0; k<number_of_regions_in_row; k++){
@@ -575,6 +597,7 @@ void detect_regions(int min_col, int min_row, int max_col, int max_row, int numb
             }
     	}
     }
+
     add_start_goal_and_calculate_shortest_path(configuration_point_list.size(),  start_row,  start_col,  goal_row,  goal_col);
 }
 

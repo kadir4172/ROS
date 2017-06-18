@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kadir/Desktop/Freelancer/Project4_ROS/ROS/catkin_ws/src/local_map/test/utest.cpp
+vector
+-
+iostream
+-
+gtest/gtest.h
+-
+

@@ -132,7 +132,7 @@ GazeboRetrieve::GazeboRetrieve(ros::NodeHandle nh)
 	    std::cout << "Discovered Percentage: %" << discovered_percentage << std::endl;
         
 	    // When robot discover the working space more than %80, stop random walk process and publish goal state
-	    if(discovered_percentage > 80.0){ 
+	    if((discovered_percentage > 80.0) && isConfigurationFree((size_y/2), (size_x/2))){ 
           //This string and string strema will be used to publish comma seperated goal state with /chatter topic	      
 	      std_msgs::String msg;  
           std::stringstream ss;
@@ -142,6 +142,10 @@ GazeboRetrieve::GazeboRetrieve(ros::NodeHandle nh)
 
           //Stop walking on the map randomly
           continue_to_walk = false;
+          //Stop robot	
+          cmdvel.linear.x = 0;
+          cmdvel.angular.z = 0;
+          velocity_pub.publish(cmdvel);
           
           //Request a random goal point from service
           srv.request.x = rand() % size_x ;
@@ -187,7 +191,39 @@ GazeboRetrieve::GazeboRetrieve(ros::NodeHandle nh)
 
     }
 
-
+    bool GazeboRetrieve::isConfigurationFree(int local_y, int local_x){
+      //!This function will be used to check whether a pixel in OGMAP is in free configuration space by augmenting it Minkowski sums
+      
+      // Lock image buffer, take one message from deque and unlock it
+      imageBuffer.buffer_mutex_.lock();
+      if(imageBuffer.imageDeq.size()>0){
+        image = imageBuffer.imageDeq.front();
+        imageBuffer.buffer_mutex_.unlock();
+        
+        //First check whether point is in boundaries of OGMAP
+        if((local_y<=0) || (local_y>=image.rows-1) || (local_x<=0) || (local_x>=image.cols-1)){
+          ROS_INFO("Point is out of boundaries");
+          return false; 
+        }
+        //Check that if up, down, left, right cells to calculate local configuration space with Minkowski sums
+        if(((int)image.at<uchar>(local_y  , local_x  ) == 255) && 
+	    ((int)image.at<uchar>(local_y+1, local_x  ) == 255) &&
+	    ((int)image.at<uchar>(local_y-1, local_x  ) == 255) &&
+	    ((int)image.at<uchar>(local_y  , local_x+1) == 255) &&
+	    ((int)image.at<uchar>(local_y  , local_x-1) == 255)){
+          return true;
+	    }
+        else{
+          return false;
+        }
+      }
+      else{
+    	//If we cannot take an image from imageBuffer, i.e. no image available in buffer yet
+        ROS_INFO("No Available OGMAP to check");
+        imageBuffer.buffer_mutex_.unlock();
+        return false;
+      }
+    }
 
 
     void GazeboRetrieve::odomCallback(const nav_msgs::OdometryConstPtr& msg){

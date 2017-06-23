@@ -75,6 +75,9 @@ private:
     
     //! Path Calback
     void pathCallback(const geometry_msgs::PoseArrayConstPtr& msg);
+    
+    //! Configuration Free Check
+    bool isConfigurationFree(int local_y, int local_x);
 
 private:
     //! Node Handle
@@ -164,6 +167,9 @@ private:
     
     //! Cmdvel message to publish command
     geometry_msgs::Twist cmdvel;
+    
+    //! Tmp image holder
+    cv::Mat image;
 
 };
 

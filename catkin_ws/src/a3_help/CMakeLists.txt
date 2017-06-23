@@ -127,6 +127,7 @@ include_directories(
 #add_executable(gazebo_retrieve src/gazebo_retrieve.cpp)
 add_executable(map_to_image_node src/map_to_image_node.cpp)
 add_executable(sample src/sample.cpp)
+add_executable(gen_path src/gen_path.cpp)
 add_executable(TBK src/TBK.cpp)
 
 
@@ -138,6 +139,7 @@ add_executable(TBK src/TBK.cpp)
 #target_link_libraries(gazebo_retrieve ${catkin_LIBRARIES})
 target_link_libraries(map_to_image_node ${catkin_LIBRARIES})
 target_link_libraries(sample ${catkin_LIBRARIES})
+target_link_libraries(gen_path ${catkin_LIBRARIES})
 target_link_libraries(TBK ${catkin_LIBRARIES})
 
 #target_link_libraries(image_publisher ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
